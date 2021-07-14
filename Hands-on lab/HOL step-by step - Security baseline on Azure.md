@@ -661,107 +661,107 @@ In this exercise, attendees will utilize Network Security Groups to ensure that 
 
 2. Configure the database server to only allow SQL Connections from the web server:
 
-   - Select **Network Security Groups**.
+   - Select **ネットワーク セキュリティ グループ**.
 
    - Select **DbTrafficOnly**.
 
-   - Select **Inbound Security Rules**.
+   - Select **受信セキュリティ規則**.
 
-   - Select **+Add**.
+   - Select **+ 追加**.
 
-   - For the **Source**, select **IP Addresses**.
+   - For the **ソース**, select **IP Addresses**.
 
-   - For the **Source IP address**, enter **10.2.0.4**.
+   - For the **ソース IP アドレス**, enter **10.2.0.4**.
   
-   - For the **Destination**, keep **Any**.
+   - For the **宛先**, keep **Any**.
 
-   - For the **Destination port range**, enter **1433**.
+   - For the **宛先ポート範囲**, enter **1433**.
 
-   - For the **Priority**, enter **100**.
+   - For the **優先度**, enter **100**.
 
-   - For the **Name**, enter **Port_1433**.
+   - For the **名前**, enter **Port_1433**.
 
-   - Select **Add**.
+   - Select **追加**.
 
-   - Select **+Add**.
+   - Select **+ 追加**.
 
-   - For the **Source**, select **IP Addresses**.
+   - For the **ソース**, select **IP Addresses**.
 
-   - For the **Source IP address**, enter **10.0.0.4**.
+   - For the **ソース IP アドレス**, enter **10.0.0.5**.
   
-   - For the **Destination**, keep **Any**.
+   - For the **宛先**, keep **Any**.
 
-   - For the **Destination port range**, enter **1433**.
+   - For the **宛先ポート範囲**, enter **1433**.
 
-   - For the **Priority**, enter **102**.
+   - For the **優先度**, enter **102**.
 
-   - For the **Name**, enter **Port_1433_Paw**.
+   - For the **名前**, enter **Port_1433_Paw**.
 
-   - Select **Add**.
+   - Select **追加**.
 
 3. Configure the web server to allow all HTTP and HTTPS connections:
 
-   - Select **Network Security Groups**.
+   - Select **ネットワーク セキュリティ グループ**.
 
    - Select **WebTrafficOnly**.
 
-   - Select **Inbound Security Rules**.
+   - Select **受信セキュリティ規則**.
 
-   - Select **+Add**.
+   - Select **+ 追加**.
 
-   - For the **Source**, keep **Any**.
+   - For the **ソース**, keep **Any**.
 
-   - For the **Destination**, keep **Any**.
+   - For the **宛先**, keep **Any**.
 
-   - For the **Destination port ranges**, enter **80,443**.
+   - For the **宛先ポート範囲**, enter **80,443**.
 
-   - For the **Priority**, enter **100**.
+   - For the **優先度**, enter **100**.
 
-   - Change the **Name** to **Port\_80\_443**.
+   - Change the **名前** to **Port\_80\_443**.
 
-   - Select **Add**.
+   - Select **追加**.
 
    > **Note**: In some rare cases it may take up to 15 minutes for your Network Security Group to change its status from **Updating**.  You won't be able to add any other rules until it completes.
 
 4. Configure both the database and web server to only allow RDP connections from the PAW machine:
 
-    - Select **Network Security Groups.** For both the **DbTrafficOnly** and **WebTrafficOnly**, do the following:
+    - Select **ネットワーク セキュリティ グループ**. For both the **DbTrafficOnly** and **WebTrafficOnly**, do the following:
 
-       - Select **Inbound Security Rules**.
+       - Select **受信セキュリティ規則**.
 
-       - Select **+Add**.
+       - Select **+ 追加**.
 
-       - For the **Source**, select **IP Addresses**.
+       - For the **ソース**, select **IP Addresses**.
 
-       - For the **Source IP address**, enter **10.0.0.4**.
+       - For the **ソース IP アドレス**, enter **10.0.0.5**.
 
-       - For the **Destination port range**, enter **3389**.
+       - For the **宛先ポート範囲**, enter **3389**.
 
-       - For the **Priority**, enter **101**.
+       - For the **優先度**, enter **101**.
 
-       - For the **Name**, enter **Port_3389**.
+       - For the **名前**, enter **Port_3389**.
 
-       - Select **Add**.
+       - Select **追加**.
 
 5. Configure all Network Security Groups to have Diagnostic logs enabled.
 
-    - Select **Network security groups.** For each NSG (DBTrafficOnly and WebTrafficOnly), do the following:
+    - Select **ネットワーク セキュリティ グループ**. For each NSG (DBTrafficOnly and WebTrafficOnly), do the following:
 
-       - In the content menu, select **Diagnostic logs**, and then select **Add diagnostic setting**.
+       - In the content menu, select **診断設定**, and then select **+ 診断設定を追加する**.
 
-        ![Diagnostics settings is selected under Monitoring on the left side, and Add diagnostics settings is selected on the right.](media/2019-12-19-18-53-52.png "Add diagnostic settings")
+        ![Diagnostics settings is selected under Monitoring on the left side, and Add diagnostics settings is selected on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image58.jpg "Add diagnostic settings")
 
       - For the name, enter the NSG name and then add **Logging** to the end.
 
-      - Check the **Send to Log Analytics** checkbox, in the **Log Analytics** box, select **Configure**.
+      - Check the **Log Analytics ワークスペースへの送信** checkbox, in the **Log Analytics** box, select **Configure**.
 
       - Select the **azseclog...** workspace.
 
       - Select both LOG checkboxes.
 
-      - Select **Save**.
+      - Select **保存**.
 
-       ![Save is highlighted at the top, and two log items are selected below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image60.png "Save the logs")
+       ![Save is highlighted at the top, and two log items are selected below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image60.jpg "Save the logs")
 
 ### Task 3: Test network security group rules \#2
 
@@ -791,15 +791,15 @@ In this exercise, attendees will utilize Network Security Groups to ensure that 
 
 3. Select **db-1**.
 
-4. In the blade menu, select **Extensions**, then select **+Add**.
+4. In the blade menu, select **拡張機能**, then select **+ 追加**.
 
-    ![Extensions is selected on the left under Settings, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image64.png "Select + Add")
+    ![Extensions is selected on the left under Settings, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image64.jpg "Select + Add")
 
 5. Browse to the **Network Watcher Agent for Windows**, and select it.
 
-6. Select **Create**.
+6. Select **次へ**. **確認と作成**. **作成**.
 
-    ![Network Watcher Agent for Windows is highlighted on the left, and Create is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image65.png "Create a Network Watcher agent")
+    ![Network Watcher Agent for Windows is highlighted on the left, and Create is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image65.jpg "Create a Network Watcher agent")
 
 7. In the next **Install extension** dialog window (note that it could be blank) select **OK.** You should see a dialog toast notification about the script extension being installed into the Virtual Machine.
 
@@ -811,25 +811,25 @@ In this exercise, attendees will utilize Network Security Groups to ensure that 
 
 2. In the context menu, select **Network Watcher**.
 
-    ![Network watcher is selected from the filtered list of services.](media/2020-01-12-12-06-30.png "Network watcher search result")
+    ![Network watcher is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image66-2.jpg "Network watcher search result")
 
-3. Expand the subscription regions item you are running your labs in.
+3. **+ 追加**ボタン。 Expand the subscription regions item you are running your labs in.
 
 4. For the **East US** region (or whatever region you deployed your VMs too), select the ellipsis, then select **Enable network watcher**.
 
-    ![The East US row is highlighted under Region, and Enable network watcher is selected in the submenu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image68.png "Enable Network Watcher")
+    ![The East US row is highlighted under Region, and Enable network watcher is selected in the submenu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image66-3.jpg "Enable Network Watcher")
 
 5. In the new context menu, select **Packet capture**.
 
 6. Select **+Add**.
 
-    ![Packet capture is selected and highlighted on the left under Network Diagnostic Tools, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image69.png "Add a packet capture")
+    ![Packet capture is selected and highlighted on the left under Network Diagnostic Tools, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image69.jpg "Add a packet capture")
 
 7. Select your subscription.
 
 8. Select your resource group.
 
-9. For the target virtual machine, ensure that **db-1** is selected.
+9.  For the target virtual machine, ensure that **db-1** is selected.
 
 10. For the capture name, enter **databasetraffic**.
 
@@ -841,9 +841,9 @@ In this exercise, attendees will utilize Network Security Groups to ensure that 
     - Maximum bytes per session: 1073741824.
     - Time limit: 600.
 
-    ![In the Add packet capture window, databasetraffic is entered in the Packet capture name box, and the Storage account check box is checked.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/packetcapture.png "Dialog box screenshot")
+    ![In the Add packet capture window, databasetraffic is entered in the Packet capture name box, and the Storage account check box is checked.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image69-2.jpg "Dialog box screenshot")
 
-13. Select **OK**.
+13. Select **保存**.
 
 ### Task 6: Execute a port scan
 
@@ -869,17 +869,18 @@ Azure Security Center provides several advanced security and threat detection ab
 
 1. In the Azure Portal, browse to your **azsecurity-INIT** resource group, then select the *azseclog...* **Log Analytics Workspace**.
 
-    ![The log analytics workspace is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace.png "Select the log analytics workspace")
+    ![The log analytics workspace is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace.jpg "Select the log analytics workspace")
 
 2. In the blade, select **Agents management**.
 
 3. Record the `Workspace ID` and the `Primary key` values.
 
-   ![Agents management blade link is highlighted along with the id and key for the workspace](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace_Settings.png "Copy the workspace id and key")
+   ![Agents management blade link is highlighted along with the id and key for the workspace](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace_Settings.jpg "Copy the workspace id and key")
 
 4. Switch to the Remote Desktop Connection to the **paw-1**.
 
 5. Open the **Putty** tool, login to the **linux-1** machine using the username and password.
+(###名前解決できているか確認)
 
    ![Putty window with linux-1 as the host.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/putty-linux-1.png "Use Putty to login to linux-1")
 
@@ -894,9 +895,9 @@ Azure Security Center provides several advanced security and threat detection ab
 
 7. Switch back to the Azure Portal.
 
-8. In the blade menu, select **Advanced settings** and then select **Linux Servers**, you should see **1 LINUX COMPUTER CONNECTED**.
+8. In the blade menu, select **エージェント管理** and then select **Linux  サーバー** タブ, you should see **1 台の Linux コンピューターが接続されています**.
 
-   ![The displayed of connected linux computers for the workspace.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
+   ![The displayed of connected linux computers for the workspace.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-linux-computers.jpg "Review the linux computers connected to workspace")
 
    > **Note**: In most cases, Azure will assign resources automatically to the log analytics workspace in your resource group.
 
@@ -912,6 +913,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
     ![The email warning about the Brute Force Attack.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/linux-brute-attack-warning.png "The Azure Security Center warning about brute force attack")
 
+
 ### Task 3: Enable change tracking and update management
 
 1. Switch back to the Azure Portal.
@@ -922,19 +924,23 @@ Azure Security Center provides several advanced security and threat detection ab
 
 4. In the top menu, select **Services**, then select **Change Tracking**.
 
-   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking.png "Enable change tracking for the virtual machines")
+   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking.jpg "Enable change tracking for the virtual machines")
 
-5. Select the **CUSTOM** radio button.
+5. Select the **カスタム** radio button.
 
 6. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
 
-    ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config.png "Select CUSTOM and then select change links")
+    ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config.jpg "Select CUSTOM and then select change links")
 
 7. Select the log analytics workspace for your resource group and then select the matching automation account, then select **OK**.
 
     ![The custom configuration dialog is displayed with the log analytics workspace select along with the matching automation account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config2.png "Select the resource group log analytics workspace and matching automation account")
 
 8. Select all the virtual machines, then select **Enable**.
+
+    ※サブスクリプションが出てこない場合、各仮想マシンで変更履歴を有効化する。
+    ![The custom configuration dialog is displayed with the log analytics workspace select along with the matching automation account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config2.jpg "Select the resource group log analytics workspace and matching automation account")
+
 
 9. Navigate back to the **Virtual Machines** blade, again highlight the **paw-1**, **web-1**, **db-1** and **linux-1** virtual machines that were deployed.
 
@@ -960,11 +966,13 @@ Azure Security Center provides several advanced security and threat detection ab
 
 20. Under the **General** section, select the **Solutions** blade, you should see the **ChangeTracking** and **Updates** solutions were added to your workspace. Select the **ChangeTracking** solution.
 
-    ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions.png "Select the ChangeTracking solution item")
+    ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions.jpg "Select the ChangeTracking solution item")
 
-21. Under **Workspace Data Sources** section, select **Solution Targeting (Preview)**.
+21. Under **Workspace Data Sources** section, select **ソリューションのターゲット設定(プレビュー)**.
 
 22. Remove any scopes that are displayed via the ellipses to the right of the items.
+
+    ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions2.jpg "Select the ChangeTracking solution item")
 
 23. Repeat the steps to remove the solution targeting for the **Updates** solution.
 
@@ -996,7 +1004,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 2. Select **Azure Security Center**.
 
-3. In the blade menu, scroll to the **ADVANCED CLOUD DEFENSE** section and select **Adaptive application controls**.
+3. In the blade menu, scroll to the **クラウド セキュリティ** section and select **適応型アプリケーション制御**.
 
 4. You will likely have several groups displayed, find the one that has your newly created lab VMs.
 
@@ -1018,21 +1026,21 @@ Azure Security Center provides several advanced security and threat detection ab
 
 2. Select Azure Security Center.
 
-3. In the blade menu, scroll to the **ADVANCED CLOUD DEFENSE** section and select **File Integrity Monitoring**.
+3. In the blade menu, scroll to the **クラウド セキュリティ** section and select **ファイルの整合性の監視**.
 
-4. For the log workspace tied to your lab environment virtual machines, if displayed, select **Upgrade Plan**, then select **Try File Integrity Monitoring**.
+4. For the log workspace tied to your lab environment virtual machines, if displayed, select **Upgrade Plan**, then select **ファイルの整合性の監視を試す**.
 
-5. Select the workspace only, then select **Upgrade**.
+5. Select the workspace only, then select **アップグレード**.
 
-6. Select the **Continue without installing agents** link.
+6. Select the **エージェントをインストールせずに続行します** link.
 
    ![The continue without installing agents link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-enable.png "Select the continue without installing agents link")
 
-7. If displayed, select **Enable**, otherwise simply select the workspace.
+7. If displayed, select **有効化**, otherwise simply select the workspace.
 
-8. In the menu, select **Settings**.
+8. In the menu, select **設定**.
 
-    ![The Settings link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-settings.png "Select the settings link")
+    ![The Settings link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-settings.jpg "Select the settings link")
 
 9. Select the **Windows Files** tab.
 
@@ -1041,18 +1049,21 @@ Azure Security Center provides several advanced security and threat detection ab
 11. For the item name, type **HOSTS**.
 
 12. For the path, type **c:\windows\system32\drivers\etc\\\***.
+    パスの種類を**フォルダー**。
+    再帰を**オン**。
 
-13. Select **Save**.
 
-    ![The settings page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-addentry.png "Add a new file integrity monitoring item")
+13. Select **保存**.
 
-14. Select the **File Content** tab.
+    ![The settings page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-addentry.jpg "Add a new file integrity monitoring item")
 
-15. Select **Link**, then select the storage account tied to your lab.
+14. Select the **ファイルコンテンツ** タブ.
+
+15. Select **リンク **, then select the storage account tied to your lab.
 
     > **Note**: It will take 30-60 minutes for Log Analytics and its management packs to execute on all your VMs. As you may not have that much time with this lab, screen shots are provided as to what results you will eventually get.
 
-    ![The file content page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-filecontent.png "Link a storage account for file changes")
+    ![The file content page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-filecontent.jpg "Link a storage account for file changes")
 
 16. Switch to the Remote Desktop Connection to the **paw-1**.
 
@@ -1086,7 +1097,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 5. Select the **Azure Disk Encryption for volume encryption** checkbox.
 
-   ![The click path above is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/keyvault-diskencrypt.png "Enable the key vault for disk encryption activities")
+   ![The click path above is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/keyvault-diskencrypt.jpg "Enable the key vault for disk encryption activities")
 
 6. Select **Save**.
 
@@ -1098,7 +1109,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 10. In the top menu, select **Encryption**.
 
-    ![The click path above is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/diskencryption.png "Browse to configure disk encryption for the linux-1 os disk")
+    ![The click path above is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/diskencryption.jpg "Browse to configure disk encryption for the linux-1 os disk")
 
 11. For **Disks to encrypt**, select **OS Disk**.
 
@@ -1134,23 +1145,23 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
 2. Select **All services**, then type **Sentinel**, select **Azure Sentinel**.
 
-    ![All Services is selected in the left menu, and a search for Sentinel is displayed along with its search results.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image94.png "Searching for Sentinel")
+    ![All Services is selected in the left menu, and a search for Sentinel is displayed along with its search results.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image94.jpg "Searching for Sentinel")
 
 3. In the blade, select **+Add**, select the **Log Analytics** resource for your resource group, then choose **Add Azure Sentinel**.
 
-   ![The screenshot displays the Azure workspace found in the resource group.](media/2020-01-12-12-54-25.png "Azure Workspace")
+   ![The screenshot displays the Azure workspace found in the resource group.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-12-54-25.jpg "Azure Workspace")
 
-4. In the blade, under **Threat Management**, select **Workbooks**.
+4. In the blade, under **驚異管理**, select **ブック**.
 
-5. In the list of workbooks, select **Azure AD Audit logs**, select **Save**.
+5. In the list of workbooks, select **Azure AD 監査ログ**, select **保存**.
 
 6. Select the region and select **OK**.
 
-    ![In the left menu beneath Threat Management the Workbooks item is selected and the Azure AD Audit Logs item is selected beneath the Templates tab on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image95.png "Adding a workbook")
+    ![In the left menu beneath Threat Management the Workbooks item is selected and the Azure AD Audit Logs item is selected beneath the Templates tab on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image95.jpg "Adding a workbook")
 
-7. In the list of workbooks, select **Azure Network Watcher**, choose **Save**.
+7. In the list of workbooks, select **Azure Network Watcher**, choose **保存**.
 
-8. Select the region and choose **OK**.
+8. Select the リージョン and choose **OK**.
 
 9. Select **View saved workbook**, take a moment to review your new workbook.
 
@@ -1158,15 +1169,15 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
 ### Task 2: Create an Analytics alert
 
-1. Navigate back to the **Azure Sentinel** workspace, in the **Configuration** blade section, select **Analytics** then select **+Create** then **Scheduled query rule**.
+1. Navigate back to the **Azure Sentinel** workspace, in the **構成** blade section, select **分析** then select **+ 作成** then **Scheduled query rule**.
 
-    ![In the left menu beneath Configuration the Analytics item is selected. To the right, the + Create button is expanded and the Scheduled query rule item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image96.png "Adding a analytics alert")
+    ![In the left menu beneath Configuration the Analytics item is selected. To the right, the + Create button is expanded and the Scheduled query rule item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image96.jpg "Adding a analytics alert")
 
-2. On the **General** tab, enter **PortScans** for the name.
+2. On the **全般** tab, enter **PortScans** for the 名前.
 
-3. For the description, enter **A custom rule to detect port scans**, select **Next: Set rule logic**.
+3. For the 説明, enter **A custom rule to detect port scans**, select **次: ルールのロジックを設定**.
 
-4. In the **Rule query** text box, type:
+4. In the **ルールのクエリ** text box, type:
 
     ```PowerShell
     AzureDiagnostics
@@ -1177,39 +1188,39 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
     > **Note**: If you wanted to target a specific NSG, you can add `and Resource == 'WEBTRAFFICONLY'` to the query.
 
-    ![In this screenshot, the alert simulation shows data after the query has been entered.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image97.png "Reviewing alert simulation data")
+    ![In this screenshot, the alert simulation shows data after the query has been entered.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image97.jpg "Reviewing alert simulation data")
 
     > **Note**: If you were quick going through the labs, then you may not have log data in the Log Analytics workspace just yet that corresponds to "AzureMetric". You may need to wait 15-30 minutes before a query will execute.
 
     > **Note**: Since the introduction of Azure Security Center and Sentinel, the backend logging has changed a few times as well as the way the calculations are done in the rule query (timespan in query vs outside query, etc.). The ultimate goal of this query is to find when a series of failed connection attempts have been made against a network security group and a specific deny rule. If for some reason the UI/backend has been modified since the last published lab, modify the query to accomplish this goal.
 
-5. Under **Map entities**, for the **IP**, select the **primaryIPv4Address_s** column, then select **Add**.
+5. Under **エンティティ マッピング**, for the **IP**, select the **primaryIPv4Address_s** column, then select **Add**.
 
-6. Under **Query scheduling**, for the **Run query every** setting, type **5** minutes.
+6. Under **クエリのスケジュール設定**, for the **クエリの実行間隔** setting, type **5** 分.
 
     >**Note**:  This is a lab and you want to see the results as quickly as possible. In a production environment, you may want to choose a different time threshold.
 
-7. For the **Lookup data from the last**, type **2** hours.
+7. For the **次の時間分の過去のデータを参照します**, type **2** 時間.
 
-8. Under **Alert threshold**, for the **Generate alert when number of query results**, enter **0**.
+8. Under **アラートのしきい値**, for the **クエリ結果件数でアラートを生成する**, enter **0**.
 
     > **Note:** We want to hit the threshold quickly for lab purposes. This query and value may not be appropriate for production and is only for learning purposes.
 
     Review the current data to determine what would trigger the alert.  Notice the red threshold line intersects the blue event data line.
 
-    ![A chart is displayed showing the current log data and the alert threshold. The red and blue line intersect in the chart.](media/2020-01-12-13-26-17.png "Results Preview")
+    ![A chart is displayed showing the current log data and the alert threshold. The red and blue line intersect in the chart.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-26-17.jpg "Results Preview")
 
-9. Select **Next: Incident settings**, review the potential incident settings.
+9. Select **次: インシデントの設定 (プレビュー)**, review the potential incident settings.
 
-10. Select **Next: Automated response**, notice you have no playbooks to select yet.
+10. Select **次: 自動応答**, notice you have no playbooks to select yet.
 
-11. Select **Next: Review**.
+11. Select **次: レビュー**.
 
-12. Select **Create**.
+12. Select **作成**.
 
     > **Note**:  It may take a few minutes for the alert to fire.  You may need to run the PortScan script a few times from **paw-1**
 
-    ![In the Azure Sentinel Analytics screen beneath the Active Rules tab, the PortScans rule is highlighted in the table and its status shows it is Enabled.](media/2020-01-12-13-03-56.png "PortScan configured")
+    ![In the Azure Sentinel Analytics screen beneath the Active Rules tab, the PortScans rule is highlighted in the table and its status shows it is Enabled.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-03-56.jpg "PortScan configured")
 
 ### Task 3: Investigate a custom alert incident
 
@@ -1219,25 +1230,26 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
 3. Select the new **PortScans** incident.
 
-    ![In the Azure Sentinel Incidents window, the most recent PortScans security alert is selected from the table.](media/2020-01-12-13-30-12.png "View the new PortScans alert")
+    ![In the Azure Sentinel Incidents window, the most recent PortScans security alert is selected from the table.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-30-12.jpg "View the new PortScans alert")
 
     > **Note**: It may take 15-20 minutes for the alert to fire. You can continue to execute the port scan script to cause log events or you can lower the threshold for the custom alert.
 
 4. In the dialog, choose **Investigate**. Note that it may take a few minutes for the button to be available.
 
-    ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76.png "Investigate an incident")
+    ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76.jpg "Investigate an incident")
+    ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76-2.jpg "Investigate an incident")
 
 5. In future versions, you will get to see insights about the alerts and the resources related to what caused it to fire:
 
-    ![The Azure Security Insights screen is displayed detailing the lifetime of an alert instance.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image77.png)
+    ![The Azure Security Insights screen is displayed detailing the lifetime of an alert instance.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image77.jpg)
 
 ### Task 4: Create and run a playbook
 
-1. In the **Azure Sentinel** blade, select **Playbooks**.
+1. In the **Azure Sentinel** blade, select **オートメーション**.
 
 2. In the new window, select **+ Add Playbook**.
 
-    ![The playbooks blade is displayed with the Playbooks item selected in the left hand menu and the + Add Playbook button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image79.png)
+    ![The playbooks blade is displayed with the Playbooks item selected in the left hand menu and the + Add Playbook button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image79.jpg)
 
 3. The **Create logic app** blade will display:
 
@@ -1247,39 +1259,39 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
     - Toggle the **Log Analytics** to **On** and then select your **azuresecurity** Log Analytics workspace.
 
-   ![The information above is entered in the Create logic app blade.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image80.png "Enter Create logic app information")
+   ![The information above is entered in the Create logic app blade.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image80.jpg "Enter Create logic app information")
 
-4. Select **Review + Create** then select **Create**.  After a few moments, the **Logic Apps Designer** will load. If the designer does not load, wait a few minutes and refresh the Playbook list. Select the **Email** playbook.
+4. Select **確認および作成** then select **作成**.  After **リソースに移動**, the **Logic Apps Designer** will load. If the designer does not load, wait a few minutes and refresh the Playbook list. Select the **Email** playbook.
 
-    ![The playbooks list is displayed and the Email playbook is highlighted.](media/2020-01-12-14-40-13.png "Playbook List")
+    ![The playbooks list is displayed and the Email playbook is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-40-13.jpg "Playbook List")
 
 5. Select the **Get a notification email when Security Center detects a threat** template.
 
-    ![The Logic Apps Designer screen is displayed with a list of templates. The Get a notification email when Security Center detects a threat template is selected.](media/2020-01-12-14-44-52.png "Select Use this template")
+    ![The Logic Apps Designer screen is displayed with a list of templates. The Get a notification email when Security Center detects a threat template is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-44-52.jpg "Select Use this template")
 
-6. Select **Use this template**.
+6. Select **このテンプレートを使用する**.
 
-    ![The Use this template button is selected under Send notification email with alert details from Azure Security Center.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image82.png "Select Use this template")
+    ![The Use this template button is selected under Send notification email with alert details from Azure Security Center.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image82.jpg "Select Use this template")
 
 7. For the **Office 365 Outlook** connection, select the **+** link, enter your Azure/O365 credentials.
 
-    ![The Sign in button is highlighted next to Office 365 Outlook under This logic app will connect to.](media/2020-01-12-14-48-03.png "Sign in to Office 365 Outlook")
+    ![The Sign in button is highlighted next to Office 365 Outlook under This logic app will connect to.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-48-03.jpg "Sign in to Office 365 Outlook")
 
     > **Note**: This would need to be a valid Office 365 account, if you do not have a valid Office 365 account, then utilize a basic email template for Outlook.com.
 
 8. For the **Security Center Alert** connection, select the **+** link.
 
-9. Select **Continue**.
+9. Select **続行**.
 
-    ![The Logic app connection blade is displayed.  Outlook and Azure Security Center validation are displayed.](media/2020-01-12-14-51-29.png "Logic App Connection Information")
+    ![The Logic app connection blade is displayed.  Outlook and Azure Security Center validation are displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-51-29.jpg "Logic App Connection Information")
 
 10. For the email address, enter your email.
 
 11. Select **Save**. You now have an email alert action based on LogicApps for your custom security alert to use.
 
-    ![Save is highlighted in Logic Apps Designer, and information about the custom security alert appears below.](media/2020-01-12-14-54-20.png "Save the email alert action")
+    ![Save is highlighted in Logic Apps Designer, and information about the custom security alert appears below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-54-20.jpg "Save the email alert action")
 
-12. Lastly, after you have created the new Playbook, ensure that the status is **Enabled**.  If not, then select **Enable** in the menu.
+12. Lastly, after you have created the new Playbook, ensure that the status is **有効**.  If not, then select **有効** in the menu.
 
 ### Task 5: Execute Jupyter Notebooks
 
