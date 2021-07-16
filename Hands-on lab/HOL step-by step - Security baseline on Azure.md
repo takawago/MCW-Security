@@ -24,60 +24,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->
-
-- [Security baseline on Azure hands-on lab step-by-step](#security-baseline-on-azure-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Overview](#overview)
-  - [Solution architecture](#solution-architecture)
-  - [Requirements](#requirements)
-  - [Exercise 1: Implementing Just-in-Time (JIT) access](#exercise-1-implementing-just-in-time-jit-access)
-    - [Task 1: Setup virtual machine with JIT](#task-1-setup-virtual-machine-with-jit)
-    - [Task 2: Perform a JIT request](#task-2-perform-a-jit-request)
-  - [Exercise 2: Securing the Web Application and database](#exercise-2-securing-the-web-application-and-database)
-    - [Task 1: Setup the database](#task-1-setup-the-database)
-    - [Task 2: Test the web application solution](#task-2-test-the-web-application-solution)
-    - [Task 3: Utilize data masking](#task-3-utilize-data-masking)
-    - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)
-  - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)
-    - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)
-    - [Task 2: Create an Azure Active Directory application](#task-2-create-an-azure-active-directory-application)
-    - [Task 3: Assign Azure Active Directory application permissions](#task-3-assign-azure-active-directory-application-permissions)
-    - [Task 4: Install or verify NuGet Package](#task-4-install-or-verify-nuget-package)
-    - [Task 5: Test the solution](#task-5-test-the-solution)
-  - [Exercise 4: Securing the network](#exercise-4-securing-the-network)
-    - [Task 1: Test network security group rules \#1](#task-1-test-network-security-group-rules-1)
-    - [Task 2: Configure network security groups](#task-2-configure-network-security-groups)
-    - [Task 3: Test network security group rules \#2](#task-3-test-network-security-group-rules-2)
-    - [Task 4: Install network watcher VM extension](#task-4-install-network-watcher-vm-extension)
-    - [Task 5: Setup network packet capture](#task-5-setup-network-packet-capture)
-    - [Task 6: Execute a port scan](#task-6-execute-a-port-scan)
-  - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)
-    - [Task 1: Linux VM and Microsoft Monitoring Agent (MMA) install](#task-1-linux-vm-and-microsoft-monitoring-agent-mma-install)
-    - [Task 2: Execute brute force attack](#task-2-execute-brute-force-attack)
-    - [Task 3: Enable change tracking and update management](#task-3-enable-change-tracking-and-update-management)
-    - [Task 4: Review MMA configuration](#task-4-review-mma-configuration)
-    - [Task 5: Adaptive Application Controls](#task-5-adaptive-application-controls)
-    - [Task 6: File Integrity Monitoring](#task-6-file-integrity-monitoring)
-    - [Task 7: Disk encryption](#task-7-disk-encryption)
-  - [Exercise 6: Azure Sentinel logging and reporting](#exercise-6-azure-sentinel-logging-and-reporting)
-    - [Task 1: Create a dashboard](#task-1-create-a-dashboard)
-    - [Task 2: Create an Analytics alert](#task-2-create-an-analytics-alert)
-    - [Task 3: Investigate a custom alert incident](#task-3-investigate-a-custom-alert-incident)
-    - [Task 4: Create and run a playbook](#task-4-create-and-run-a-playbook)
-    - [Task 5: Execute Jupyter Notebooks](#task-5-execute-jupyter-notebooks)
-    - [Task 6: Creating reports with Power BI](#task-6-creating-reports-with-power-bi)
-  - [Exercise 7: Using Compliance Tools (Azure Policy, Secure Score and Compliance Manager)](#exercise-7-using-compliance-tools-azure-policy-secure-score-and-compliance-manager)
-    - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)
-    - [Task 2: Review and create Azure Blueprints](#task-2-review-and-create-azure-blueprints)
-    - [Task 3: Secure Score](#task-3-secure-score)
-    - [Task 4: Use Compliance Manager for Azure](#task-4-use-compliance-manager-for-azure)
-  - [After the hands-on lab](#after-the-hands-on-lab)
-    - [Task 1: Delete resource group](#task-1-delete-resource-group)
-    - [Task 2: Remove Standard Tier Pricing](#task-2-remove-standard-tier-pricing)
-    - [Task 3: Delete lab environment (optional)](#task-3-delete-lab-environment-optional)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Security baseline on Azure hands-on lab step-by-step](#security-baseline-on-azure-hands-on-lab-step-by-step)auto    - [Abstract and learning objectives](#abstract-and-learning-objectives)auto    - [Overview](#overview)auto    - [Solution architecture](#solution-architecture)auto    - [Requirements](#requirements)auto    - [Exercise 1: Implementing Just-in-Time (JIT) access](#exercise-1-implementing-just-in-time-jit-access)auto        - [Task 1: Setup virtual machine with JIT](#task-1-setup-virtual-machine-with-jit)auto        - [Task 2: Perform a JIT request](#task-2-perform-a-jit-request)auto    - [Exercise 2: Securing the Web Application and database](#exercise-2-securing-the-web-application-and-database)auto        - [Task 1: Setup the database](#task-1-setup-the-database)auto        - [Task 2: Test the web application solution](#task-2-test-the-web-application-solution)auto        - [Task 3: Utilize data masking](#task-3-utilize-data-masking)auto        - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)auto    - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)auto        - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)auto        - [Task 2: Create an Azure Active Directory application](#task-2-create-an-azure-active-directory-application)auto        - [Task 3: Assign Azure Active Directory application permissions](#task-3-assign-azure-active-directory-application-permissions)auto        - [Task 4: Install or verify NuGet Package](#task-4-install-or-verify-nuget-package)auto        - [Task 5: Test the solution](#task-5-test-the-solution)auto    - [Exercise 4: Securing the network](#exercise-4-securing-the-network)auto        - [Task 1: Test network security group rules \#1](#task-1-test-network-security-group-rules-\1)auto        - [Task 2: Configure network security groups](#task-2-configure-network-security-groups)auto        - [Task 3: Test network security group rules \#2](#task-3-test-network-security-group-rules-\2)auto        - [Task 4: Install network watcher VM extension](#task-4-install-network-watcher-vm-extension)auto        - [Task 5: Setup network packet capture](#task-5-setup-network-packet-capture)auto        - [Task 6: Execute a port scan](#task-6-execute-a-port-scan)auto    - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)auto        - [Task 1: Linux VM and Microsoft Monitoring Agent (MMA) install](#task-1-linux-vm-and-microsoft-monitoring-agent-mma-install)auto        - [Task 2: Execute brute force attack](#task-2-execute-brute-force-attack)auto        - [Task 3: Enable change tracking and update management](#task-3-enable-change-tracking-and-update-management)auto        - [Task 4: Review MMA configuration](#task-4-review-mma-configuration)auto        - [Task 5: Adaptive Application Controls](#task-5-adaptive-application-controls)auto        - [Task 6: File Integrity Monitoring](#task-6-file-integrity-monitoring)auto        - [Task 7: Disk encryption](#task-7-disk-encryption)auto    - [Exercise 6: Azure Sentinel logging and reporting](#exercise-6-azure-sentinel-logging-and-reporting)auto        - [Task 1: Create a dashboard](#task-1-create-a-dashboard)auto        - [Task 2: Create an Analytics alert](#task-2-create-an-analytics-alert)auto        - [Task 3: Investigate a custom alert incident](#task-3-investigate-a-custom-alert-incident)auto        - [Task 4: Create and run a playbook](#task-4-create-and-run-a-playbook)auto        - [Task 5: Execute Jupyter Notebooks](#task-5-execute-jupyter-notebooks)auto        - [Task 6: Creating reports with Power BI](#task-6-creating-reports-with-power-bi)auto    - [Exercise 7: Using Compliance Tools (Azure Policy, Secure Score and Compliance Manager)](#exercise-7-using-compliance-tools-azure-policy-secure-score-and-compliance-manager)auto        - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)auto        - [Task 2: Review and create Azure Blueprints](#task-2-review-and-create-azure-blueprints)auto        - [Task 3: Secure Score](#task-3-secure-score)auto        - [Task 4: Use Compliance Manager for Azure](#task-4-use-compliance-manager-for-azure)auto    - [After the hands-on lab](#after-the-hands-on-lab)auto        - [Task 1: Delete resource group](#task-1-delete-resource-group)auto        - [Task 2: Remove Standard Tier Pricing](#task-2-remove-standard-tier-pricing)auto        - [Task 3: Delete lab environment (optional)](#task-3-delete-lab-environment-optional)autoauto<!-- /TOC -->
 
 
 # Security baseline on Azure hands-on lab step-by-step
@@ -1349,13 +1296,13 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
 ### Task 5: Execute Jupyter Notebooks
 
-1. In the **Azure Sentinel** blade, select **Notebooks**.
+1. In the **Azure Sentinel** blade, select **ノートブック**.
 
-2. Search for the **Getting Started with Azure Sentinel Notebooks** item.
+2. Search for the **Azure Sentinel ML ノートブックのファースト ステップ ガイド** item.
 
-    ![The notebook search results are displayed.](media/sentinel-getting-started-notebook.png "Search for the getting started notebook")
+    ![The notebook search results are displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/sentinel-getting-started-notebook.jpg "Search for the getting started notebook")
 
-3. In the right dialog, select **Launch Notebook**.
+3. In the right dialog, select **ノートブックの保存**.
 
 4. If not already logged in, select your Azure credentials, the GitHub repo will start to clone into your workspace. You will see the GitHub progress meter.
 
@@ -1369,7 +1316,7 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
 ### Task 6: Creating reports with Power BI
 
-1. Navigate back to your **Azure Sentinel** browser window.  Select **Logs**.
+1. Navigate back to your **Azure Sentinel** browser window.  Select **ログ**.
 
     >**Note**: You may see a **Welcome to Log Analytics** splash page in the blade.  Select **Get Started**.
 
@@ -1377,19 +1324,20 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
 2. In the **Schema** tab under **Active**, expand the **LogManagement** node, notice the various options available.
 
-3. In the schema window, select **AzureDiagnostics**, then choose the **eye** icon.
+3. In the schema window, ダブルクリック **AzureDiagnostics**, then 
+**実行**.
 
 4. In the top right, select **Export**, then select the **Export to Power BI (M Query)** link.
 
-    ![The Azure Sentinel Logs screen is displayed. The logs item is selected in the left menu. LogManagement and AzureDiagnostics are selected from the active schema list. The Azure Diagnostics item has an eye icon. A new query tab is shown with the Export item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image103.png "Export a Power BI report query")
+    ![The Azure Sentinel Logs screen is displayed. The logs item is selected in the left menu. LogManagement and AzureDiagnostics are selected from the active schema list. The Azure Diagnostics item has an eye icon. A new query tab is shown with the Export item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image103.jpg "Export a Power BI report query")
 
-    ![The Export item is expanded with the Export to PowerBI (M Query) item highlighted.](media/2020-01-12-19-17-28.png "Export to PowerBI")
+    ![The Export item is expanded with the Export to PowerBI (M Query) item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-19-17-28.jpg "Export to PowerBI")
 
 5. Select **Open**, a text document with the Power Query M Language will be displayed.
 
 6. Follow the instructions in the document to execute the query in Power BI.
 
-    ![The instructions at the top of the PowerBIQuery.txt file are highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image88.png "Follow the query instructions")
+    ![The instructions at the top of the PowerBIQuery.txt file are highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image88.jpg "Follow the query instructions")
 
 7. Close **Power BI**.
 
@@ -1401,21 +1349,21 @@ In this exercise, attendees will learn to navigate the Azure Policy and Secure S
 
 ### Task 1: Review a basic Azure Policy
 
-1. Open the [Azure Portal](https://portal.azure.com).  Select **All Services**, then type **policy**.  Select **Policy** in the list of items.
+1. Open the [Azure Portal](https://portal.azure.com).  Select **すべてのサービス**, then type **ポリシー**.  Select **ポリシー** in the list of items.
 
-    ![All services are selected in the left menu. In the search box policy is entered. Policy is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image104.png "Open the Azure Policy blade")
+    ![All services are selected in the left menu. In the search box policy is entered. Policy is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image104.jpg "Open the Azure Policy blade")
 
-2. In the blade menu, select **Compliance**, and review your **Overall resource compliance** percentage.
+2. In the blade menu, select **コンプライアンス**, and review your **リソースの全体的なコンプライアンス**  のパーセンテージ.
 
-    ![The Compliance item is selected from the left menu. The Policy compliance screen is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image105.png "Open the Azure Policy blade")
+    ![The Compliance item is selected from the left menu. The Policy compliance screen is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image105.jpg "Open the Azure Policy blade")
 
-3. For the scope, ensure the proper subscription is selected, then select **ASC Default (subscription:**.
+3. For the scope, ensure the proper subscription is selected, then select **ASC DataProtection (subscription:**.
 
-4. In the **Initiative compliance** blade, review your compliance metrics.
+4. In the **イニシアティブ コンプライアンス** blade, review your compliance metrics.
 
-5. Scroll to the results area and select the **Non-compliant resources** tab.
+5. Scroll to the results area and select the **準拠していないリソース** tab.
 
-    ![The non-compliant resources tab is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image106.png "Select the Non-Compliant resources tab")
+    ![The non-compliant resources tab is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image106.jpg "Select the Non-Compliant resources tab")
 
 6. In the filter search box, type **paw-1** and select it when displayed.
 
@@ -1425,11 +1373,11 @@ In this exercise, attendees will learn to navigate the Azure Policy and Secure S
 
     >**Note**: New policies are being created and your number may be different from the image below.
 
-    ![The Resource compliance blade for paw-1 is displayed with the non-compliant items highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image107.png "Review the non-compliant items")
+    ![The Resource compliance blade for paw-1 is displayed with the non-compliant items highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image107.jpg "Review the non-compliant items")
 
-8. Choose one of the policies.  Review the Definition JSON of the policy definition, notice how it is based on ARM Template format and is looking for specific properties to be set of the non-compliant resources.
+8. Choose one of the policies.  Review the Definition JSON of the policy definition **定義の表示**, notice how it is based on ARM Template format and is looking for specific properties to be set of the non-compliant resources.
 
-    ![The policy definition is displayed in JSON format.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image108.png "Review the policy definition")
+    ![The policy definition is displayed in JSON format.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image108.jpg "Review the policy definition")
 
     > **Note**: You can use these out of box templates to build your own policies and apply them as blueprints.
 
@@ -1437,63 +1385,62 @@ In this exercise, attendees will learn to navigate the Azure Policy and Secure S
 
 1. In the Policy blade, under **Authoring**, select **Definitions**.  These are a list of all defined policies which can be selected for assignment to your subscription resources.
 
-    ![A listing of policy definitions on the Policy Blade Definitions screen.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image109.png "Review available policy definitions")
+    ![A listing of policy definitions on the Policy Blade Definitions screen.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image109.jpg "Review available policy definitions")
 
-2. In the Policy blade, under **Related Services**, select **Blueprints**.
+2. In the Policy blade, under **関連サービス**, select **ブループリント**.
 
-3. In the Blueprints blade, select **Blueprint definitions**.
+3. In the Blueprints blade, select **ブループリントの定義**.
 
-4. Select **+Create blueprint**.
+4. Select **+ ブループリントの作成**.
 
-    ![The Blueprint definitions screen is displayed with the Blueprint definitions item selected from the left menu. The + Create blueprint menu item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image110.png "Create a new blueprint")
+    ![The Blueprint definitions screen is displayed with the Blueprint definitions item selected from the left menu. The + Create blueprint menu item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image110.jpg "Create a new blueprint")
 
 5. Review some of the sample blueprints, then select **Start with blank blueprint**.
 
-    ![The Create blueprint screen is displayed with the Blank blueprint item selected from the list of available samples.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image111.png "Create a blank blueprint")
+    ![The Create blueprint screen is displayed with the Blank blueprint item selected from the list of available samples.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image111.jpg "Create a blank blueprint")
 
-6. For the name, type **gdprblueprint**.
+6. For the name, type **GDPRBluePrint**.
 
 7. For the location, select the ellipses, then select your subscription in the drop down.
 
-8. Choose **Select**.
+8. Choose **選択**.
 
-    ![New blue print dialog with name and location filled in.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image112.png "Set blueprint fields")
+    ![New blue print dialog with name and location filled in.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image112.jpg "Set blueprint fields")
 
-9. Select **Next: Artifacts**.
+9. Select **次へ: 成果物**.
 
-10. Select **+ Add artifact**.
+10. Select **+ 成果物の追加**.
 
-11. For the Artifact Type, select **Policy assignment**, review all the policies available to you (at the time of this writing you would see 37 definitions and 311 policies).
+11. For the Artifact Type, select **ポリシーの割り当て**, review all the policies available to you (at the time of this writing you would see 37 definitions and 311 policies).
+12. In the search box, type **制限**, browse for the **ストレージ アカウントではネットワークアクセスを制限する必要があります**.
 
-12. In the search box, type **unrestricted**, browse for the **Storage accounts should restrict network access**.
-
-    ![On the Create blueprint screen, on the Artifacts tab the + Add artifact link is selected beneath the Subscription. In the Add artifact blade, the artifact type of Policy assignment is selected. In the Search textbox, unrestricted is entered. Beneath the Search textbox, the Policy Definitions tab is selected and the Audit unrestricted network access to storage accounts is selected from the list of search results.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image113.png "Add an artifact")
+    ![On the Create blueprint screen, on the Artifacts tab the + Add artifact link is selected beneath the Subscription. In the Add artifact blade, the artifact type of Policy assignment is selected. In the Search textbox, unrestricted is entered. Beneath the Search textbox, the Policy Definitions tab is selected and the Audit unrestricted network access to storage accounts is selected from the list of search results.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image113.jpg "Add an artifact")
 
     > **Note**: If the above definition is not available, select one of your own choosing.
 
-13. Select **Add**.
+13. Select **追加**.
 
-14. Select **Save Draft**. It may take a few minutes.  The blade will automatically change when the save operation finishes.
+14. Select **下書きの保存**. It may take a few minutes.  The blade will automatically change when the save operation finishes.
 
-15. For the new blueprint, select the ellipses, then select **Publish blueprint**.
+15. For the new blueprint, select the ellipses, then select **ブループリントを発行する**.
 
-    ![The ellipses menu is expanded for the gdprblueprint blueprint item with the Publish blueprint menu item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114.png "Publish blueprint dialog")
+    ![The ellipses menu is expanded for the gdprblueprint blueprint item with the Publish blueprint menu item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114.jpg "Publish blueprint dialog")
 
-16. Select **Publish**.
+16. For the version type **1.0.0**.
 
-17. For the version type **1.0.0**.
+17. Select **公開**.
 
-18. For the new blueprint, select the ellipses, then select **Assign Blueprint**.
+18. For the new blueprint, select the ellipses, then select **ブループリントの割り当て**.
 
-    ![Screen shot showing the Assign blueprint dialog.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114.png "Assign blueprint dialog")
+    ![Screen shot showing the Assign blueprint dialog.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114-2.jpg "Assign blueprint dialog")
 
-19. Review the page, then choose **Assign**.  This policy will now be audited across all your storage accounts in the specific subscription.
+19. Review the page, then choose **割り当て**.  This policy will now be audited across all your storage accounts in the specific subscription.
 
 ### Task 3: Secure Score
 
-1. In the Azure Portal, select **All Services**, then type **Security**, select **Security Center**.
+1. In the Azure Portal, select **すべてのサービス**, then type **セキュリティ**, select **セキュリティセンター**.
 
-2. In the Security Center blade, under **POLICY & COMPLIANCE**, select **Secure score**.
+2. In the Security Center blade, under **クラウド セキュリティ**, select **セキュア スコア**.
 
 3. Review your overall secure score values and then notice the category values.
 
@@ -1513,41 +1460,46 @@ In this exercise, attendees will learn to navigate the Azure Policy and Secure S
 
 2. In the top corner, select **Sign in**, you will be redirected to the Azure AD login page.
 
-    ![Sign in is highlighted at the top of the Service Trust/Compliance Manager portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.png "Sign in to Compliance Manager")
+    ![Sign in is highlighted at the top of the Service Trust/Compliance Manager portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.jpg "Sign in to Compliance Manager")
 
 3. If prompted, select or sign in with your Azure AD\\Office 365 credentials.
 
 4. In the menu, select **Compliance Manager->Compliance Manager Classic**.
 
-    ![Compliance Manager Classic is highlight in the menu navigation.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.1.png "Open Compliance Manager Classic")
+    ![Compliance Manager Classic is highlight in the menu navigation.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.1.jpg "Open Compliance Manager Classic")
 
-5. Select on the **+Add Assessment** link.
+5. Select on the **+ 評価の追加** link.
 
-6. Select **Create a new Group**, for the name type **AzureSecurity**, select **Next**, set the **Would you like to copy the data from an existing group** toggle to **No**, select **Next**.
+6. Select **新しいグループを作成する**, for the name type **AzureSecurity**, select **次へ**, set the **既存のグループからデータをコピーしますか？** toggle to **いいえ**, select **次へ**.
+
+    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.2.jpg)
 
 7. For the product dropdown, select **Azure**.
 
+    
 8. For the certification dropdown, select **GDPR**.
 
-    ![Add a Standard Assessment dialog with Azure and GDPR selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image90.png)
+    ![Add a Standard Assessment dialog with Azure and GDPR selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image90.jpg)
 
-9. Select **Add to Dashboard.** You will now see a new assessment for Azure and GDPR in progress:
+9. Select **ダッシュボードに追加.** You will now see a new assessment for Azure and GDPR in progress:
 
-    ![Azure GDPR assessment status that shows in progress.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.png)
+    ![Azure GDPR assessment status that shows in progress.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.jpg)
 
 10. Select **Azure GDPR**.
 
 11. Review the various controls that you can implement:
 
-    ![Several categories of controls are listed on the page.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.1.png)
+    ![Several categories of controls are listed on the page.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.1.jpg)
 
-12. On the top menu, choose **Trust Documents**, then select **Audit Reports**.
+12. On the top menu, choose **トラスト ドキュメント**, then select **監査レポート**.
+
+    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image92.jpg)
 
 13. Notice the various tabs that you can select from, select **FedRAMP Reports**.
 
 14. These are all the FedRAMP reports sorted by date that have been performed and publicly posted for Azure customer review. Select the item displayed and briefly review the document.
 
-    ![The FedRAMP Reports report type is highlighted on the Data Protection Standards and Regulatory Compliance Reports page, and Azure - FedRAMP Moderate System Security Plan v3.02 is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image93.png "Select the displayed FedRAMP report")
+    ![The FedRAMP Reports report type is highlighted on the Data Protection Standards and Regulatory Compliance Reports page, and Azure - FedRAMP Moderate System Security Plan v3.02 is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image94.jpg "Select the displayed FedRAMP report")
 
 ## After the hands-on lab
 
