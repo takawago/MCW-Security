@@ -26,7 +26,7 @@ July 2021
     - [Task 1: データベースの設定](#task-1-データベースの設定)
     - [Task 2: Webアプリケーションソリューションのテスト](#task-2-webアプリケーションソリューションのテスト)
     - [Task 3: データマスキングの活用](#task-3-データマスキングの活用)
-    - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)
+    - [Task 4: Azure Key Vaultによるカラム暗号化の利用](#task-4-azure-key-vaultによるカラム暗号化の利用)
   - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)
     - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)
     - [Task 2: Create an Azure Active Directory application](#task-2-create-an-azure-active-directory-application)
@@ -224,8 +224,6 @@ Duration: 45 minutes
     ![The New Firewall Rule Dialog is displayed identifying your Internet IP Address.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image23.png "Firewall Rule")
     ![The New Firewall Rule Dialog is displayed identifying your Internet IP Address.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image23.jpg "Firewall Rule")
 
-
-10. Right-click **Databases**, and select **Import Data-tier Application**.
 10. **Databases**を右クリックし、**Import Data-tier Application**を選択します。
 
     ![The Object Explorer shows Import Data-tier Application menu item selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image24.jpg "Import Data-tier Application")
@@ -310,113 +308,113 @@ Duration: 45 minutes
 
 5. **User**テーブルを選択します。
 
-6. Select the **SSN** column.
+6. **SSN**列を選択します。
 
-7. Select **Add**.
+7. **追加**を選択します。
 
     ![Add is highlighted at the top of the SSN column, and the User table and SSN column are highlighted below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image32.jpg "Select Add")
 
-8. Select **Save**, then select **OK**.
+8. **保存**を選択し、**OK**を選択します。
 
-9. Switch back to your InsuranceAPI solution, press **F5** to refresh the page. You should see the SSN column is now masked with **xxxx**.
+9. InsuranceAPIソリューションに戻り、**F5**を押してページを更新します。SSNカラムが**xxxx**でマスクされていることが確認できます。
 
     ![The masked SSN column is highlighted in the InsuranceAPI response.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image33.png "View the masked SSN column")
 
-10.  Close **Visual Studio**.
+10.  **Visual Studio** を閉じます。
 
-### Task 4: Utilize column encryption with Azure Key Vault
+### Task 4: Azure Key Vaultによるカラム暗号化の利用
 
-1. Switch to **SQL Management Studio**.
+1. **SQL Management Studio**に切り替えます。
 
-2. Select **File->Open->File**, then open the **02\_PermissionSetup.sql** file.
+2. **File->Open->File**を選択し、**02\_PermissionSetup.sql**ファイルを開きます。
 
-3. Switch to the **Insurance** database, and execute the SQL statement.
+3. **Insurance**データベースに切り替え、SQL文を実行します。
 
-4. In the **Object Explorer**, expand the **Insurance** node.
+4. **Object Explorer**で、**Insurance**ノードを展開します。
 
-5. Expand the **Tables** node.
+5. **Tables**ノードを展開します。
 
-6. Expand the **User** table node.
+6. **User** テーブルノードを展開します。
 
-7. Expand the **Columns** node.
+7. **Columns**ノードを展開します。
 
-8. Right-click the **SSN** column, and select **Encrypt Column**.
+8. **SSN**列を右クリックし、**Encrypt Column**を選択します。
 
     ![Tables and dbo.User are highlighted in the Insurance database tree. Below that, the SSN column is selected and highlighted, and Encrypt Column is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image34.png "Select Encrypt Column")
 
-    Notice that the State of the column is such that you cannot add encryption (data masking):
+    列の状態は、暗号化（データマスキング）を加えることができないようになっていることに注意してください。
 
     ![A slashed circle appears in the State column.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image35.png "View data masking")
 
-9. Select **Cancel**.
+9. **Cancel**を選択します。
 
-10. Switch back to the Azure Portal, and select the User_SSN data masking.
+10. Azure ポータルに戻り、User_SSN データマスキングを選択します。
 
-11. Select **Delete**.
+11. **削除** を選択します。
 
     ![The Delete icon is highlighted under Edit Masking Rule in the Azure portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image36.jpg "Select Delete")
 
-12. Select **Save**.
+12. **保存**を選択します。
 
-13. Switch back to **SQL Management Studio**.
+13. **SQL Management Studio**に戻ります。
 
-14. Right-click the **SSN** column, and select **Encrypt Column**.
+14. **SSN**列を右クリックし、**Encrypt Column**を選択します。
 
-15. Check the checkbox next to the **SSN** column.
+15. **SSN**欄の横のチェックボックスにチェックを入れます。
 
-16. For the **Encryption Type**, and select **Deterministic**.
+16. **Encryption Type**で**Deterministic**を選択します。
 
     ![The check box next to the SSN column is selected and highlighted, and Deterministic is highlighted under Encryption Type.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image37.png "Select Deterministic")
 
-    > **Deterministic** encryption always generates the same encrypted value for any given plain text value. Using deterministic encryption allows point lookups, equality joins, grouping and indexing on encrypted columns. However, it may also allow unauthorized users to guess information about encrypted values by examining patterns in the encrypted column, especially if there's a small set of possible encrypted values, such as True/False, or North/South/East/West region. Deterministic encryption must use a column collation with a binary2 sort order for character columns.
+    > **Deterministic** 暗号化は、与えられた平文の値に対して常に同じ暗号化された値を生成します。決定論的な暗号化を使用すると、暗号化されたカラムに対するポイントルックアップ、等号結合、グループ化、インデックス化が可能になります。しかし、特にTrue/FalseやNorth/South/East/Westのように暗号化された値のセットが少ない場合には、暗号化されたカラムのパターンを調べることで、権限のないユーザーが暗号化された値の情報を推測することができてしまいます。決定論的暗号化では、文字列の照合順序を binary2 にする必要があります。
 
-    > **Randomized** encryption uses a method that encrypts data in a less predictable manner. Randomized encryption is more secure, but prevents searching, grouping, indexing, and joining on encrypted columns.
+    > **Randomized** 暗号化は、予測不可能な方法でデータを暗号化する方法を採用しています。ランダムな暗号化はより安全ですが、暗号化されたカラムでの検索、グループ化、インデックス化、結合ができなくなります。
 
-17. Select **Next**.
+17. **Next**を選択します。
 
-18. For the encryption select **Azure Key Vault** in the dialog.
+18. 暗号化には、ダイアログで **Azure Key Vault** を選択します。
 
     ![Azure Key Vault is selected in the Select the key store provider section.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image38.png "Select Azure Key Vault")
 
-19. Select **Sign In**.
+19. **Sign In**を選択します。
 
-20. Sign in with your Azure Portal credentials.
+20. Azureポータルの認証情報を使ってサインインします。
 
-21. Select your Azure Key Vault.
+21. Azure Key Vault を選択します。
 
-22. Select **Next**.
+22. **Next**を選択します。
 
-23. On the **Run Settings**, select **Next**.
+23. **Run Settings**で**Next**を選択します。
 
-24. Select **Finish**, and the configured will start.
+24. **Finish**を選択すると、設定が開始されます。
 
-    > **Note**: You may receive a "Wrap Key" error. If so, ensure that your account has been assigned the **wrapKey** permission in the Azure Key Vault.
+    > **Note**: **Wrap Key**エラーが発生する場合があります。その場合は、Azure Key Vaultでアカウントに**wrapKey**権限が割り当てられていることを確認してください。
 
     ![Generate new column master key CMK\_Auto1 in Azure Key Vault is highlighted with a green check mark at the top of the Task Summary list.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image39.png "View the task summary")
 
-    - Select **Key vault**.
+    - **Key vault**を選択します。
 
-    - Select your key vault.
+    - 自分のKey Vaultを選択してください。
 
-    - Select **Access policies**.
+    - **Access policies**を選択します。
 
-    - Select **Add New**.
+    - **Add New**を選択します。
 
-    - For the principal, select your account.
+    - プリンシパルの場合は、アカウントを選択します。
 
-    - Select **Key permissions**, and choose **Select all**.
+    - **Key permissions**を選択し、**Select all**を選択します。
 
         ![Select all is selected and highlighted under Key permissions, and below that, Decrypt, Encrypt, Unwrap Key, Wrap Key, Verify, and Sign are selected and highlighted under Cryptographic Operations amid the other selected options.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image40.png "Select all")
 
-    - Select **Secret permissions**, and choose **Select all**.
+    - **Secret permissions**を選択し、**Select all**を選択します。
 
-    - Select **Certificate permissions**, and choose **Select all**.
+    - **Certificate permissions**を選択し、**Select all**を選択します。
 
-    - Select **OK**.
+    - **OK**を選択します。
 
-    - Select **Save**.
+    - **Save**を選択します。
 
-    - Retry the operation.
+    - 操作をやり直します。
 
     > **Note**: If you are still getting errors (such as Access Denied), ensure that you have selected the correct subscription and Key Vault.
 
