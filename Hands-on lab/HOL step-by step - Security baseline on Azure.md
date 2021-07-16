@@ -21,10 +21,10 @@ July 2021
   - [必要条件](#必要条件)
   - [Exercise 1: Just-in-Time（JIT）アクセスの導入](#exercise-1-just-in-timejitアクセスの導入)
     - [Task 1: JITによる仮想マシンのセットアップ](#task-1-jitによる仮想マシンのセットアップ)
-    - [Task 2: Perform a JIT request](#task-2-perform-a-jit-request)
-  - [Exercise 2: Securing the Web Application and database](#exercise-2-securing-the-web-application-and-database)
-    - [Task 1: Setup the database](#task-1-setup-the-database)
-    - [Task 2: Test the web application solution](#task-2-test-the-web-application-solution)
+    - [Task 2: JITリクエストの実行](#task-2-jitリクエストの実行)
+  - [Exercise 2: Webアプリケーションとデータベースの保護](#exercise-2-webアプリケーションとデータベースの保護)
+    - [Task 1: データベースの設定](#task-1-データベースの設定)
+    - [Task 2: Webアプリケーションソリューションのテスト](#task-2-webアプリケーションソリューションのテスト)
     - [Task 3: Utilize data masking](#task-3-utilize-data-masking)
     - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)
   - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)
@@ -135,137 +135,140 @@ Duration: 15 minutes
 
     ![Configuration and Enable JIT Access is highlighted in the Azure portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image119.jpg "Enable JIT")
 
-4. In the configuration window that opens, review the settings, then select **Save**.
+4. 開いた設定画面で、設定内容を確認し、「**保存**」を選択します。
 
     ![In the configuration window, port settings are listed, and Save is highlighted above them.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image10.png "Select Save")
 
-5. After a few minutes, you should see the virtual machines moved to the **Configured** tab.
+5. 数分後、仮想マシンが**構成済み**タブに移動しているのが確認できるはずです。
 
     ![The virtual machines are now on the configured tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image11.jpg "The JIT Configured VMs are displayed")
 
-### Task 2: Perform a JIT request
+### Task 2: JITリクエストの実行
 
-1. Select the **paw-1** virtual machine, and then select **Request access**.
+1. 仮想マシン**paw-1**を選択し、**アクセス権の要求**を選択します。
 
     ![On the Virtual machines screen, the first listed virtual machine name is selected and highlighted (paw-1), as is Request access button above it.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image12.jpg "Request access for paw-1")
 
-2. For each of the ports, select the **オン** toggle button, notice how the default IP settings is **自分のIP**.
+2. 各ポートの**オン**トグルボタンを選択し、デフォルトのIP設定が**自分のIP**になっていることに注意してください。
 
     ![On is selected under the Toggle column for all four of the ports listed under paw-1.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image13.jpg "Select on for each of the ports")
 
-3. At the bottom of the dialog, select **ポートを開く**. After a few moments, you should now see the **APPROVED** requests have been incremented and the **Last Access** is set to **Active now.**.
+3. ダイアログの下部で、**ポートを開く**を選択します。しばらくすると、**承認済み**のリクエストが増加し、**最終アクセス日時**が**現在アクティブ**に設定されていることが確認できるはずです。
 
     ![On the Virtual machines screen, the paw-1 virtual machine displays 1 Request as approved, and the last access column shows Active now.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image14.jpg "View Approved and Last Access status")
 
-    > **Note**  If you did not wait for your VMs and virtual networks to be fully provisioned via the ARM template, you may get an error.
+    > **Note**:  ARMテンプレートでVMと仮想ネットワークが完全にプロビジョニングされるのを待たなかった場合、エラーが発生する可能性があります。
 
-4. Select the ellipses, then select **Activity Log**, you will be able to see a history of who requests access to the virtual machines.
+4. 楕円形を選択し、**アクティビティ ログ**を選択すると、仮想マシンへのアクセスを要求した人の履歴が表示されます。
 
     ![Activity Log is highlighted in the shortcut menu for the last user.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image15.jpg "View the Activity Log")
 
-    > **Note**: These entries will persist after you have deleted the VMs. You will need to manually remove them after VM deletion.
+    > **Note**: これらのエントリは、VMを削除した後も存続します。VMを削除した後は、手動で削除する必要があります。
 
-5. In the Azure Portal main menu, select **All Services**, then type **Network**, then select **Network security groups**.
+
+5. Azure Portal のメインメニューで、**すべてのサービス**を選択し、**ネットワーク**と入力して、**ネットワークセキュリティグループ**を選択します。
 
     ![All services is highlighted in the left menu of the Azure portal, and the Network security groups is highlighted in the filtered list to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image16.jpg "Select paw-1-nsg")
 
-6. In the filter textbox, type **paw-1-nsg**, then select the **paw-1-nsg** network security group.
+6. フィルターのテキストボックスに**paw-1-nsg**と入力し、**paw-1-nsg**のネットワークセキュリティグループを選択します。
 
-7. Select **Inbound security rules.** You should now see inbound security rules set up by JIT Access.
+7. **受信セキュリティ規則**を選択すると、JIT アクセスによって設定された受信セキュリティ規則が表示されます。
 
     ![The first four listed items are highlighted under Inbound security rules.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image17.jpg "View the inbound security rules set up by JIT Access")
 
-## Exercise 2: Securing the Web Application and database
+## Exercise 2: Webアプリケーションとデータベースの保護
 
 Duration: 45 minutes
 
-In this exercise, attendees will utilize Azure SQL features to data mask database data and utilize Azure Key Vault to encrypt sensitive columns for users and applications that query the database.
+この演習では、Azure SQLの機能を利用してデータベースデータをデータマスクし、Azure Key Vaultを利用してデータベースを照会するユーザーやアプリケーションの機密カラムを暗号化します。
 
-### Task 1: Setup the database
+### Task 1: データベースの設定
 
-1. Switch to your Azure portal, select **All Services** then search for **SQL Servers**.  Select **SQL Servers**.
+1. Azureポータルに切り替えて、「**すべてのサービス**」を選択し、「**SQL**」を検索します。 **SQL Servers**を選択します。
 
     ![All services is highlighted on the left side of the Azure portal, and SQL servers is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image18.jpg "Select SQL Servers")
 
-2. Select the **Azure SQL** database server you created using the Azure Manager template (Ex: AzureSecurity-INIT).
+2. Azure Managerテンプレートを使って作成した**Azure SQL**データベースサーバーを選択します（例：AzureSecurity-INIT）。
 
-3. Select **SQL databases** under the Settings section, then select the **SampleDB** database.
+3. 設定 セクションの **SQL データベース** を選択し、**SampleDB** データベースを選択します。
 
     ![SQL databases is selected under Settings on the left, and at right, SampleDB is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image19.jpg "Select the SampleDB database")
 
-4. In the summary section, select the **Show database connection strings**.
+4. Summaryセクションで、**データベース接続文字列の表示**を選択します。
 
     ![In the summary section beneath Connection strings the Show database connection strings link is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image20.jpg "Select the Show database connection strings")
 
-5. Take note of the connection string for later in this lab, specifically the **Server** parameter:
+5. このラボで後述する接続文字列、特に**Server**パラメータに注意してください。
 
-    ![The Server parameter is listed under ADO.NET (SQL authentication) on the ADO.NET tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image21. "Note the Server parameter")
+    ![The Server parameter is listed under ADO.NET (SQL authentication) on the ADO.NET tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image21.png "Note the Server parameter")
 
-6. In the Lab VM, open **SQL Server Management Studio**.
+6. Lab VM で **SQL Server Management Studio** を開きます。
 
-7. Enter the database server name from above.
+7. 上記のデータベースサーバー名を入力します。
 
-8. Enter the username and password used from the Azure Template deployment (**wsadmin** - **p\@ssword1rocks**).
+8. Azure テンプレートのデプロイ時に使用したユーザー名とパスワード（**wsadmin** - **p\@ssword1rocks**）を入力します。
 
-    > **Note**: If you changed the username and password in the ARM template deployment, use those values instead.
+    > **Note**: ARMテンプレートのデプロイ時にユーザー名とパスワードを変更した場合は、その値を代わりに使用してください。
 
     ![The information above is entered in the Connect to Server dialog box, and Connect is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image22.jpg "Sign in to the SQL Server Database Engine")
 
-9. Depending on how you connected to the Azure SQL environment (inside or outside your VNet), you may be prompted to add a firewall rule. If this occurs, perform the following actions:
+9. Azure SQL 環境への接続方法（VNet 内または外）によっては、ファイアウォールルールを追加するよう促される場合があります。このような場合は、以下の操作を行ってください。
 
     - Select **Connect**, in the **New Firewall Rule** dialog, select **Sign In**.
+    - **Connect**を選択し、**New Firewall Rule**ダイアログで、**Sign in**を選択します。
 
-    - Sign in with your resource group owner credentials.
+    - リソースグループオーナーの認証情報を使ってサインインします。
 
-    - In the dialog, select **OK**, notice how your incoming public IP address will be added for connection.
+    - ダイアログで、**OK**を選択すると、受信するパブリックIPアドレスが接続用に追加されます。
 
     ![The New Firewall Rule Dialog is displayed identifying your Internet IP Address.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image23.png "Firewall Rule")
     ![The New Firewall Rule Dialog is displayed identifying your Internet IP Address.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image23.jpg "Firewall Rule")
 
 
 10. Right-click **Databases**, and select **Import Data-tier Application**.
+10. **Databases**を右クリックし、**Import Data-tier Application**を選択します。
 
     ![The Object Explorer shows Import Data-tier Application menu item selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image24.jpg "Import Data-tier Application")
 
-11. In the Introduction dialog, select **Next**.
+11. **Introduction**ダイアログで、**Next**を選択します。
 
     ![Introduction is highlighted on the left side of the Import Data-tier Application dialog box, and Next is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image24.png "Select Import Data-tier Application")
 
-12. Select **Browse**, navigate to the extracted **/Hands-on- lab/Database** directory, and select the **Insurance.bacpac** file.
+12. **Browse**を選択し、解凍した **/Hands-on lab/Database** ディレクトリに移動し、**Insurance.bacpac**ファイルを選択します。
 
     ![Insurance.bacpac is selected in the Browse dialog box.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image25.png "Select Insurance.bacpac")
 
-13. Select **Open**.
+13. **Open**を選択します。
 
-14. On the **Import Settings** dialog, select **Next**.
+14. **Import Settings**ダイアログで、**Next**を選択します。
 
-15. On the **Database Settings** dialog, select **Next**.
+15. **Database Settings**ダイアログで、**Next**を選択します。
 
-    > **Note**: If you get an error, close and re-open SQL Management Studio try the import again. If that does not work, you may need to download the latest SQL Management Studio from [here](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017). In some instances, the latest version may not work, version 17.3 is known to deploy the package properly.  You should also be aware that bacpac files exported from some SQL Server instances cannot be deployed to Azure SQL Servers.  We have also included a .bak file of the Insurance database that you can use to restore from.
+    > **Note**: エラーが発生した場合は、SQL Management Studioを一旦終了し、再度開いてインポートを行ってください。それでもうまくいかない場合は、[こちら](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)から最新のSQL Management Studioをダウンロードする必要があるかもしれません。最新版では動作しない場合もありますが、バージョン17.3ではパッケージが正しく展開されることが知られています。 また、一部のSQL Serverインスタンスからエクスポートされたbacpacファイルは、Azure SQL Serverにデプロイできないことにも注意が必要です。 また、Insuranceデータベースの.bakファイルを同梱していますので、復元にご利用ください。
 
-16. Select **Finish** and the database will deploy to Azure. It may take a few minutes.
+16. **Finish**を選択すると、データベースがAzureにデプロイされます。数分かかる場合があります。
 
-17. Once completed, select **Close**.
+17. 完了したら、**Close**を選択します。
 
     ![Results is highlighted on the left side of the Import Data-tier Application dialog box, and at right, many items are listed under Operation Complete. Next is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image26.png "View the results")
 
-18. In **SQL Management Studio**, select **File-\>Open-\>File**.
+18. **SQL Management Studio**で、「File」-「Open」-「File」を選択します。
 
     ![In SQL Management Studio, Open is selected in the File menu, and File is selected in the shortcut menu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image27.png "Open a file")
 
-19. Browse to the extracted GitHub folder, select the **\\Hands-on lab\\Database\\00\_CreateLogin.sql** file.
+19. 解凍した GitHub フォルダを参照し、**\Hands-on lab\Database\00_CreateLogin.sql**ファイルを選択します。
 
-20. Ensure that the **master** database is selected.
+20. **master**データベースが選択されていることを確認します。
 
-21. Run the script to create a login called **agent**.
+21. スクリプトを実行して、**agent**という名前のログインを作成します。
 
-22. Browse to the extracted folder, select the **\\Hands-on lab\\Database\\01\_CreateUser.sql** file.
+22. 解凍したフォルダを参照し、**\Hands-on lab\Database\01_CreateUser.sql** ファイルを選択してください。
 
-23. Ensure that the **Insurance** database is selected.
+23. **Insurance**データベースが選択されていることを確認します。
 
-24. Run the script to create a non-admin user called **agent**.
+24. スクリプトを実行して、**agent**という非管理者ユーザーを作成します。
 
-### Task 2: Test the web application solution
+### Task 2: Webアプリケーションソリューションのテスト
 
 1. In the extracted directory, double-click the **\\Hands-on lab\\WebApp\\InsuranceAPI\\InsuranceAPI.sln** solution file, and Visual Studio will open.
 
