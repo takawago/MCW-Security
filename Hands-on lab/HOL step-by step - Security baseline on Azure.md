@@ -38,32 +38,31 @@ July 2021
     - [Task 2: ネットワークセキュリティグループの設定](#task-2-ネットワークセキュリティグループの設定)
     - [Task 3: ネットワークセキュリティのグループルールのテスト \#2](#task-3-ネットワークセキュリティのグループルールのテスト-2)
     - [Task 4: ネットワークウォッチャーVM拡張機能のインストール](#task-4-ネットワークウォッチャーvm拡張機能のインストール)
-    - [Task 5: Setup network packet capture](#task-5-setup-network-packet-capture)
-    - [Task 6: Execute a port scan](#task-6-execute-a-port-scan)
+    - [Task 5: ネットワークパケットキャプチャの設定](#task-5-ネットワークパケットキャプチャの設定)
+    - [Task 6: ポートスキャンの実行](#task-6-ポートスキャンの実行)
   - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)
-    - [Task 1: Linux VM and Microsoft Monitoring Agent (MMA) install](#task-1-linux-vm-and-microsoft-monitoring-agent-mma-install)
-    - [Task 2: Execute brute force attack](#task-2-execute-brute-force-attack)
-    - [Task 3: Enable change tracking and update management](#task-3-enable-change-tracking-and-update-management)
+    - [Task 1: Linux VMとMicrosoft Monitoring Agent（MMA）のインストール](#task-1-linux-vmとmicrosoft-monitoring-agentmmaのインストール)
+    - [Task 2: ブルートフォースアタックの実行](#task-2-ブルートフォースアタックの実行)
+    - [Task 3: 変更追跡と更新管理を有効にする](#task-3-変更追跡と更新管理を有効にする)
     - [Task 4: Review MMA configuration](#task-4-review-mma-configuration)
     - [Task 5: Adaptive Application Controls](#task-5-adaptive-application-controls)
     - [Task 6: File Integrity Monitoring](#task-6-file-integrity-monitoring)
     - [Task 7: Disk encryption](#task-7-disk-encryption)
   - [Exercise 6: Azure Sentinel logging and reporting](#exercise-6-azure-sentinel-logging-and-reporting)
     - [Task 1: Create a dashboard](#task-1-create-a-dashboard)
-    - [Task 2: Create an Analytics alert](#task-2-create-an-analytics-alert)
-    - [Task 3: Investigate a custom alert incident](#task-3-investigate-a-custom-alert-incident)
-    - [Task 4: Create and run a playbook](#task-4-create-and-run-a-playbook)
-    - [Task 5: Execute Jupyter Notebooks](#task-5-execute-jupyter-notebooks)
-    - [Task 6: Creating reports with Power BI](#task-6-creating-reports-with-power-bi)
-  - [Exercise 7: Using Compliance Tools (Azure Policy, Secure Score and Compliance Manager)](#exercise-7-using-compliance-tools-azure-policy-secure-score-and-compliance-manager)
+    - [Task 2: 分析アラートの作成](#task-2-分析アラートの作成)
+    - [Task 3: カスタムアラートのインシデントを調査する](#task-3-カスタムアラートのインシデントを調査する)
+    - [Task 4: プレイブックの作成と実行](#task-4-プレイブックの作成と実行)
+    - [Task 5: Jupyter Notebooksの実行](#task-5-jupyter-notebooksの実行)
+    - [Task 6: Power BIでのレポート作成](#task-6-power-biでのレポート作成)
+  - [Exercise 7: コンプライアンスツール（Azure Policy、Secure Score、Compliance Manager）の使用について](#exercise-7-コンプライアンスツールazure-policysecure-scorecompliance-managerの使用について)
     - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)
-    - [Task 2: Review and create Azure Blueprints](#task-2-review-and-create-azure-blueprints)
-    - [Task 3: Secure Score](#task-3-secure-score)
-    - [Task 4: Use Compliance Manager for Azure](#task-4-use-compliance-manager-for-azure)
-  - [After the hands-on lab](#after-the-hands-on-lab)
-    - [Task 1: Delete resource group](#task-1-delete-resource-group)
-    - [Task 2: Remove Standard Tier Pricing](#task-2-remove-standard-tier-pricing)
-    - [Task 3: Delete lab environment (optional)](#task-3-delete-lab-environment-optional)
+    - [Task 2: Azure ブループリントの確認と作成](#task-2-azure-ブループリントの確認と作成)
+    - [Task 3: セキュア スコア](#task-3-セキュア-スコア)
+    - [Task 4: Compliance Manager for Azureの使用](#task-4-compliance-manager-for-azureの使用)
+  - [ハンズオンラボの終了後](#ハンズオンラボの終了後)
+    - [Task 1: リソースグループの削除](#task-1-リソースグループの削除)
+    - [Task 2: Azure Defender Pricingの削除](#task-2-azure-defender-pricingの削除)
 
 
 
@@ -829,69 +828,69 @@ Duration: 45 minutes
 
 1. Azureポータルに切り替えます。
 
-2. Select **Virtual Machines**.
+2. **Virtual Machines** を選択します。
 
-3. Select **db-1**.
+3. **db-1** を選択します。
 
-4. In the blade menu, select **拡張機能**, then select **+ 追加**.
+4. ブレードメニューで **拡張機能** を選択し、 **+ 追加** を選択します。
 
     ![Extensions is selected on the left under Settings, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image64.jpg "Select + Add")
 
-5. Browse to the **Network Watcher Agent for Windows**, and select it.
+5. **Network Watcher Agent for Windows** を参照し、選択します。
 
-6. Select **次へ**. **確認と作成**. **作成**.
+6. **次へ** を選択します。 **確認と作成** を選択します。 **作成** を選択します。
 
     ![Network Watcher Agent for Windows is highlighted on the left, and Create is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image65.jpg "Create a Network Watcher agent")
 
-7. In the next **Install extension** dialog window (note that it could be blank) select **OK.** You should see a dialog toast notification about the script extension being installed into the Virtual Machine.
+7. 次の**拡張機能のインストール** ダイアログウィンドウ（空白の場合もあります）で**OK** を選択します。仮想マシンにスクリプト拡張がインストールされたことを通知するダイアログトーストが表示されます。
 
     ![The toast notification states: "Deployment in progress ... Deployment to resource group 'azure-securitytest1' is in progress."](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image66.png "Toast notification about the script installation")
 
-### Task 5: Setup network packet capture
+### Task 5: ネットワークパケットキャプチャの設定
 
-1. In the main Azure Portal menu, search **All services** for **Network Watcher**.
+1. Azureポータルのメインメニューで、**すべてのサービス**から**Network Watcher**を検索します。
 
-2. In the context menu, select **Network Watcher**.
+2. コンテキストメニューで**Network Watcher**を選択します。
 
     ![Network watcher is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image66-2.jpg "Network watcher search result")
 
-3. **+ 追加**ボタン。 Expand the subscription regions item you are running your labs in.
+3. **+ 追加** ボタンを選択します。 ラボを実行しているサブスクリプション地域の項目を展開します。
 
-4. For the **East US** region (or whatever region you deployed your VMs too), select the ellipsis, then select **Enable network watcher**.
+4. **東日本** リージョン（またはVMをデプロイしたリージョン）では、省略記号を選択し、「**Enable network watcher**」を選択します。
 
     ![The East US row is highlighted under Region, and Enable network watcher is selected in the submenu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image66-3.jpg "Enable Network Watcher")
 
-5. In the new context menu, select **Packet capture**.
+5. 新しいコンテキストメニューで、**パケットキャプチャ** を選択します。
 
-6. Select **+Add**.
+6. **+ 追加** を選択します。
 
     ![Packet capture is selected and highlighted on the left under Network Diagnostic Tools, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image69.jpg "Add a packet capture")
 
-7. Select your subscription.
+7. サブスクリプションを選択します。
 
-8. Select your resource group.
+8. リソースグループを選択します。
 
-9.  For the target virtual machine, ensure that **db-1** is selected.
+9.  対象となる仮想マシンに **db-1** が選択されていることを確認します。
 
-10. For the capture name, enter **databasetraffic**.
+10. キャプチャー名には **databasetraffic** と入力します。
 
-11. Notice the ability to save the capture file to the local machine or an Azure storage account. Ensure that the resource group storage account is selected.  If you check your resource group, the storage account is prefixed with **"diagstor"**.
+11. キャプチャーファイルをローカルマシンまたはAzureストレージアカウントに保存できることに注目してください。リソースグループのストレージアカウントが選択されていることを確認します。 リソースグループを確認すると、ストレージアカウントの先頭に **"diagstor "** が付いています。
 
-12. For the values, enter the following:
+12. 値は以下のように入力します。
 
-    - Maximum bytes per packet: 0.
-    - Maximum bytes per session: 1073741824.
-    - Time limit: 600.
+    - 1 パケットあたりの最大バイト数: 0.
+    - 1 セッションあたりの最大バイト数: 1073741824.
+    - 制限時間: 600.
 
     ![In the Add packet capture window, databasetraffic is entered in the Packet capture name box, and the Storage account check box is checked.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image69-2.jpg "Dialog box screenshot")
 
-13. Select **保存**.
+13. **保存** を選択します。
 
-### Task 6: Execute a port scan
+### Task 6: ポートスキャンの実行
 
-1. Switch your Remote Desktop connection to the **paw-1** virtual machine.
+1. リモートデスクトップの接続先を、**paw-1**仮想マシンに切り替えます。
 
-2. Uncomment the following line of the script, and press **F5**.
+2. スクリプトの次の行をアンコメントして、**F5**を押します。
 
     ```PowerShell
     #TestPortRange $computers 80 443;
@@ -899,29 +898,29 @@ Duration: 45 minutes
 
    ![The PowerShell ISE window displays uncommented PowerShell script port scan command.](media/2020-01-12-12-49-13.png "Running the uncommented PowerShell script")
 
-    > **Note**: You should see the basic ports scanned, and then a port scan from 80 to 443. This will generate many security center logs for the Network Security Groups which will be used in the Custom Alert in the next set of exercises. Continue to the next exercise while the script executes.
+    > **Note**: 基本的なポートがスキャンされ、次に80から443までのポートスキャンが行われるはずです。これにより、ネットワークセキュリティグループのセキュリティセンターログが多数生成され、次の演習課題のカスタムアラートで使用されます。スクリプトが実行されている間、次の演習に進みます。
 
 ## Exercise 5: Azure Security Center
 
 Duration: 45 minutes
 
-Azure Security Center provides several advanced security and threat detection abilities that are not enabled by default. In this exercise we will explore and enable several of them.
+Azure Security Centerは、デフォルトでは有効になっていないいくつかの高度なセキュリティおよび脅威検出機能を提供します。この演習では、そのうちのいくつかを調べて有効にします。
 
-### Task 1: Linux VM and Microsoft Monitoring Agent (MMA) install
+### Task 1: Linux VMとMicrosoft Monitoring Agent（MMA）のインストール
 
-1. In the Azure Portal, browse to your **azsecurity-INIT** resource group, then select the *azseclog...* **Log Analytics Workspace**.
+1. Azure Portalで、**azsecurity-INIT** リソースグループを参照して、*azseclog...* **Log Analytics Workspace**を選択します。
 
     ![The log analytics workspace is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace.jpg "Select the log analytics workspace")
 
-2. In the blade, select **Agents management**.
+2. ブレードで **エージェント管理** を選択します。
 
-3. Record the `Workspace ID` and the `Primary key` values.
+3. 後で利用するため、**ワークスペースID** と **主キー** の値を記録します。
 
    ![Agents management blade link is highlighted along with the id and key for the workspace](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace_Settings.jpg "Copy the workspace id and key")
 
-4. Switch to the Remote Desktop Connection to the **paw-1**.
+4. リモートデスクトップ接続で**paw-1**に切り替えます。
 
-5. Open the **Putty** tool, login to the **linux-1** machine using the username and password.
+5. **Putty**ツールを開き、ユーザー名とパスワードを使って **linux-1** マシンにログインします。
 (###名前解決できているか確認)
 
    ![Putty window with linux-1 as the host.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/putty-linux-1.png "Use Putty to login to linux-1")
@@ -941,82 +940,82 @@ Azure Security Center provides several advanced security and threat detection ab
 
    ![The displayed of connected linux computers for the workspace.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-linux-computers.jpg "Review the linux computers connected to workspace")
 
-   > **Note**: In most cases, Azure will assign resources automatically to the log analytics workspace in your resource group.
+   > **Note**: ほとんどの場合、Azureはリソースグループのログ分析ワークスペースにリソースを自動的に割り当てます。
 
-### Task 2: Execute brute force attack
+### Task 2: ブルートフォースアタックの実行
 
-1. Switch to the Remote Desktop Connection to the **paw-1**.
+1. リモートデスクトップ接続で、**paw-1**に切り替えます。
 
-2. In the PowerShell ISE, comment the lines for Exercise 4, then uncomment the lines for Exercise 5.
+2. PowerShell ISEで、Exercise 4の行をコメントし、Exercise 5の行をアンコメントします。
 
-3. Run the script, notice how it will execute several attempts to login via SSH to the **linux-1** machine using the plink tool from putty.
+3. スクリプトを実行すると、puttyからplinkツールを使って**linux-1**マシンにSSHでログインしようとする試みが何度か実行されることに注目してください。
 
-4. After a few moments (up to 30 mins), you will see an alert from Security Center about a successful brute force attack.
+4. しばらくすると（最大30分）、ブルートフォース攻撃が成功したことを示すSecurity Centerのアラートが表示されます。
 
     ![The email warning about the Brute Force Attack.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/linux-brute-attack-warning.png "The Azure Security Center warning about brute force attack")
 
 
-### Task 3: Enable change tracking and update management
+### Task 3: 変更追跡と更新管理を有効にする
 
-1. Switch back to the Azure Portal.
+1. Azureポータルに戻します。
 
-2. In the search menu, type **Virtual Machine**, then select it.
+2. 検索メニューで **Virtual Machine** と入力し、選択します。
 
-3. Highlight the **paw-1**, **web-1**, **db-1** and **linux-1** virtual machines that were deployed.
+3. デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンをハイライト表示します。
 
-4. In the top menu, select **Services**, then select **Change Tracking**.
+4. トップメニューで「**サービス**」を選択し、「**Change Tracking**」を選択します。
 
    ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking.jpg "Enable change tracking for the virtual machines")
 
-5. Select the **カスタム** radio button.
+5. **カスタム** のラジオボタンを選択します。
 
-6. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
+6. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
 
     ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config.jpg "Select CUSTOM and then select change links")
 
-7. Select the log analytics workspace for your resource group and then select the matching automation account, then select **OK**.
+7. リソースグループのログアナリティクスワークスペースを選択し、一致するオートメーションアカウントを選択して、「**OK**」を選択します。
 
     ![The custom configuration dialog is displayed with the log analytics workspace select along with the matching automation account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config2.png "Select the resource group log analytics workspace and matching automation account")
 
-8. Select all the virtual machines, then select **Enable**.
+8. すべての仮想マシンを選択し、「**有効化**」を選択します。
 
     ※サブスクリプションが出てこない場合、各仮想マシンで変更履歴を有効化する。
     ![The custom configuration dialog is displayed with the log analytics workspace select along with the matching automation account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config2.jpg "Select the resource group log analytics workspace and matching automation account")
 
 
-9. Navigate back to the **Virtual Machines** blade, again highlight the **paw-1**, **web-1**, **db-1** and **linux-1** virtual machines that were deployed.
+9. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンを再度ハイライトします。
 
-10. In the top menu, select **Services**, then select **Inventory**.
+10. トップメニューで「**サービス**」を選択し、「**インベントリ**」を選択します。
 
-11. Select the **CUSTOM** radio button.
+11. **カスタム** ラジオボタンを選択します。
 
-12. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
+12. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
 
-13. Notice that all the VMs are already enabled for the workspace based on the last task.
+13. 最後のタスクに基づいて、すべてのVMがすでにワークスペースに対して有効になっていることに注目してください。
 
-14. Navigate back to the **Virtual Machines** blade, again, highlight the **paw-1**, **web-1**, **db-1** and **linux-1** virtual machines that were deployed.
+14. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンをハイライト表示します。
 
-15. In the top menu, select **Services**, then select **Update Management**.
+15. トップメニューから「**サービス**」を選択し、「**Update Management**」を選択します。
 
-16. Select the **CUSTOM** radio button.
+16. **Customer**のラジオボタンを選択します。
 
-17. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
+17. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
 
-18. Select all the virtual machines, then select **Enable**.
+18. すべての仮想マシンを選択して、**有効化**を選択します。
 
-19. Browse to your resource group, then select your Log Analytics workspace.
+19. リソースグループを参照して、Log Analyticsワークスペースを選択します。
 
-20. Under the **General** section, select the **Solutions** blade, you should see the **ChangeTracking** and **Updates** solutions were added to your workspace. Select the **ChangeTracking** solution.
+20. **概要**セクションで、**ソリューション**ブレードを選択すると、**ChangeTracking**と**Updates**ソリューションがワークスペースに追加されていることがわかります。**ChangeTracking**ソリューションを選択します。
 
     ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions.jpg "Select the ChangeTracking solution item")
 
-21. Under **Workspace Data Sources** section, select **ソリューションのターゲット設定(プレビュー)**.
+21. **Workspace Data Sources** セクションで **ソリューションのターゲット設定(プレビュー)** を選択します。
 
-22. Remove any scopes that are displayed via the ellipses to the right of the items.
+22. 項目の右側の楕円からスコープを削除します。
 
     ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions2.jpg "Select the ChangeTracking solution item")
 
-23. Repeat the steps to remove the solution targeting for the **Updates** solution.
+23. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
 
 ### Task 4: Review MMA configuration
 
@@ -1074,7 +1073,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 5. Select the workspace only, then select **アップグレード**.
 
-6. Select the **エージェントをインストールせずに続行します** link.
+6. **エージェントをインストールせずに続行します** リンクを選択します。
 
    ![The continue without installing agents link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-enable.png "Select the continue without installing agents link")
 
@@ -1099,11 +1098,11 @@ Azure Security Center provides several advanced security and threat detection ab
 
     ![The settings page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-addentry.jpg "Add a new file integrity monitoring item")
 
-14. Select the **ファイルコンテンツ** タブ.
+14. **ファイルコンテンツ** タブを選択します。
 
-15. Select **リンク **, then select the storage account tied to your lab.
+15. **リンク** を選択し、ラボに紐付いているストレージアカウントを選択します。
 
-    > **Note**: It will take 30-60 minutes for Log Analytics and its management packs to execute on all your VMs. As you may not have that much time with this lab, screen shots are provided as to what results you will eventually get.
+    > **Note**: Log Analyticsとその管理パックがすべてのVM上で実行されるまでには、30～60分かかります。このラボにそれほど時間をかけられないかもしれませんが、最終的にどのような結果が得られるかを示すスクリーンショットを用意しています。
 
     ![The file content page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-filecontent.jpg "Link a storage account for file changes")
 
@@ -1209,17 +1208,17 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
 
     > **Note**: You may not have data in the log analytics workspace for the targeted workbook queries.
 
-### Task 2: Create an Analytics alert
+### Task 2: 分析アラートの作成
 
-1. Navigate back to the **Azure Sentinel** workspace, in the **構成** blade section, select **分析** then select **+ 作成** then **Scheduled query rule**.
+1. **Azure Sentinel**のワークスペースに戻り、**構成**ブレードのセクションで、**分析**を選択し、**+ 作成**を選択し、**スケジュール済みクエリ ルール** を選択します。
 
     ![In the left menu beneath Configuration the Analytics item is selected. To the right, the + Create button is expanded and the Scheduled query rule item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image96.jpg "Adding a analytics alert")
 
-2. On the **全般** tab, enter **PortScans** for the 名前.
+2. **全体**タブで、名前に「**PortScans**」と入力します。
 
-3. For the 説明, enter **A custom rule to detect port scans**, select **次: ルールのロジックを設定**.
+3. F説明には、**A custom rule to detect port scans**と入力し、**次: ルールのロジックを設定** を選択します。
 
-4. In the **ルールのクエリ** text box, type:
+4. **ルールのクエリ** のテキストボックスに、次のように入力します。
 
     ```PowerShell
     AzureDiagnostics
@@ -1228,346 +1227,343 @@ In this exercise, you will setup Azure Sentinel to point to a logging workspace 
     | where AggregatedValue > 0
     ```
 
-    > **Note**: If you wanted to target a specific NSG, you can add `and Resource == 'WEBTRAFFICONLY'` to the query.
+    > **Note**: 特定のNSGを対象にしたい場合は `and Resource == 'WEBTRAFFICONLY'` をクエリに追加します。
 
     ![In this screenshot, the alert simulation shows data after the query has been entered.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image97.jpg "Reviewing alert simulation data")
 
-    > **Note**: If you were quick going through the labs, then you may not have log data in the Log Analytics workspace just yet that corresponds to "AzureMetric". You may need to wait 15-30 minutes before a query will execute.
+    > **Note**: ラボでの作業が早かった場合、**AzureMetric** に対応するログデータがLog Analyticsワークスペースにまだないかもしれません。クエリが実行されるまで、15～30分ほど待つ必要があるかもしれません。
 
-    > **Note**: Since the introduction of Azure Security Center and Sentinel, the backend logging has changed a few times as well as the way the calculations are done in the rule query (timespan in query vs outside query, etc.). The ultimate goal of this query is to find when a series of failed connection attempts have been made against a network security group and a specific deny rule. If for some reason the UI/backend has been modified since the last published lab, modify the query to accomplish this goal.
+    > **Note**: Azure Security CenterとSentinelが導入されてから、バックエンドのロギングが何度か変更され、また、ルールクエリで行われる計算方法も変更されました（クエリ内の時間対クエリ外の時間など）。このクエリの最終的な目的は、ネットワーク・セキュリティ・グループと特定の拒否ルールに対して一連の接続失敗が行われたときに見つけることです。前回公開したラボから何らかの理由で UI/バックエンドが変更された場合は、この目標を達成するためにクエリを変更してください。
 
-5. Under **エンティティ マッピング**, for the **IP**, select the **primaryIPv4Address_s** column, then select **Add**.
+5. **エンティティ マッピング** の下で、 **IP** に、 **primaryIPv4Address_s** 列を選択します。 その後 **Add** を選択します。
 
-6. Under **クエリのスケジュール設定**, for the **クエリの実行間隔** setting, type **5** 分.
+6. Under **クエリのスケジュール設定** の下で、**クエリの実行間隔** 設定に **5** 分を選択します。
 
-    >**Note**:  This is a lab and you want to see the results as quickly as possible. In a production environment, you may want to choose a different time threshold.
+    >**Note**:  これはラボであり、できるだけ早く結果を見たいと思っています。本番環境では、別の時間閾値を選択するとよいでしょう。
 
-7. For the **次の時間分の過去のデータを参照します**, type **2** 時間.
+7. **次の時間分の過去のデータを参照します** に **2** 時間を設定します。
 
-8. Under **アラートのしきい値**, for the **クエリ結果件数でアラートを生成する**, enter **0**.
+8. **アラートのしきい値** 、 **クエリ結果件数でアラートを生成する**に、**0** を入力します。
 
-    > **Note:** We want to hit the threshold quickly for lab purposes. This query and value may not be appropriate for production and is only for learning purposes.
+    > **Note:** 実験のために、すぐに閾値を超えるようにしたい。このクエリと値は本番環境では適切ではない可能性があり、学習目的にのみ使用されます。
 
-    Review the current data to determine what would trigger the alert.  Notice the red threshold line intersects the blue event data line.
+    現在のデータを確認し、何がアラートのトリガーになるかを判断します。 赤いしきい値の線が青いイベントデータの線と交差していることに注目してください。
 
     ![A chart is displayed showing the current log data and the alert threshold. The red and blue line intersect in the chart.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-26-17.jpg "Results Preview")
 
-9. Select **次: インシデントの設定 (プレビュー)**, review the potential incident settings.
+9. **次: インシデントの設定 (プレビュー)** インシデントの可能性のある設定を確認します。
 
-10. Select **次: 自動応答**, notice you have no playbooks to select yet.
+10. **次: 自動応答** を選択します。まだ選択できるプレイブックがないことをご注意ください。
 
-11. Select **次: レビュー**.
+11. **次: レビュー** を選択します。
 
-12. Select **作成**.
+12. **作成** を選択します。
 
-    > **Note**:  It may take a few minutes for the alert to fire.  You may need to run the PortScan script a few times from **paw-1**
+    > **Note**:  アラートが出るまでに数分かかることがあります。 PortScanスクリプトを**paw-1**から何度か実行する必要があるかもしれません。
 
     ![In the Azure Sentinel Analytics screen beneath the Active Rules tab, the PortScans rule is highlighted in the table and its status shows it is Enabled.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-03-56.jpg "PortScan configured")
 
-### Task 3: Investigate a custom alert incident
+### Task 3: カスタムアラートのインシデントを調査する
 
-1. In the main menu, select **Azure Sentinel**.
+1. メインメニューで「**Azure Sentinel**」を選択します。
 
-2. Select **Incidents**.
+2. **Incidents** を選択します。
 
-3. Select the new **PortScans** incident.
+3. 新しい**PortScans**インシデントを選択します。
 
     ![In the Azure Sentinel Incidents window, the most recent PortScans security alert is selected from the table.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-30-12.jpg "View the new PortScans alert")
 
-    > **Note**: It may take 15-20 minutes for the alert to fire. You can continue to execute the port scan script to cause log events or you can lower the threshold for the custom alert.
+    > **Note**: アラートが生成されるまでに15～20分かかることがあります。ポートスキャンスクリプトの実行を継続してログイベントを発生させるか、カスタムアラートの閾値を下げることができます。
 
-4. In the dialog, choose **Investigate**. Note that it may take a few minutes for the button to be available.
+4. ダイアログで**すべての詳細を表示**、**調査**を選択します。なお、このボタンが利用可能になるまでには数分かかることがあります。
 
     ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76.jpg "Investigate an incident")
     ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76-2.jpg "Investigate an incident")
 
-5. In future versions, you will get to see insights about the alerts and the resources related to what caused it to fire:
+5. 今後のバージョンでは、アラートに関する洞察や、発砲の原因に関連するリソースを見ることができます。
 
     ![The Azure Security Insights screen is displayed detailing the lifetime of an alert instance.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image77.jpg)
 
-### Task 4: Create and run a playbook
+### Task 4: プレイブックの作成と実行
 
-1. In the **Azure Sentinel** blade, select **オートメーション**.
+1. **Azure Sentinel**のブレードで、**オートメーション**を選択します。
 
-2. In the new window, select **+ Add Playbook**.
+2. 新しいウィンドウで、「**+ 新しいプレイブックの追加**」を選択します。
 
     ![The playbooks blade is displayed with the Playbooks item selected in the left hand menu and the + Add Playbook button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image79.jpg)
 
-3. The **Create logic app** blade will display:
+3. **ロジックアプリの作成** ブレードが表示されます。
 
-    - For the name, enter **Email**.
+    - 名前には「**Email**」と入力します。
 
-    - Select your existing resource group.
+    - 既存のリソースグループを選択します。
 
-    - Toggle the **Log Analytics** to **On** and then select your **azuresecurity** Log Analytics workspace.
+    - **ログ分析の有効化**を**オン**に切り替えて、**azuresecurity**のLog Analyticsワークスペースを選択します。
 
    ![The information above is entered in the Create logic app blade.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image80.jpg "Enter Create logic app information")
 
-4. Select **確認および作成** then select **作成**.  After **リソースに移動**, the **Logic Apps Designer** will load. If the designer does not load, wait a few minutes and refresh the Playbook list. Select the **Email** playbook.
+4. 4. **確認および作成**を選択し、**作成**を選択します。 **リソースに移動**、**Logic Apps Designer**がロードされます。デザイナーがロードされない場合は、数分待ってからプレイブックリストを更新します。Email**プレイブックを選択します。
 
     ![The playbooks list is displayed and the Email playbook is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-40-13.jpg "Playbook List")
 
-5. Select the **Get a notification email when Security Center detects a threat** template.
+5. **Get a notification email when Security Center detects a threat** テンプレートを選択します。
 
     ![The Logic Apps Designer screen is displayed with a list of templates. The Get a notification email when Security Center detects a threat template is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-44-52.jpg "Select Use this template")
 
-6. Select **このテンプレートを使用する**.
+6. **このテンプレートを使用する** を選択します。
 
     ![The Use this template button is selected under Send notification email with alert details from Azure Security Center.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image82.jpg "Select Use this template")
 
-7. For the **Office 365 Outlook** connection, select the **+** link, enter your Azure/O365 credentials.
+7. **Office 365 Outlook**接続の場合、**+** リンクを選択し、Azure/O365の認証情報を入力します。
 
     ![The Sign in button is highlighted next to Office 365 Outlook under This logic app will connect to.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-48-03.jpg "Sign in to Office 365 Outlook")
 
-    > **Note**: This would need to be a valid Office 365 account, if you do not have a valid Office 365 account, then utilize a basic email template for Outlook.com.
+    > **Note**: 有効なOffice 365アカウントをお持ちでない場合は、Outlook.comの基本的なメールテンプレートをご利用ください。
 
-8. For the **Security Center Alert** connection, select the **+** link.
+8. **Security Center Alert**の接続では、**+** のリンクを選択します。
 
-9. Select **続行**.
+9. **続行** を選択します。
 
     ![The Logic app connection blade is displayed.  Outlook and Azure Security Center validation are displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-51-29.jpg "Logic App Connection Information")
 
-10. For the email address, enter your email.
+10. メールアドレスには、あなたの電子メールを入力してください。
 
-11. Select **Save**. You now have an email alert action based on LogicApps for your custom security alert to use.
+11. **保存** を選択します。これで、カスタムセキュリティアラートが使用するLogicAppsベースのメールアラートアクションができました。
 
     ![Save is highlighted in Logic Apps Designer, and information about the custom security alert appears below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-54-20.jpg "Save the email alert action")
 
-12. Lastly, after you have created the new Playbook, ensure that the status is **有効**.  If not, then select **有効** in the menu.
+12. 最後に、新しいPlaybookを作成した後、ステータスが**有効**になっていることを確認します。 そうなっていない場合は、メニューから「**有効**」 を選択します。
 
-### Task 5: Execute Jupyter Notebooks
+### Task 5: Jupyter Notebooksの実行
 
-1. In the **Azure Sentinel** blade, select **ノートブック**.
+1. **Azure Sentinel**ブレードで、**ノートブック** を選択します。
 
-2. Search for the **Azure Sentinel ML ノートブックのファースト ステップ ガイド** item.
+2. **Azure Sentinel ML ノートブックのファースト ステップ ガイド** の項目を検索します。
 
     ![The notebook search results are displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/sentinel-getting-started-notebook.jpg "Search for the getting started notebook")
 
-3. In the right dialog, select **ノートブックの保存**.
+3. 右側のダイアログで「**ノートブックを保存**」を選択します。
 
-4. If not already logged in, select your Azure credentials, the GitHub repo will start to clone into your workspace. You will see the GitHub progress meter.
+4. まだログインしていない場合は、Azure の認証情報を選択すると、GitHub のリポジトリがワークスペースにクローンされます。GitHub のプログレス・メーターが表示されます。
 
     ![The GitHub progress meter is displayed.](media/2020-01-12-18-06-26.png "GitHub Progress Meter")
 
-5. The notebook should open in the Jupyter notebooks application. It will also start a container kernel for executing the notebook cells.
+5. Jupyter notebooksアプリケーションでノートブックが開くはずです。また、ノートブック・セルを実行するためのコンテナ・カーネルが起動します。
 
-6. Follow the directions of the notebook while executing each cell. The notebook will required you to setup some supported API accounts to merge external security data such as known bad actors and other geographical information.
+6. ノートブックの指示に従って、各セルを実行します。ノートブックでは、既知の不良行為者やその他の地理的情報など、外部のセキュリティデータをマージするために、サポートされているAPIアカウントをいくつか設定する必要があります。
 
     ![The getting started Sentinel notebook is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/jupyter-sentinel.png "Run the notebook steps")
 
-### Task 6: Creating reports with Power BI
+### Task 6: Power BIでのレポート作成
 
-1. Navigate back to your **Azure Sentinel** browser window.  Select **ログ**.
+1. **Azure Sentinel**のブラウザウィンドウに戻ります。 **ログ** を選択します。
 
     >**Note**: You may see a **Welcome to Log Analytics** splash page in the blade.  Select **Get Started**.
 
     ![The screenshot displays the Welcome to Log Analytics blade.](media/2020-01-12-19-14-49.png "Welcome to Log Analytics")
 
-2. In the **Schema** tab under **Active**, expand the **LogManagement** node, notice the various options available.
+2. **Active** の下にある**Schema** タブで、**LogManagement** ノードを展開すると、さまざまなオプションが表示されます。
 
-3. In the schema window, ダブルクリック **AzureDiagnostics**, then 
-**実行**.
+3. スキーマ・ウィンドウで、**AzureDiagnostics** をダブルクリック 、次に **実行** をクリックします。
 
-4. In the top right, select **Export**, then select the **Export to Power BI (M Query)** link.
+4. 右上の「**Export**」を選択し、「**Export to Power BI (M Query)**」のリンクを選択します。
 
     ![The Azure Sentinel Logs screen is displayed. The logs item is selected in the left menu. LogManagement and AzureDiagnostics are selected from the active schema list. The Azure Diagnostics item has an eye icon. A new query tab is shown with the Export item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image103.jpg "Export a Power BI report query")
 
     ![The Export item is expanded with the Export to PowerBI (M Query) item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-19-17-28.jpg "Export to PowerBI")
 
-5. Select **Open**, a text document with the Power Query M Language will be displayed.
+5. **開く** を選択すると、Power Query M Languageを使用したテキストドキュメントが表示されます。
 
-6. Follow the instructions in the document to execute the query in Power BI.
+6. ドキュメントの指示に従って、Power BIでクエリを実行します。
 
     ![The instructions at the top of the PowerBIQuery.txt file are highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image88.jpg "Follow the query instructions")
 
-7. Close **Power BI**.
+7. **Power BI** を閉じます。
 
-## Exercise 7: Using Compliance Tools (Azure Policy, Secure Score and Compliance Manager)
+## Exercise 7: コンプライアンスツール（Azure Policy、Secure Score、Compliance Manager）の使用について
 
 Duration: 15 minutes
 
-In this exercise, attendees will learn to navigate the Azure Policy and Secure Score features of Azure.  You will also explore the Compliance Manager portal that will provide you helpful tasks that you should consider when attempting to achieve specific compliance policies.
+この演習では、Azureの「Azure Policy」と「Secure Score」の機能をナビゲートする方法を学びます。 また、特定のコンプライアンスポリシーを達成しようとする際に考慮すべき有用なタスクを提供する Compliance Manager ポータルを探索します。
 
 ### Task 1: Review a basic Azure Policy
 
-1. Open the [Azure Portal](https://portal.azure.com).  Select **すべてのサービス**, then type **ポリシー**.  Select **ポリシー** in the list of items.
+[Azure Portal](https://portal.azure.com)を開きます。 **すべてのサービス** を選択し、「**ポリシー**」と入力します。 項目の一覧から「**ポリシー**」を選択します。
 
     ![All services are selected in the left menu. In the search box policy is entered. Policy is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image104.jpg "Open the Azure Policy blade")
 
-2. In the blade menu, select **コンプライアンス**, and review your **リソースの全体的なコンプライアンス**  のパーセンテージ.
+2. ブレードメニューの**コンプライアンス** を選択し、**リソースの全体的なコンプライアンス** のパーセンテージを確認します。
 
     ![The Compliance item is selected from the left menu. The Policy compliance screen is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image105.jpg "Open the Azure Policy blade")
 
-3. For the scope, ensure the proper subscription is selected, then select **ASC DataProtection (subscription:**.
+3. スコープについては、適切なサブスクリプションが選択されていることを確認し、「**ASC DataProtection (subscription:**)」を選択します。
 
-4. In the **イニシアティブ コンプライアンス** blade, review your compliance metrics.
+4. **イニシアティブ コンプライアンス** ブレードでは、コンプライアンスの指標を確認します。
 
-5. Scroll to the results area and select the **準拠していないリソース** tab.
+
+5. 結果エリアにスクロールし、**準拠していないリソース** タブを選択します。
 
     ![The non-compliant resources tab is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image106.jpg "Select the Non-Compliant resources tab")
 
-6. In the filter search box, type **paw-1** and select it when displayed.
+6. フィルター検索ボックスに「**paw-1**」と入力し、表示されたら選択します。
 
-    > **Note**: You may not see resources display right away.  If this is the case, then scroll through some other non-compliant resources.
+    > **Note**: すぐにリソースが表示されない場合があります。 その場合は、他の非準拠のリソースをスクロールしてください。
 
-7. With the **Policies** tab selected, review the policies that the resource is non-complying against.
+7. **Policies**タブを選択して、リソースが準拠していないポリシーを確認します。
 
-    >**Note**: New policies are being created and your number may be different from the image below.
+    >**Note**: 新しいポリシーが作成されるため、あなたの番号は下の画像とは異なる可能性があります。
 
     ![The Resource compliance blade for paw-1 is displayed with the non-compliant items highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image107.jpg "Review the non-compliant items")
 
-8. Choose one of the policies.  Review the Definition JSON of the policy definition **定義の表示**, notice how it is based on ARM Template format and is looking for specific properties to be set of the non-compliant resources.
+8. ポリシーの1つを選択します。 ポリシーの**定義の表示**のJSONの定義を確認すると、ARMテンプレート形式に基づいており、準拠していないリソースに設定される特定のプロパティを探していることがわかります。
 
     ![The policy definition is displayed in JSON format.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image108.jpg "Review the policy definition")
 
-    > **Note**: You can use these out of box templates to build your own policies and apply them as blueprints.
+    > **Note**: これらのout of boxなテンプレートを使って独自のポリシーを構築し、ブループリントとして適用することができます。
 
-### Task 2: Review and create Azure Blueprints
+### Task 2: Azure ブループリントの確認と作成
 
-1. In the Policy blade, under **Authoring**, select **Definitions**.  These are a list of all defined policies which can be selected for assignment to your subscription resources.
+1. ポリシーブレードの「**Authoring**」の下にある「**Definitions**」を選択します。 これは、サブスクリプションリソースに割り当てるために選択できる、すべての定義済みポリシーのリストです。
 
     ![A listing of policy definitions on the Policy Blade Definitions screen.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image109.jpg "Review available policy definitions")
 
-2. In the Policy blade, under **関連サービス**, select **ブループリント**.
+2. ポリシーブレードの「**関連サービス**」で「**ブループリント**」を選択します。
 
-3. In the Blueprints blade, select **ブループリントの定義**.
+3. ブループリントブレードで、**ブループリントの定義**を選択します。
 
-4. Select **+ ブループリントの作成**.
+4. **+ ブループリントの作成** を選択します。
 
     ![The Blueprint definitions screen is displayed with the Blueprint definitions item selected from the left menu. The + Create blueprint menu item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image110.jpg "Create a new blueprint")
 
-5. Review some of the sample blueprints, then select **Start with blank blueprint**.
+5. サンプルの設計図を見て、**Start with blank blueprint** を選択します。
 
     ![The Create blueprint screen is displayed with the Blank blueprint item selected from the list of available samples.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image111.jpg "Create a blank blueprint")
 
-6. For the name, type **GDPRBluePrint**.
+6. 名前には「**GDPRBluePrint**」と入力します。
 
-7. For the location, select the ellipses, then select your subscription in the drop down.
+7. 場所については、楕円形を選択し、ドロップダウンでサブスクリプションを選択します。
 
-8. Choose **選択**.
+8. **選択** を選びます。
 
     ![New blue print dialog with name and location filled in.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image112.jpg "Set blueprint fields")
 
-9. Select **次へ: 成果物**.
+9. **次へ: 成果物** を選択します。
 
-10. Select **+ 成果物の追加**.
+10. **+ 成果物の追加** を選択します。
 
-11. For the Artifact Type, select **ポリシーの割り当て**, review all the policies available to you (at the time of this writing you would see 37 definitions and 311 policies).
-12. In the search box, type **制限**, browse for the **ストレージ アカウントではネットワークアクセスを制限する必要があります**.
+11. Artifact Type（成果物の種類）では、**ポリシーの割り当て**を選択し、利用可能なすべてのポリシーを確認します（この記事の執筆時点では、37の定義と311のポリシーが表示されています）。
+
+12. 検索ボックスで **制限** を入力、 **ストレージ アカウントではネットワークアクセスを制限する必要があります** を選択します。
 
     ![On the Create blueprint screen, on the Artifacts tab the + Add artifact link is selected beneath the Subscription. In the Add artifact blade, the artifact type of Policy assignment is selected. In the Search textbox, unrestricted is entered. Beneath the Search textbox, the Policy Definitions tab is selected and the Audit unrestricted network access to storage accounts is selected from the list of search results.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image113.jpg "Add an artifact")
 
-    > **Note**: If the above definition is not available, select one of your own choosing.
+    > **Note**: 上記の定義が利用できない場合は、独自の定義を選択してください。
 
-13. Select **追加**.
+13. **追加** を選択します。
 
-14. Select **下書きの保存**. It may take a few minutes.  The blade will automatically change when the save operation finishes.
+14. **下書きの保存** を選択します。 数分かかる場合があります。 保存操作が終了すると、自動的にブレードが変更されます。
 
-15. For the new blueprint, select the ellipses, then select **ブループリントを発行する**.
+15. 新しいブループリントでは、楕円形を選択してから **ブループリントを発行する** を選択します。
 
     ![The ellipses menu is expanded for the gdprblueprint blueprint item with the Publish blueprint menu item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114.jpg "Publish blueprint dialog")
 
-16. For the version type **1.0.0**.
+16. バージョンは、*1.0.0**と入力してください。
 
-17. Select **公開**.
+17. **公開** を選択します。
 
-18. For the new blueprint, select the ellipses, then select **ブループリントの割り当て**.
+18. 新しいブループリントでは、楕円形を選択してから **ブループリントの割り当て** を選択します。
 
     ![Screen shot showing the Assign blueprint dialog.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114-2.jpg "Assign blueprint dialog")
 
-19. Review the page, then choose **割り当て**.  This policy will now be audited across all your storage accounts in the specific subscription.
+19. ページを確認して、**割り当て**を選択します。 このポリシーは、特定のサブスクリプションのすべてのストレージアカウントに対して監査されるようになります。
 
-### Task 3: Secure Score
+### Task 3: セキュア スコア
 
-1. In the Azure Portal, select **すべてのサービス**, then type **セキュリティ**, select **セキュリティセンター**.
+1. Azureポータルで「**すべてのサービス**」を選択し、「**セキュリティ**」と入力して「**セキュリティ センター**」を選択します。
 
-2. In the Security Center blade, under **クラウド セキュリティ**, select **セキュア スコア**.
+2. セキュリティ センター ブレードで、**クラウド セキュリティ** の下の **セキュア スコア** を選択します。
 
-3. Review your overall secure score values and then notice the category values.
+3. 総合的なセキュアスコアの値を確認してから、カテゴリーの値に気づく。
 
     ![Screen shot showing Secure score blade and the score and categories highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image115.png "Review Secure Score score and categories")
 
-4. On the bottom half of the window, select your subscription, you will be presented with the items that have failed resource validation sorted by the score value that is assigned to that particular recommendation item.
+4. ウィンドウの下半分でサブスクリプションを選択すると、リソース検証に失敗したアイテムが、その特定のレコメンデーションアイテムに割り当てられているスコア値でソートされて表示されます。
 
-5. Select the **An Azure Active Directory administrator should be provisioned for SQL Servers**, on the recommendation blade, you will be presented with information about how to remediate the recommendation to gain the impact value to your score.
+5. 推奨ブレードの**An Azure Active Directory administrator should be provisioned for SQL Servers**を選択すると、スコアに影響を与えるための推奨事項の修正方法に関する情報が表示されます。
 
     ![Screen shot with the Provision an Azure AD Administrator for SQL Server highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image116.png "Review a security recommendation")
 
-### Task 4: Use Compliance Manager for Azure
+### Task 4: Compliance Manager for Azureの使用
 
->**Note**: You may need additional permissions to run this portion of the lab. Contact your Global Administrator.
+>**Note**: ラボのこの部分を実行するには、追加の権限が必要な場合があります。グローバル管理者にお問い合わせください。
 
-1. In a browser, go to the Service Trust/Compliance Manager portal (<https://servicetrust.microsoft.com>).
+1. ブラウザでService Trust/Compliance Managerのポータル(<https://servicetrust.microsoft.com>)にアクセスします。
 
-2. In the top corner, select **Sign in**, you will be redirected to the Azure AD login page.
+2. 上部にある「**Sign in**」を選択すると、Azure ADのログインページにリダイレクトされます。
 
     ![Sign in is highlighted at the top of the Service Trust/Compliance Manager portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.jpg "Sign in to Compliance Manager")
 
-3. If prompted, select or sign in with your Azure AD\\Office 365 credentials.
+3. プロンプトが表示されたら、Azure AD\Office 365 の認証情報を選択するか、サインインしてください。
 
-4. In the menu, select **Compliance Manager->Compliance Manager Classic**.
+4. メニューから**コンプライアンス マネージャー** -> **コンプライアンス マネージャー (クラシック)** を選択します。
 
     ![Compliance Manager Classic is highlight in the menu navigation.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.1.jpg "Open Compliance Manager Classic")
 
-5. Select on the **+ 評価の追加** link.
+5. **標準評価を追加** リンクをクリックします。
 
-6. Select **新しいグループを作成する**, for the name type **AzureSecurity**, select **次へ**, set the **既存のグループからデータをコピーしますか？** toggle to **いいえ**, select **次へ**.
+6. **新しいグループを作成する** を選択します。名前に **AzureSecurity** を入力、  **次へ** を選択します。**既存のグループからデータをコピーしますか？** トグルを **いいえ** に設定します。**次へ** を選択します。
 
     ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.2.jpg)
 
-7. For the product dropdown, select **Azure**.
+7. 製品のドロップダウンで、**Azure**を選択します。
 
     
-8. For the certification dropdown, select **GDPR**.
+8. 認証のドロップダウンで、**GDPR**を選択します。
 
     ![Add a Standard Assessment dialog with Azure and GDPR selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image90.jpg)
 
-9. Select **ダッシュボードに追加.** You will now see a new assessment for Azure and GDPR in progress:
+9. **ダッシュボードに追加** を選択します。 これで、AzureとGDPRの新しい評価が進行中であることがわかります。
 
     ![Azure GDPR assessment status that shows in progress.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.jpg)
 
-10. Select **Azure GDPR**.
+10. **Azure GDPR** を選択します。
 
-11. Review the various controls that you can implement:
+11. 実装可能な様々なコントロールを確認する。
 
     ![Several categories of controls are listed on the page.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.1.jpg)
 
-12. On the top menu, choose **トラスト ドキュメント**, then select **監査レポート**.
+12. トップメニューで **トラスト ドキュメント** を選択、  **監査レポート** を選択します。
 
     ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image92.jpg)
 
-13. Notice the various tabs that you can select from, select **FedRAMP Reports**.
+13. 様々なタブが表示されますが、「FedRAMP Reports」を選択してください。
 
-14. These are all the FedRAMP reports sorted by date that have been performed and publicly posted for Azure customer review. Select the item displayed and briefly review the document.
+14. これらは、Azureのお客様が確認できるように実行され、公開された日付順のFedRAMPレポートのすべてです。表示された項目を選択して、ドキュメントを簡単に確認します。
 
     ![The FedRAMP Reports report type is highlighted on the Data Protection Standards and Regulatory Compliance Reports page, and Azure - FedRAMP Moderate System Security Plan v3.02 is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image94.jpg "Select the displayed FedRAMP report")
 
-## After the hands-on lab
+## ハンズオンラボの終了後
 
 Duration: 10 minutes
 
-In this exercise, attendees will un-provision any Azure resources that were created in support of the lab.
+この演習では、ラボのサポートのために作成されたAzureリソースのプロビジョニングを解除します。
 
-### Task 1: Delete resource group
+### Task 1: リソースグループの削除
 
-1. Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting **Resource groups** in the menu.
+1. Azure ポータルを使用して、メニューから  **リソースグループ** を選択して、このハンズオンラボで使用したリソースグループに移動します。
 
-2. Search for the name of your research group, and select it from the list.
+2. 研究グループの名前を検索して、リストから選択します。
 
-3. Select **Delete** in the command bar, and confirm the deletion by re-typing the Resource group name and selecting **Delete**.
+3. コマンドバーで **削除** を選択し、リソースグループ名を再度入力して **削除** を選択して削除を確認します。
+T
+4. Exercise 3 の Task 3 で作成した Azure Key Vault アプリケーションの削除を忘れないでください。
 
-4. Don't forget to delete the Azure Key Vault application you created in Exercise 3, Task 3.
+### Task 2: Azure Defender Pricingの削除
 
-### Task 2: Remove Standard Tier Pricing
+1. Azure Securityの Defenderの価格設定を「**オフ**」に戻してください。
 
-1. Be sure to set your Azure Security pricing back to **Free**.
 
-### Task 3: Delete lab environment (optional)
-
-1. If you are using a hosted platform, make sure you shut it down or delete it.
-
-You should follow all steps provided *after* attending the Hands-on lab.
-
+---
 ---
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
