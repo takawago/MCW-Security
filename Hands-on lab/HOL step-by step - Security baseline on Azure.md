@@ -25,7 +25,7 @@ July 2021
   - [Exercise 2: Webアプリケーションとデータベースの保護](#exercise-2-webアプリケーションとデータベースの保護)
     - [Task 1: データベースの設定](#task-1-データベースの設定)
     - [Task 2: Webアプリケーションソリューションのテスト](#task-2-webアプリケーションソリューションのテスト)
-    - [Task 3: Utilize data masking](#task-3-utilize-data-masking)
+    - [Task 3: データマスキングの活用](#task-3-データマスキングの活用)
     - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)
   - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)
     - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)
@@ -270,45 +270,45 @@ Duration: 45 minutes
 
 ### Task 2: Webアプリケーションソリューションのテスト
 
-1. In the extracted directory, double-click the **\\Hands-on lab\\WebApp\\InsuranceAPI\\InsuranceAPI.sln** solution file, and Visual Studio will open.
+1. 解凍したディレクトリの中にある**Hands-on lab\WebApp\InsuranceAPI**というソリューションファイルをダブルクリックすると、Visual Studioが立ち上がります。
 
-    > **Note**: If prompted, login using your Azure / MSDN account.
+    > **Note**: プロンプトが表示されたら、Azure / MSDNアカウントでログインしてください。
 
-2. In the **Solution Explorer**, navigate to and double-click the **Web.config** file to open it.
+2. **ソリューション エクスプローラー**で、**Web.config**ファイルをダブルクリックして開きます。
 
     ![Web.config is highlighted under the InsuranceAPI project in Solution Explorer.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image28.jpg "Open Web.config")
 
-3. Update the web.config (line 77) to point to the **Insurance** database created in Task 2. You should only need to update the server name to point to your Azure SQL Server.
+3. Task 2 で作成した **Insurance** データベースを指すように web.config を更新します（77 行目）。サーバー名を更新して、Azure SQL Serverを指すようにするだけでよいでしょう。
 
     ![Line 72 of the Insurance database is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image29.png "Update the server name in Web.config")
 
-4. Press **F5** to run the **InsuranceAPI** solution.
+4. **F5**を押して、**InsuranceAPI**ソリューションを実行します。
 
-    > **Note**: If you get an CSC error, right-click the project, select **Clean**.  Next, right-click the project and select **Rebuild**.
+    > **Note**: CSCエラーが発生した場合は、プロジェクトを右クリックして **CLEAN**を選択します。 次に、プロジェクトを右クリックして**再構築**を選択します。
 
-5. Test the API for a response by browsing to `http://localhost:24448/api/Users`. Your port number may be different from _24448_. You should see several records returned to the browser. Copy a `UserId` value for the next instruction.
+5. `http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
     ![The sample JSON response is returned.](media/2019-12-18-16-59-47.png "Sample JSON Response")
 
-6. In the browser window that opens, browse to `http://localhost:24448/api/Users/e91019da-26c8-b201-1385-0011f6c365e9` you should see a json response that shows an unmasked SSN column.
+6. 開いたブラウザウィンドウで、`http://localhost:24448/api/Users/e91019da-26c8-b201-1385-0011f6c365e9`をブラウズすると、マスクされていないSSNカラムを示すjsonレスポンスが表示されます。
 
-    > **Note**: Depending on your browser, you may need to download to view the json response.
+    > **Note**: お使いのブラウザによっては、json形式のレスポンスを表示するためにダウンロードが必要な場合があります。
 
    ![The json response is displayed in a browser window.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image30.png "View the json response")
 
-### Task 3: Utilize data masking
+### Task 3: データマスキングの活用
 
-1. Switch to the Azure Portal.
+1. Azure Portal に切り替えます。
 
-2. Select **SQL databases**.
+2. **SQL データベース**を選択します。
 
-3. Select the **Insurance** database.
+3. **Insurance**データベースを選択します。
 
-4. Under **Security**, select **Dynamic Data Masking**, then select **+Add Mask**.
+4. **セキュリティ**の項目で、**動的データマスキング**を選択し、**+ マスクの追加**を選択します。
 
     ![Dynamic Data Masking is highlighted on the left, and +Add mask is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image31.jpg "Select +Add mask")
 
-5. Select the **User** table.
+5. **User**テーブルを選択します。
 
 6. Select the **SSN** column.
 
@@ -322,7 +322,7 @@ Duration: 45 minutes
 
     ![The masked SSN column is highlighted in the InsuranceAPI response.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image33.png "View the masked SSN column")
 
-10. Close **Visual Studio**.
+10.  Close **Visual Studio**.
 
 ### Task 4: Utilize column encryption with Azure Key Vault
 
