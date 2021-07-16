@@ -24,7 +24,60 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->autoauto- [Security baseline on Azure hands-on lab step-by-step](#security-baseline-on-azure-hands-on-lab-step-by-step)auto    - [Abstract and learning objectives](#abstract-and-learning-objectives)auto    - [Overview](#overview)auto    - [Solution architecture](#solution-architecture)auto    - [Requirements](#requirements)auto    - [Exercise 1: Implementing Just-in-Time (JIT) access](#exercise-1-implementing-just-in-time-jit-access)auto        - [Task 1: Setup virtual machine with JIT](#task-1-setup-virtual-machine-with-jit)auto        - [Task 2: Perform a JIT request](#task-2-perform-a-jit-request)auto    - [Exercise 2: Securing the Web Application and database](#exercise-2-securing-the-web-application-and-database)auto        - [Task 1: Setup the database](#task-1-setup-the-database)auto        - [Task 2: Test the web application solution](#task-2-test-the-web-application-solution)auto        - [Task 3: Utilize data masking](#task-3-utilize-data-masking)auto        - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)auto    - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)auto        - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)auto        - [Task 2: Create an Azure Active Directory application](#task-2-create-an-azure-active-directory-application)auto        - [Task 3: Assign Azure Active Directory application permissions](#task-3-assign-azure-active-directory-application-permissions)auto        - [Task 4: Install or verify NuGet Package](#task-4-install-or-verify-nuget-package)auto        - [Task 5: Test the solution](#task-5-test-the-solution)auto    - [Exercise 4: Securing the network](#exercise-4-securing-the-network)auto        - [Task 1: Test network security group rules \#1](#task-1-test-network-security-group-rules-\1)auto        - [Task 2: Configure network security groups](#task-2-configure-network-security-groups)auto        - [Task 3: Test network security group rules \#2](#task-3-test-network-security-group-rules-\2)auto        - [Task 4: Install network watcher VM extension](#task-4-install-network-watcher-vm-extension)auto        - [Task 5: Setup network packet capture](#task-5-setup-network-packet-capture)auto        - [Task 6: Execute a port scan](#task-6-execute-a-port-scan)auto    - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)auto        - [Task 1: Linux VM and Microsoft Monitoring Agent (MMA) install](#task-1-linux-vm-and-microsoft-monitoring-agent-mma-install)auto        - [Task 2: Execute brute force attack](#task-2-execute-brute-force-attack)auto        - [Task 3: Enable change tracking and update management](#task-3-enable-change-tracking-and-update-management)auto        - [Task 4: Review MMA configuration](#task-4-review-mma-configuration)auto        - [Task 5: Adaptive Application Controls](#task-5-adaptive-application-controls)auto        - [Task 6: File Integrity Monitoring](#task-6-file-integrity-monitoring)auto        - [Task 7: Disk encryption](#task-7-disk-encryption)auto    - [Exercise 6: Azure Sentinel logging and reporting](#exercise-6-azure-sentinel-logging-and-reporting)auto        - [Task 1: Create a dashboard](#task-1-create-a-dashboard)auto        - [Task 2: Create an Analytics alert](#task-2-create-an-analytics-alert)auto        - [Task 3: Investigate a custom alert incident](#task-3-investigate-a-custom-alert-incident)auto        - [Task 4: Create and run a playbook](#task-4-create-and-run-a-playbook)auto        - [Task 5: Execute Jupyter Notebooks](#task-5-execute-jupyter-notebooks)auto        - [Task 6: Creating reports with Power BI](#task-6-creating-reports-with-power-bi)auto    - [Exercise 7: Using Compliance Tools (Azure Policy, Secure Score and Compliance Manager)](#exercise-7-using-compliance-tools-azure-policy-secure-score-and-compliance-manager)auto        - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)auto        - [Task 2: Review and create Azure Blueprints](#task-2-review-and-create-azure-blueprints)auto        - [Task 3: Secure Score](#task-3-secure-score)auto        - [Task 4: Use Compliance Manager for Azure](#task-4-use-compliance-manager-for-azure)auto    - [After the hands-on lab](#after-the-hands-on-lab)auto        - [Task 1: Delete resource group](#task-1-delete-resource-group)auto        - [Task 2: Remove Standard Tier Pricing](#task-2-remove-standard-tier-pricing)auto        - [Task 3: Delete lab environment (optional)](#task-3-delete-lab-environment-optional)autoauto<!-- /TOC -->
+
+- [Security baseline on Azure hands-on lab step-by-step](#security-baseline-on-azure-hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Exercise 1: Implementing Just-in-Time (JIT) access](#exercise-1-implementing-just-in-time-jit-access)
+    - [Task 1: Setup virtual machine with JIT](#task-1-setup-virtual-machine-with-jit)
+    - [Task 2: Perform a JIT request](#task-2-perform-a-jit-request)
+  - [Exercise 2: Securing the Web Application and database](#exercise-2-securing-the-web-application-and-database)
+    - [Task 1: Setup the database](#task-1-setup-the-database)
+    - [Task 2: Test the web application solution](#task-2-test-the-web-application-solution)
+    - [Task 3: Utilize data masking](#task-3-utilize-data-masking)
+    - [Task 4: Utilize column encryption with Azure Key Vault](#task-4-utilize-column-encryption-with-azure-key-vault)
+  - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)
+    - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)
+    - [Task 2: Create an Azure Active Directory application](#task-2-create-an-azure-active-directory-application)
+    - [Task 3: Assign Azure Active Directory application permissions](#task-3-assign-azure-active-directory-application-permissions)
+    - [Task 4: Install or verify NuGet Package](#task-4-install-or-verify-nuget-package)
+    - [Task 5: Test the solution](#task-5-test-the-solution)
+  - [Exercise 4: Securing the network](#exercise-4-securing-the-network)
+    - [Task 1: Test network security group rules \#1](#task-1-test-network-security-group-rules-1)
+    - [Task 2: Configure network security groups](#task-2-configure-network-security-groups)
+    - [Task 3: Test network security group rules \#2](#task-3-test-network-security-group-rules-2)
+    - [Task 4: Install network watcher VM extension](#task-4-install-network-watcher-vm-extension)
+    - [Task 5: Setup network packet capture](#task-5-setup-network-packet-capture)
+    - [Task 6: Execute a port scan](#task-6-execute-a-port-scan)
+  - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)
+    - [Task 1: Linux VM and Microsoft Monitoring Agent (MMA) install](#task-1-linux-vm-and-microsoft-monitoring-agent-mma-install)
+    - [Task 2: Execute brute force attack](#task-2-execute-brute-force-attack)
+    - [Task 3: Enable change tracking and update management](#task-3-enable-change-tracking-and-update-management)
+    - [Task 4: Review MMA configuration](#task-4-review-mma-configuration)
+    - [Task 5: Adaptive Application Controls](#task-5-adaptive-application-controls)
+    - [Task 6: File Integrity Monitoring](#task-6-file-integrity-monitoring)
+    - [Task 7: Disk encryption](#task-7-disk-encryption)
+  - [Exercise 6: Azure Sentinel logging and reporting](#exercise-6-azure-sentinel-logging-and-reporting)
+    - [Task 1: Create a dashboard](#task-1-create-a-dashboard)
+    - [Task 2: Create an Analytics alert](#task-2-create-an-analytics-alert)
+    - [Task 3: Investigate a custom alert incident](#task-3-investigate-a-custom-alert-incident)
+    - [Task 4: Create and run a playbook](#task-4-create-and-run-a-playbook)
+    - [Task 5: Execute Jupyter Notebooks](#task-5-execute-jupyter-notebooks)
+    - [Task 6: Creating reports with Power BI](#task-6-creating-reports-with-power-bi)
+  - [Exercise 7: Using Compliance Tools (Azure Policy, Secure Score and Compliance Manager)](#exercise-7-using-compliance-tools-azure-policy-secure-score-and-compliance-manager)
+    - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)
+    - [Task 2: Review and create Azure Blueprints](#task-2-review-and-create-azure-blueprints)
+    - [Task 3: Secure Score](#task-3-secure-score)
+    - [Task 4: Use Compliance Manager for Azure](#task-4-use-compliance-manager-for-azure)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete resource group](#task-1-delete-resource-group)
+    - [Task 2: Remove Standard Tier Pricing](#task-2-remove-standard-tier-pricing)
+    - [Task 3: Delete lab environment (optional)](#task-3-delete-lab-environment-optional)
+
+
+
 
 
 # Security baseline on Azure hands-on lab step-by-step
