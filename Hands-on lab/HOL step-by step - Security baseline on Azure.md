@@ -28,16 +28,16 @@ July 2021
     - [Task 3: データマスキングの活用](#task-3-データマスキングの活用)
     - [Task 4: Azure Key Vaultによるカラム暗号化の利用](#task-4-azure-key-vaultによるカラム暗号化の利用)
   - [Exercise 3: Migrating to Azure Key Vault](#exercise-3-migrating-to-azure-key-vault)
-    - [Task 1: Create an Azure Key Vault secret](#task-1-create-an-azure-key-vault-secret)
-    - [Task 2: Create an Azure Active Directory application](#task-2-create-an-azure-active-directory-application)
-    - [Task 3: Assign Azure Active Directory application permissions](#task-3-assign-azure-active-directory-application-permissions)
-    - [Task 4: Install or verify NuGet Package](#task-4-install-or-verify-nuget-package)
-    - [Task 5: Test the solution](#task-5-test-the-solution)
-  - [Exercise 4: Securing the network](#exercise-4-securing-the-network)
-    - [Task 1: Test network security group rules \#1](#task-1-test-network-security-group-rules-1)
-    - [Task 2: Configure network security groups](#task-2-configure-network-security-groups)
-    - [Task 3: Test network security group rules \#2](#task-3-test-network-security-group-rules-2)
-    - [Task 4: Install network watcher VM extension](#task-4-install-network-watcher-vm-extension)
+    - [Task 1: Azure Key Vaultのシークレットの作成](#task-1-azure-key-vaultのシークレットの作成)
+    - [Task 2: Azure Active Directoryアプリケーションの作成](#task-2-azure-active-directoryアプリケーションの作成)
+    - [Task 3: Azure Active Directoryのアプリケーション権限の割り当て](#task-3-azure-active-directoryのアプリケーション権限の割り当て)
+    - [Task 4: NuGetパッケージのインストールまたは検証](#task-4-nugetパッケージのインストールまたは検証)
+    - [Task 5: ソリューションのテスト](#task-5-ソリューションのテスト)
+  - [Exercise 4: ネットワークの保護](#exercise-4-ネットワークの保護)
+    - [Task 1: ネットワークセキュリティのグループルールのテスト \#1](#task-1-ネットワークセキュリティのグループルールのテスト-1)
+    - [Task 2: ネットワークセキュリティグループの設定](#task-2-ネットワークセキュリティグループの設定)
+    - [Task 3: ネットワークセキュリティのグループルールのテスト \#2](#task-3-ネットワークセキュリティのグループルールのテスト-2)
+    - [Task 4: ネットワークウォッチャーVM拡張機能のインストール](#task-4-ネットワークウォッチャーvm拡張機能のインストール)
     - [Task 5: Setup network packet capture](#task-5-setup-network-packet-capture)
     - [Task 6: Execute a port scan](#task-6-execute-a-port-scan)
   - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)
@@ -416,13 +416,14 @@ Duration: 45 minutes
 
     - 操作をやり直します。
 
-    > **Note**: If you are still getting errors (such as Access Denied), ensure that you have selected the correct subscription and Key Vault.
+    > **Note**: それでもエラー（Access Deniedなど）が発生する場合は、正しいサブスクリプションとKey Vaultを選択しているか確認してください。
+
 
     ![Results is highlighted on the left side of the Always Encrypted dialog box, and at right, Performing encryption operations is selected under Summary: Task. Performing encryption operations has a green check mark and is listed as Passed under Details.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image41.png "View the task results")
 
-25. Select **Close**.
+25. **Close**を選択します。
 
-26. Right-click the **User** table, and choose **Select top 1000 rows**.
+26. **Users**テーブルを右クリックし、**Select top 1000 rows** を選択します。
 
     ![The User table is selected, and Select Top 1000 Rows is selected in the shortcut menu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image42.png "Select the top 1000 rows")
 
@@ -430,11 +431,11 @@ Duration: 45 minutes
 
     ![The value under UserId is selected on the Results tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image43.png "Notice the SSN column")
 
-27. Switch to the Azure Portal.
+27. Azureポータルに切り替えます。
 
-28. Select **Key Vaults**.
+28. **Key Vaults**を選択します。
 
-29. Select your Azure Key Vault, and then select **Keys**. You should see the key created from the SQL Management Studio displayed:
+29. Azure Key Vault を選択して、「**Keys**」を選択します。SQL Management Studioから作成されたキーが表示されるはずです。
 
     ![CloudSecurityVault is selected on the left, Keys is selected under Settings from the center menu, and CMKAuto1 is selected under the Unmanaged list on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image44.png "Select your Azure Key Vault")
 
@@ -444,116 +445,115 @@ Duration: 30 minutes
 
 In this exercise, attendees will learn how to migrate web application to utilize Azure Key Vault rather than storing valuable credentials (such as connection strings) in application configuration files.
 
-### Task 1: Create an Azure Key Vault secret
+### Task 1: Azure Key Vaultのシークレットの作成
 
-1. Switch to your Azure Portal.
+1. 自分のAzureポータルに切り替えます。
 
-2. Select **Key Vaults**, then select your Azure Key Vault.
+2. **キーコンテナー**を選択し、Azure Key Vaultを選択します。
 
     ![Key vaults is highlighted on the left side of the Azure portal, and CloudSecurityVault is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image45.jpg "Select your Azure Key Vault")
     ![Key vaults is highlighted on the left side of the Azure portal, and CloudSecurityVault is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image45-2.jpg "Select your Azure Key Vault")
 
-3. Select **Secrets**, then select **+Generate/Import**.
+3. **シークレット**を選択し、**+ 生成/インポート**を選択します。
 
     ![Secrets is highlighted on the left side of the Azure portal, and Generate/Import is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image45-3.jpg "Create a new secret")
 
-4. For the **アップロードオプション**, select **手動**.
+4. **アップロードオプション**で、 **手動**.を選択します。
 
-5. For the **名前**, enter **InsuranceAPI**.
+5. **名前**には、**InsuranceAPI**と入力します。
 
-6. For the **Value,** copy the connection string information from the **InsuranceAPI** solution Web.config file in Exercise 2.
+6. **値**には、演習2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。
 
-7. Select **Create**.
+7. **作成**を選択します。
 
-8. Select **Secrets**.
+8. **シークレット**を選択します。
 
-9. Select **InsuranceAPI**.
+9. **InsuranceAPI**を選択します。
 
-10. Select the 現在のバージョン.
+10. 現在のバージョンを選択します。
 
     ![The current version is selected with a status of Enabled under InsuranceAPI Versions.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image46.jpg "Select the current version")
 
-11. Copy and record the secret identifier URL for later use:
+11. 後で使用するために、シークレット識別子のURLをコピーして記録します。
 
     ![The Secret Identifier URL is highlighted under Properties.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image47.jpg "Copy and record the secret identifier URL")
 
-### Task 2: Create an Azure Active Directory application
+### Task 2: Azure Active Directoryアプリケーションの作成
 
-1. In the Azure Portal, select **Azure Active Directory**, then select **App registrations**.
+1. Azure Portalで、**Azure Active Directory**を選択し、**アプリの登録**を選択します。
 
     ![Azure Active Directory is highlighted on the left side of the Azure portal, and App registrations is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image48-1.jpg "Select App registrations")
     ![Azure Active Directory is highlighted on the left side of the Azure portal, and App registrations is highlighted on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image48-2.jpg "Select App registrations")
 
-2. Select **+ 新規登録**.
+2. **+ 新規登録** を選択します。
 
 3. For the user-facing display name, type **AzureKeyVaultTest**.
 
-4. For the supported accounts, select **Accounts in this organization directory only...**
+4. 対応しているアカウントについては、**この組織ディレクトリ内のみに含まれるアカウント...**を選択します。
 
 5. For the Redirect URL, type <http://localhost:12345>.
 
     ![AzureKeyVaultTest is entered in the Name box, and http://localhost:12345 is entered in the Sign-on URL box under Create.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image49.jpg "Create a new application registration")
 
-6. Select **登録**.
+6. **登録**を選択します。
 
-7. Copy and record the **Application ID** for later use.
+7. **アプリケーションID**をコピーして記録します。
 
     ![The Application ID and Object ID are highlighted under Essentials for the AzureKeyVaultTest application, and All settings is selected at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image50.jpg "Copy and record the Application ID and Object ID")
 
-8. In the left menu pane, under the **管理** heading, select **証明書とシークレット** link.
+8. 左側のメニューペインの**管理**の見出しの下で、**証明書とシークレット**リンクを選択します。
 
-9. Under **クライアントシークレット**, select **新しいクライアントシークレット**.
+9. **クライアントシークレット**の下の **新しいクライアントシークレット**を選択します。
 
     ![In the Certificates and secrets window, the New client secret button is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image50-2.jpg "New Client Secret")
 
-10. For the 説明, enter **InsuranceAPI**.
+10. 説明には **InsuranceAPI** と入力します。
 
-11. For the Expires, select **12 か月**.
+11. Expiresは**12ヶ月**を選択。
 
-12. Select **追加**.
+12. **追加**を選択します。
 
-13. Copy and record the key value for later use.
+13. キーの値をコピーして記録し、後で使用できるようにします。
 
-### Task 3: Assign Azure Active Directory application permissions
+### Task 3: Azure Active Directoryのアプリケーション権限の割り当て
 
-1. Switch back to Azure Portal and select your Azure Key Vault.
+1. Azure Portal に戻って、Azure Key Vault を選択します。
 
-2. Under the **設定** heading, select **アクセス ポリシー**.
+2. **設定**の項目で **アクセス ポリシー**を選択します。
 
-3. Select **+ アクセス ポリシーの追加**.
+3. **+ アクセス ポリシーの追加**を選択します。
 
     ![In the Access policies screen, the + Add Access Policy button is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image51.jpg "Add a new access policy")
 
-4. Choose **Select principal** field value. In the right-hand pane, type **AzureKeyVaultTest**. Select the item.
+4. **プリンシパルの選択**フィールドの値を選択します。右側のペインで、**AzureKeyVaultTest** と入力します。項目を選択します。
 
-5. Choose the **Select** button at the bottom.
+5. 下部にある**選択**ボタンを選択します。
 
-6. Select the **シークレットのアクセス許可** drop-down, check the **取得** and **一覧** permissions.
+6. **シークレットのアクセス許可**のドロップダウンを選択し、**取得**と**一覧**のパーミッションをチェックします。
 
     ![In the secret permissions drop down options, the Get and List operations are selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image52-0.jpg "Configure Select principal settings")
- "Secret Permission Options")
 
-    Your selection summary should look like this.
+    選択肢は以下のようになります。
 
     ![The AzureKeyVaultTest principal is selected and the secret permissions drop down list states there are two selected values.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image52.jpg "Configure Select principal settings")
 
-7. Select **追加** button.
+7. **追加**ボタンを選択します。
 
-8. Select **保存** button at the top.
+8. 上部の**保存**ボタンを選択します。
 
-### Task 4: Install or verify NuGet Package
+### Task 4: NuGetパッケージのインストールまたは検証
 
-1. Close the previous Visual Studio solution, then from the extracted GitHub directory, open the **\\Hands-on lab\\WebApp\\InsuranceAPI\_KeyVault\\InsuranceAPI.sln** solution.
+1. 先ほどの Visual Studio ソリューションを終了し、解凍した GitHub ディレクトリから、 **\Hands-on lab\WebApp\InsuranceAPI\_KeyVault\InsuranceAPI.sln** ソリューションを開きます。
 
-    >**Note**:  Be sure you re-open the correct solution.
+    >**Note**:  必ず正しいソリューションを開き直してください。
 
     ![The screenshot displays the folder structure for both Visual Studio solutions.](media/2019-12-19-13-13-07.png "Both InsuranceAPI Solutions")
 
-2. Switch to **Visual Studio**.
+2. **Visual Studio**に切り替えます。
 
-3. In the menu, select **表示-\>その他のウインドウ-\>パッケージ マネージャー コンソール**.
+3. メニューの中の、**表示-\>その他のウインドウ-\>パッケージ マネージャー コンソール**を選択します。
 
-4. In the new window that opens, run the following commands:
+4. 開いた新しいウィンドウで、以下のコマンドを実行します。
 
     ```PowerShell
     Install-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform
@@ -567,91 +567,91 @@ In this exercise, attendees will learn how to migrate web application to utilize
     Install-Package Microsoft.Azure.KeyVault
     ```
 
-    > **Note**: These already exist in the project but are provided as a reference. If you receive a codedom version error when you debug, run this command.
+    > **Note**: これらはすでにプロジェクト内に存在していますが、参照用として提供されています。デバッグ時にcodedomバージョンエラーが発生する場合は、このコマンドを実行してください。
 
     ```PowerShell
     Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
     ```
 
-5. From **Solution Explorer**, double-click the **Web.config** file to open it.
+5. **ソリューションエクスプローラー**から、**Web.config**ファイルをダブルクリックして開きます。
 
-    Notice the **appSettings** section has some token values:
+    **appSettings**セクションには、いくつかのトークン値があることに注目してください。
 
     ![Some token values are highlighted in the appSettings section of the Web.config file.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image53.png "Note the token values")
 
-6. Replace the **ApplicationId** (**ClientId**) and **ClientSecret** with the values from Task 2.
+6. **ApplicationID**(**ClientID**)と**ClientSecret**をTask 2の値に置き換えてください。
 
     ![The pane is displaying the Application Registration information. ApplicationId is circled.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54-0.jpg "Applicaiton Registration")
 
-7. Replace the **SecretUri** with the Azure Key Vault secret key Uri from Task 1.
+7. **SecretUri**をTask 1のAzure Key VaultのシークレットキーUriに置き換えます。
 
-8. Save the Web.config file in Visual Studio.
+8. Visual StudioでWeb.configファイルを保存します。
 
-    > **Note**:  You can take this lab a step further and publish the Web App to an Azure App Service  and enable [System-assigned Managed Identities](https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity?tabs=dotnet).  This will allow you to completely remove any authentication from your configurations and utilize [Key Vault references](https://docs.microsoft.com/en-us/azure/app-service/app-service-key-vault-references).
+    > **Note**:  このラボを一歩進めて、Web App を Azure App Service に公開し、[システム割り当て マネージドID](https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet)を有効にすることができます。  これにより、設定から認証を完全に取り除き、[Key Vault 参照](https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references)を利用することができます。
 
-### Task 5: Test the solution
+### Task 5: ソリューションのテスト
 
-1. Open the **Web.config**, and comment out or delete the **connectionString** from the file at line 78.
+1. **Web.config**を開き、78行目の**connectionString**をコメントアウトまたは削除します。
 
-2. Open the **Global.asax.cs** file, and place a break point at line 28.
+2. **Global.asax.cs** ファイルを開き、28行目にブレークポイントを置きます。
 
-    > **Note**: This code makes a call to get an accessToken as the application you set up above, then make a call to the Azure Key Vault using that accessToken.
+    > **Note**: このコードでは、上記で設定したアプリケーションのアクセストークンを取得するための呼び出しを行い、そのアクセストークンを使ってAzure Key Vaultを呼び出しています。
 
-3. Press **F5** to run the solution.
+3. **F5**を押して、ソリューションを実行します。
 
-    You should see that you execute a call to Azure Key Vault and get back the secret (which in this case is the connection string to the Azure Database).
+    Azure Key Vaultへの呼び出しが実行され、シークレット（ここではAzure Databaseへの接続文字列）が返されているのがわかるはずです。
 
     ![The connection string to the Azure Database is visible through the Visual Studio debugger.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54.png "View the connection string")
 
-4. Press **F5** to continue the program.
+4. **F5**を押して、プログラムを続行します。
 
-5. Navigate to [http://localhost:portno/api/Users](http://localhost:portno/api/Users), you should get an error. Because you encrypted the column in the previous exercise, EntityFramework is not able to retrieve the value(s) using default settings. In order to do seamless decryption, you would need to:
+5. [http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートすると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。
+    - まだ実行していない場合は、**\\Hands-on lab\\Database\\02\_PermissionSetup.sql**スクリプトを実行してください。
 
-    - Run the **\\Hands-on lab\\Database\\02\_PermissionSetup.sql** script if you have not already done so.
+    - プロジェクトに[AzureKeyVaultProvider for Entity Framework](https://blogs.msdn.microsoft.com/sqlsecurity/2015/11/10/using-the-azure-key-vault-key-store-provider-for-always-encrypted/)の参照を追加します。
 
-    - Add the [AzureKeyVaultProvider for Entity Framework](https://blogs.msdn.microsoft.com/sqlsecurity/2015/11/10/using-the-azure-key-vault-key-store-provider-for-always-encrypted/) reference to the project.
-
-    - Register the provider code in order for .NET to handle the encrypted column.
+    - .NETで暗号化されたカラムを処理するために、プロバイダコードを登録します。
   
-    - Add an access policy to the Azure Key Vault that gives key permissions (`decrypt`, `sign`, `get`, `unwrapkey`, `verify`) to the Azure AD application.
+    - Azure Key Vault に、Azure AD アプリケーションにキーのパーミッション（`decrypt`、`sign`、`get`、`unwrapkey`、`verify`）を与えるアクセスポリシーを追加します。
 
-    - Add the `Column Encryption Setting=Enabled` to the connection string.
+    - 接続文字列に`Column Encryption Setting=Enabled`を追加します。
 
-    - Detailed steps can be found in this [blog post](https://docs.microsoft.com/en-us/archive/blogs/sqlsecurity/using-the-azure-key-vault-key-store-provider-for-always-encrypted)
+    - 詳しい手順はこちらの[ブログ記事](https://docs.microsoft.com/en-us/archive/blogs/sqlsecurity/using-the-azure-key-vault-key-store-provider-for-always-encrypted)をご覧ください。
 
-    - A third solution (**\\Hands-on lab\\WebApp\\InsuranceAPI\_KeyVault\_Encrypted\\InsuranceAPI.sln**) was added to the GitHub repo that has the necessary references and code added.  
+    - 3つ目のソリューション（**\\Hands-on lab\\WebApp\\InsuranceAPI\_KeyVault\_Encrypted\\InsuranceAPI.sln**）は、GitHub repoに必要なリファレンスとコードが追加されています。 
+
   
-      - Simply update the web.config file with your client id and secret after adding the required Key Vault permissions above.
+      - 上記の Key Vault パーミッションを追加した後、クライアント ID とシークレットで web.config ファイルを更新してください。
   
-      - Update the Key Vault connection string to have the `Column Encryption Setting=Enabled`.
+      - Key Vaultの接続文字列を更新して、`Column Encryption Setting=Enabled`とします。
 
-      - Review the code added to the global.asax.cs file.
+      - global.asax.csファイルに追加されたコードを確認します。
 
-      - Run the project and navigate to the above page.
+      - プロジェクトを実行し、上記のページに移動します。
 
-## Exercise 4: Securing the network
+## Exercise 4: ネットワークの保護
 
 Duration: 45 minutes
 
-In this exercise, attendees will utilize Network Security Groups to ensure that virtual machines are segregated from other Azure hosted services and then explore the usage of the Network Packet Capture feature of Azure to actively monitor traffic between networks.
+この演習では、ネットワークセキュリティグループを利用して、仮想マシンが他のAzureホストサービスから分離されていることを確認した後、Azureのネットワークパケットキャプチャ機能を使用して、ネットワーク間のトラフィックを積極的に監視します。
 
-### Task 1: Test network security group rules \#1
+### Task 1: ネットワークセキュリティのグループルールのテスト \#1
 
-1. In the Azure Portal, select **Virtual Machines**.
+1. Azureポータルで、**Virtual Machines**を選択します。
 
-2. Select **paw-1**, then select **Connect**.  
+2. **paw-1**を選択し、**接続**を選択します。 
 
-3. In the dialog, select **Download RDP file Anyway**.  Open the downloaded RDP file and connect to the Virtual Machine.
+3. ダイアログが表示されますので、「**Download RDP file Anyway**」を選択します。 ダウンロードしたRDPファイルを開き、仮想マシンに接続します。
 
-    > **Note**: Default username is **wsadmin** with **p\@ssword1rocks** as password and you may need to request JIT Access if you have taken a break between exercises.
+    > **Note**: デフォルトのユーザー名は **wsadmin** 、パスワードは **p\@ssword1rocks** です。演習の合間に休憩を取った場合は、JITアクセスを要求する必要があります。
 
-4. In the **paw-1** virtual machine, open **Windows PowerShell ISE** as **administrator**.
+4. **paw-1**の仮想マシンで、**administrator**として**Windows PowerShell ISE**を開きます。
 
-    - Select the **Windows** icon.
+    - **Windows**のアイコンを選択します。
 
-    - Right-click **Windows PowerShell ISE**, choose **More**, then select **Run as Administrator**.
+    - **Windows PowerShell ISE**を右クリックし、**More**を選択し、**Run as Administrator**を選択します。
 
-5. Copy and run the following command:
+5. 以下のコマンドをコピーして実行します。
 
     ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
@@ -659,175 +659,175 @@ In this exercise, attendees will utilize Network Security Groups to ensure that 
 
     ![The PowerShell ISE window displays the execution policy change command.](media/2020-01-12-12-39-24.png "PowerShell")
 
-6. In the dialog, select **Yes**.
+6. ダイアログでは、**Yes**を選択します。
 
-7. Select **File-\>Open**, browse to the extracted GitHub directory and open the **\\Hands-on lab\\Scripts\\PortScanner.ps1**.
+7. **File->Open**を選択し、解凍したGitHubのディレクトリを参照して、**\Hands-on lab\Scripts\PortScanner.ps1**を開きます。
 
-    > **Note**: You would have downloaded the [GitHub repo](https://github.com/Microsoft/MCW-Azure-Security-Privacy-and-Compliance) and extracted this in the setup steps.  If you did not perform those steps, perform them now. You can also choose to copy the file from your desktop to the VM.
+    > **Note**: 事前準備で、[GitHub repo](https://github.com/Microsoft/MCW-Azure-Security-Privacy-and-Compliance)をダウンロードして、セットアップの手順でこれを展開したと思います。 これらの手順を実行していない場合は、今すぐ実行してください。また、デスクトップからVMにファイルをコピーすることもできます。
 
-8. Review the script. Notice that it does the following for various exercises:
+8. スクリプトを確認します。このスクリプトでは、様々な練習問題に対して以下のことが行われていることに注目してください。
 
-   - Installs Putty
+   - Putty をインストールします。
 
-   - Installs NotePad++
+   - NotePad++ をインストールします。
 
-   - Adds hosts entries for DNS
+   - DNS用のHostsエントリーを追加
 
-   > **Note**: When using multiple virtual networks, you must setup a DNS server in the Azure tenant.
+   > **Note**: 複数の仮想ネットワークを使用する場合は、Azure テナントに DNS サーバーを設定する必要があります。
 
-   - Executes port scans
+   - ポートスキャンの実行
 
-   - Executes brute force SSH attack
+   - ブルートフォースSSH攻撃の実行
 
-9. Press **F5** to run the script for exercise 4. You should see the following:
+9. **F5**を押して Exercise 4のスクリプトを実行します。以下のように表示されるはずです。
 
-    > **Note**:  The ARM template deploys a Deny All rule.  If you were to simply create a Network Security Group from the UI, you would not experience this behavior.
+    > **Note**:  ARMテンプレートでは、Deny Allルールを展開します。 単にUIからネットワークセキュリティグループを作成しただけでは、このような動作は発生しません。
 
-    - Port scan for port 3389 (RDP) to **db-1** and **web-1** is unsuccessful from the **paw-1** machine.
+    - **paw-1**マシンから**db-1**および**web-1**への3389番ポート(RDP)のポートスキャンが失敗しました。
 
-    - The information above for port 3389 (RDP) is visible after running the script and pressing **F5**.
+    - 上記のポート3389（RDP）の情報は、スクリプトを実行して**F5**を押すと表示されます。
 
     ![The information above for port 3389 (RDP) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image55.png)
 
-    - Port scan for port 1433 (SQL) to **db-1** and **web-1** is unsuccessful from the **paw-1** machine. **db-1** is running SQL Server but traffic is blocked at NSG and via the Windows Firewall by default, however a script ran in the ARM template to open port 1433 on the db-1 server.
+    - **paw-1**マシンから**db-1**および**web-1**へのポート1433（SQL）のポートスキャンが失敗しました。**db-1**はSQL Serverを実行していますが、トラフィックはNSGおよびWindowsファイアウォール経由でデフォルトでブロックされています。しかし、ARMテンプレート内でdb-1サーバの1433ポートを開くスクリプトが実行されました。
 
     ![The information above for port 1433 (SQL) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image56.png "View the information")
 
-    - Port scan for port 80 (HTTP) to **db-1** and **web-1** is unsuccessful from the **paw-1** machine, if traffic was allowed, it would always fail to **db-1** because it is not running IIS or any other web server.
+    - **paw-1**マシンから**db-1**および**web-1**への80番ポート（HTTP）のポートスキャンが失敗しています。トラフィックが許可されている場合、**db-1**にはIISやその他のWebサーバーが稼動していないため、常に失敗します。
 
     ![The information above for port 80 (HTTP) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image57.png)
 
-### Task 2: Configure network security groups
+### Task 2: ネットワークセキュリティグループの設定
 
-1. Switch to the [Azure Portal](https://portal.azure.com).
+1. [Azure ポータル](https://portal.azure.com)に切り替えます。
 
-2. Configure the database server to only allow SQL Connections from the web server:
+2. WebサーバーからのSQL接続のみを許可するようにデータベースサーバーを設定します。
 
-   - Select **ネットワーク セキュリティ グループ**.
+   - **ネットワーク セキュリティ グループ** を選択します。
 
-   - Select **DbTrafficOnly**.
+   - **DbTrafficOnly** を選択します。
 
-   - Select **受信セキュリティ規則**.
+   - **受信セキュリティ規則** を選択します。
 
-   - Select **+ 追加**.
+   - **+ 追加** を選択します。
 
-   - For the **ソース**, select **IP Addresses**.
+   - **ソース** に **IP Addresses** を選択します。
 
-   - For the **ソース IP アドレス**, enter **10.2.0.4**.
+   - **ソース IP アドレス**に **10.2.0.4** を入力します。
   
-   - For the **宛先**, keep **Any**.
+   - **宛先** を **Any** のままにします。
 
-   - For the **宛先ポート範囲**, enter **1433**.
+   - **宛先ポート範囲** に **1433** を入力します。
 
-   - For the **優先度**, enter **100**.
+   - **優先度** に **100** を入力します。
 
-   - For the **名前**, enter **Port_1433**.
+   - **名前** に **Port_1433** を入力します。
 
-   - Select **追加**.
+   - **追加** を選択します。
 
-   - Select **+ 追加**.
+   - **+ 追加** を選択します。
 
-   - For the **ソース**, select **IP Addresses**.
+   - **ソース** に **IP Addresses** を選択します。
 
-   - For the **ソース IP アドレス**, enter **10.0.0.5**.
+   - **ソース IP アドレス** に **10.0.0.5** を入力します。
   
-   - For the **宛先**, keep **Any**.
+   - **宛先** を **Any** のままにします。
 
-   - For the **宛先ポート範囲**, enter **1433**.
+   - **宛先ポート範囲** に **1433** を入力します。
 
-   - For the **優先度**, enter **102**.
+   - **優先度** に **102** を入力します。
 
-   - For the **名前**, enter **Port_1433_Paw**.
+   - **名前** に **Port_1433_Paw** を入力します。
 
-   - Select **追加**.
+   - **追加** を選択します。
 
-3. Configure the web server to allow all HTTP and HTTPS connections:
+3. すべてのHTTPおよびHTTPS接続を許可するようにWebサーバーを設定する。
 
-   - Select **ネットワーク セキュリティ グループ**.
+   - **ネットワーク セキュリティ グループ** を選択します。
 
-   - Select **WebTrafficOnly**.
+   - **WebTrafficOnly** を選択します。
 
-   - Select **受信セキュリティ規則**.
+   - **受信セキュリティ規則** を選択します。
 
-   - Select **+ 追加**.
+   - **+ 追加** を選択します。
 
-   - For the **ソース**, keep **Any**.
+   - **ソース** を **Any** のままにします。
 
-   - For the **宛先**, keep **Any**.
+   - **宛先** を **Any** のままにします。
 
-   - For the **宛先ポート範囲**, enter **80,443**.
+   - **宛先ポート範囲** に **80,443** を入力します。
 
-   - For the **優先度**, enter **100**.
+   - **優先度** に **100** を入力します。
 
-   - Change the **名前** to **Port\_80\_443**.
+   - **名前** を **Port\_80\_443** に変更します。
 
-   - Select **追加**.
+   - **追加** を選択します。
 
-   > **Note**: In some rare cases it may take up to 15 minutes for your Network Security Group to change its status from **Updating**.  You won't be able to add any other rules until it completes.
+   > **Note**: まれに、ネットワークセキュリティグループのステータスが**更新中**から変更されるまでに15分程度かかる場合があります。 この変更が完了するまで、他のルールを追加することはできません。
 
-4. Configure both the database and web server to only allow RDP connections from the PAW machine:
+4. データベースとWebサーバーの両方で、PAWマシンからのRDP接続のみを許可するように設定します。
 
-    - Select **ネットワーク セキュリティ グループ**. For both the **DbTrafficOnly** and **WebTrafficOnly**, do the following:
+    - **ネットワーク セキュリティ グループ**を選択します。**DbTrafficOnly** と **WebTrafficOnly** の両方について、以下の操作を行います。
 
-       - Select **受信セキュリティ規則**.
+       - **受信セキュリティ規則** を選択します。
 
-       - Select **+ 追加**.
+       - **+ 追加** を選択します。
 
-       - For the **ソース**, select **IP Addresses**.
+       - **ソース** に **IP Addresses** を選択します。
 
-       - For the **ソース IP アドレス**, enter **10.0.0.5**.
+       - **ソース IP アドレス** に **10.0.0.5** を入力します。
 
-       - For the **宛先ポート範囲**, enter **3389**.
+       - **宛先ポート範囲** に **3389** を入力します。
 
-       - For the **優先度**, enter **101**.
+       - **優先度** に **101** を入力します。
 
-       - For the **名前**, enter **Port_3389**.
+       - **名前** に **Port_3389** を入力します。
 
-       - Select **追加**.
+       - **追加** を選択します。
 
-5. Configure all Network Security Groups to have Diagnostic logs enabled.
+5. すべてのネットワークセキュリティグループの診断ログを有効にする。
 
-    - Select **ネットワーク セキュリティ グループ**. For each NSG (DBTrafficOnly and WebTrafficOnly), do the following:
+    - **ネットワーク セキュリティ グループ** を選択します。 各NSG（DBTrafficOnly、WebTrafficOnly）について、以下を行います。
 
-       - In the content menu, select **診断設定**, and then select **+ 診断設定を追加する**.
+       - コンテンツメニューで**診断設定** を選択し、**+ 診断設定を追加する** を選択します。
 
         ![Diagnostics settings is selected under Monitoring on the left side, and Add diagnostics settings is selected on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image58.jpg "Add diagnostic settings")
 
-      - For the name, enter the NSG name and then add **Logging** to the end.
+      - 名前にはNSGの名前を入力し、最後に**Logging**を付けます。
 
-      - Check the **Log Analytics ワークスペースへの送信** checkbox, in the **Log Analytics** box, select **Configure**.
+      - **Log Analytics ワークスペースへの送信** チェックボックスをチェックし、**Log Analytics**ボックスで、**Configure**を選択します。
 
-      - Select the **azseclog...** workspace.
+      - ワークスペースの**azseclog...**を選択します。
 
-      - Select both LOG checkboxes.
+      - LOGのチェックボックスを両方とも選択します。
 
-      - Select **保存**.
+      - **保存** を選択します。
 
        ![Save is highlighted at the top, and two log items are selected below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image60.jpg "Save the logs")
 
-### Task 3: Test network security group rules \#2
+### Task 3: ネットワークセキュリティのグループルールのテスト \#2
 
-1. Switch back to the **paw-1** virtual machine.
+1. **paw-1**の仮想マシンに切り替えます。
 
-2. Press **F5** to run the **PortScan** script. You should see the following:
+2. **F5** を押して、**PortScan**スクリプトを実行します。以下のように表示されるはずです。
 
-    - Port scan for port 3389 (RDP) to **db-1** and **web-1** is successful from the **paw-1** machine.
+    - **paw-1**マシンから**db-1**および**web-1**への3389番ポート（RDP）のポートスキャンに成功しました。
 
     ![The information above for port 3389 (RDP) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image61.png "View the information")
 
-    - Port scan for port 1433 (SQL) to **db-1** is successful, and **web-1** is unsuccessful from the **paw-1** machine.
+    - paw-1**マシンから**db-1**への1433番ポート（SQL）のポートスキャンは成功し、**web-1**は失敗しています。
 
-    > **Note**: If the ARM script failed, you may need to disable the windows firewall on the db-1 server to achieve this result.
+    > **Note**: ARMスクリプトが失敗した場合、この結果を得るためには、db-1サーバーのWindowsファイアウォールを無効にする必要があるかもしれません。
 
     ![The information above for port 1433 (SQL) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image62.png "View the information")
 
-    - **Note**: The ARM Template installed IIS on web-1, the port scan for port 80 (HTTP) to **web-1** is successful from the **paw-1** machine, however to **db-1** is unsuccessful as it is not running IIS.
+    - **Note**: ARMテンプレートは、web-1にIISをインストールしました。**paw-1**マシンから**web-1**への80番ポート（HTTP）のポートスキャンは成功しましたが、**db-1**にはIISが動作していないため失敗しました。
 
     ![The information above for port 80 (HTTP) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image63.png "View the information")
 
-### Task 4: Install network watcher VM extension
+### Task 4: ネットワークウォッチャーVM拡張機能のインストール
 
-1. Switch to the Azure Portal.
+1. Azureポータルに切り替えます。
 
 2. Select **Virtual Machines**.
 
@@ -1042,7 +1042,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 ### Task 5: Adaptive Application Controls
 
-1. Switch to the Azure Portal.
+1. Azureポータルに切り替えます。
 
 2. Select **Azure Security Center**.
 
@@ -1064,7 +1064,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 ### Task 6: File Integrity Monitoring
 
-1. Switch to the Azure Portal.
+1. Azureポータルに切り替えます。
 
 2. Select Azure Security Center.
 
@@ -1129,7 +1129,7 @@ Azure Security Center provides several advanced security and threat detection ab
 
 ### Task 7: Disk encryption
 
-1. Switch to the Azure Portal.
+1. Azureポータルに切り替えます。
 
 2. Browse to your resource group.
 
