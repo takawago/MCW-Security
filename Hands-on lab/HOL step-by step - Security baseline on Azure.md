@@ -44,7 +44,7 @@ July 2021
     - [Task 1: Linux VMとMicrosoft Monitoring Agent（MMA）のインストール](#task-1-linux-vmとmicrosoft-monitoring-agentmmaのインストール)
     - [Task 2: ブルートフォースアタックの実行](#task-2-ブルートフォースアタックの実行)
     - [Task 3: 変更追跡と更新管理を有効にする](#task-3-変更追跡と更新管理を有効にする)
-    - [Task 4：MMA構成の見直し](#task-4mma構成の見直し)
+    - [Task 4: MMA構成の見直し](#task-4-mma構成の見直し)
     - [Task 5: 適応型アプリケーション制御](#task-5-適応型アプリケーション制御)
     - [Task 6: ファイル整合性の監視](#task-6-ファイル整合性の監視)
     - [Task 7: ディスクの暗号化](#task-7-ディスクの暗号化)
@@ -1017,7 +1017,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
 23. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
 
-### Task 4：MMA構成の見直し
+### Task 4: MMA構成の見直し
 
 1. リモートデスクトップ接続で、**paw-1**に切り替えます。
 
