@@ -1,37 +1,26 @@
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Security baseline on Azure
+Azure セキュリティ ベースライン
 </div>
 
 <div class="MCWHeader2">
-Hands-on lab step-by-step
+ハンズオン ラボ ステップ バイ ステップ
 </div>
 
 <div class="MCWHeader3">
-July 2020
+July 2021
 </div>
 
-Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
-
-Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
-
-The names of manufacturers, products, or URLs are provided for informational purposes only, and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third-party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
-
-© 2020 Microsoft Corporation. All rights reserved.
-
-Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are the property of their respective owners.
-
-**Contents**
-
-
-- [Security baseline on Azure hands-on lab step-by-step](#security-baseline-on-azure-hands-on-lab-step-by-step)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+# **コンテンツ**
+- [**コンテンツ**](#コンテンツ)
+- [Azure セキュリティ ベースライン hands-on lab step-by-step](#azure-セキュリティ-ベースライン-hands-on-lab-step-by-step)
+  - [概要と学習目標](#概要と学習目標)
   - [Overview](#overview)
-  - [Solution architecture](#solution-architecture)
-  - [Requirements](#requirements)
-  - [Exercise 1: Implementing Just-in-Time (JIT) access](#exercise-1-implementing-just-in-time-jit-access)
-    - [Task 1: Setup virtual machine with JIT](#task-1-setup-virtual-machine-with-jit)
+  - [ソリューション アーキテクチャー](#ソリューション-アーキテクチャー)
+  - [必要条件](#必要条件)
+  - [Exercise 1: Just-in-Time（JIT）アクセスの導入](#exercise-1-just-in-timejitアクセスの導入)
+    - [Task 1: JITによる仮想マシンのセットアップ](#task-1-jitによる仮想マシンのセットアップ)
     - [Task 2: Perform a JIT request](#task-2-perform-a-jit-request)
   - [Exercise 2: Securing the Web Application and database](#exercise-2-securing-the-web-application-and-database)
     - [Task 1: Setup the database](#task-1-setup-the-database)
@@ -78,73 +67,71 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 
 
+# Azure セキュリティ ベースライン hands-on lab step-by-step
 
+## 概要と学習目標
 
-# Security baseline on Azure hands-on lab step-by-step
+この実習では、Azure Security Center の機能の多くを実装して、クラウドベースの Azure インフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護します。具体的には、インターネットに公開されているリソースが適切に保護されていること、必要のないインターネットアクセスが無効になっていることを確認します。さらに、アプリケーション・セキュリティを有効にしている管理者のために「ジャンプ・マシン」を導入し、管理者が承認されていないソフトウェアをインストールして、クラウド・リソースを公開することを防ぎます。さらに、カスタムアラートを利用してTCP/IPポートスキャンを監視し、アラートを発するようにします。
 
-## Abstract and learning objectives
-
-In this hands-on lab, you will implement many of the Azure Security Center features to secure their cloud-based Azure infrastructure (IaaS) and applications (PaaS). Specifically, you will ensure that any internet exposed resources have been properly secured and any non-required internet access disabled. Additionally, you will implement a “jump machine” for administrators with Application Security enabled to prevent those same administrators from installing non-approved software and potentially exposing cloud resources. You will then utilize custom alerts to monitor for TCP/IP Port Scans to fire alerts.
-
-At the end of this hands-on lab, you will be better able to design and build secure cloud-based architectures, and to improve the security of existing applications hosted within Azure.
+この実習では、安全なクラウドベースのアーキテクチャを設計・構築したり、Azureでホストされている既存のアプリケーションのセキュリティを向上させたりすることができるようになります。
 
 ## Overview
 
-Contoso is a multinational corporation, headquartered in the United States that provides insurance solutions worldwide. Its products include accident and health insurance, life insurance, travel, home, and auto coverage. Contoso manages data collection services by sending mobile agents directly to the insured to gather information as part of the data collection process for claims from an insured individual. These mobile agents are based all over the world and are residents of the region in which they work. Mobile agents are managed remotely, and each regional corporate office has a support staff responsible for scheduling their time based on requests that arrive to the system.
+Contosoは、米国に本社を置く多国籍企業で、世界中に保険ソリューションを提供しています。その商品は、傷害保険、健康保険、生命保険、旅行保険、住宅保険、自動車保険などです。Contoso社は、被保険者からの請求に対するデータ収集プロセスの一環として、被保険者に直接モバイルエージェントを派遣して情報を収集するデータ収集サービスを管理しています。これらのモバイルエージェントは、世界中に拠点があり、活動する地域の住民である。モバイルエージェントは遠隔地で管理されており、各地域のコーポレートオフィスには、システムに届いたリクエストに基づいてモバイルエージェントの時間をスケジューリングするサポートスタッフがいます。
 
-They are migrating many of their applications via Lift and Shift to Azure and would like to ensure that they can implement the same type of security controls and mechanisms they currently have. They would like to be able to demonstrate their ability to meet compliance guidelines required in the various countries/regions they do business. They have already migrated a web application and database server to their Azure instance and would like to enable various logging and security best practices for administrator logins, SQL Databases, and virtual network design.
+同社は、Lift and Shiftを介して多くのアプリケーションをAzureに移行しており、現在行っているのと同じ種類のセキュリティ制御とメカニズムを確実に実装したいと考えています。また、ビジネスを展開している様々な国や地域で要求されるコンプライアンス・ガイドラインを満たす能力があることを証明したいと考えています。すでにWebアプリケーションとデータベースサーバーをAzureインスタンスに移行しており、管理者ログイン、SQLデータベース、仮想ネットワーク設計のための様々なロギングとセキュリティのベストプラクティスを有効にしたいと考えています。
 
-## Solution architecture
+## ソリューション アーキテクチャー
 
-Contoso administrators recently learned about the Azure Security Center and have decided to implement many of its features to secure their cloud-based Azure infrastructure (IaaS) and applications (PaaS). Specifically, they want to ensure that any internet exposed resources have been property secured and any non-required internet access disabled. They also decided that implementing a "jump machine" for admins with Application Security was also important as they have had instances of admins installing non-approved software on their machines and then accessing cloud resources. Additionally, they want the ability to be alerted when TCP/IP Port Scans are detected, and fire alerts based on those attacks.
+Contoso社の管理者は、最近Azure Security Centerを知り、クラウドベースのAzureインフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護するために、その機能の多くを導入することにしました。具体的には、インターネットに接続されているすべてのリソースのセキュリティを確保し、必要のないインターネットアクセスを無効にすることを目的としています。また、管理者が自分のマシンに承認されていないソフトウェアをインストールして、クラウドのリソースにアクセスしてしまうケースがあったため、アプリケーション・セキュリティを備えた管理者用の「ジャンプ・マシン」の導入も重要だと考えました。さらに、TCP/IPポートスキャンが検出されたときにアラートを出し、その攻撃に基づいて警告を発する機能も必要だという。
 
 ![This diagram shows external access to Azure resources where Just In Time is utilize to lock down the Jump Machine. Azure Log Analytics with Azure Sentinel is then used to monitor the deny events on the network security groups.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image2.png)
 
-The solution begins by creating a jump machine. This jump machine is used to access the virtual machines and other resources in the resource group. All other access is disabled via multiple **virtual networks**. More than one virtual network is required as having a single **virtual network** would cause all resource to be accessible based on the default currently un-customizable security group rules. Resources are organized into these virtual networks. **Azure Center Security** is utilized to do **Just-In-Time** access to the jump machine. This ensures that all access is audited to the jump machine and that only authorized IP-addressed are allowed access, this prevents random attacks on the virtual machines from bad internet actors. Additionally, applications are not allowed to be installed on the jump machine to ensure that malware never becomes an issue. Each of the virtual network and corresponding **network security groups** have logging enabled to record deny events to **Azure Logging**. These events are then monitored by a **custom alert rule** in **Azure Sentinel** to fire **custom alerts**. Once the solution is in place, the **Compliance Manager** tool is utilized to ensure that all GDPR based technical and business controls are implemented and maintained to ensure GDPR compliance.
+このソリューションでは、まず、ジャンプマシンを作成します。このジャンプマシンは、リソースグループ内の仮想マシンやその他のリソースにアクセスするために使用されます。その他のアクセスは、複数の**仮想ネットワーク**を介して無効にします。1つの**仮想ネットワーク**を使用すると、現在カスタマイズできないデフォルトのセキュリティグループルールに基づいてすべてのリソースにアクセスできるようになるため、複数の仮想ネットワークが必要です。リソースはこれらの仮想ネットワークに編成されます。**Azure Security Center**は、ジャンプマシンへの**Just-In-Time**アクセスを行うために利用されます。これにより、ジャンプマシンへのすべてのアクセスが監査され、許可されたIPアドレスのみがアクセスを許可されていることが保証されます。また、ジャンプマシンにアプリケーションをインストールすることはできませんので、マルウェアが問題になることはありません。それぞれの仮想ネットワークとそれに対応する**ネットワークセキュリティグループ**は、**Azure Logging**に拒否イベントを記録するためにログを有効にしています。これらのイベントは、**Azure Sentinel**の**カスタム アラート ルール**によって監視され、**カスタム アラート**が発せられます。ソリューションが導入されると、**Compliance Manager**ツールが利用され、GDPRに基づいたすべての技術的およびビジネス的なコントロールが実装され、GDPRのコンプライアンスを確保するために維持されます。
 
-## Requirements
 
-1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
+## 必要条件
 
-    - Trial subscriptions will not work.
+1. Microsoft Azureのサブスクリプションが従量制であること、またはMSDNであること。
 
-2. A machine with the following software installed:
+    - トライアルサブスクリプションは使えません。
+
+2. 以下のソフトウェアがインストールされたマシン:
 
     - Visual Studio 2019
     - SQL Management Studio
     - Power BI Desktop
 
-## Exercise 1: Implementing Just-in-Time (JIT) access
+## Exercise 1: Just-in-Time（JIT）アクセスの導入
 
 Duration: 15 minutes
 
-In this exercise, attendees will secure a Privileged Access Workstation (PAW) workstation using the Azure Security Center Just-in-Time Access feature.
+この演習では、Azure Security Center の Just-in-Time アクセス 機能を使用して、Privileged Access Workstation (PAW) ワークステーションを保護します。
 
-### Task 1: Setup virtual machine with JIT
+### Task 1: JITによる仮想マシンのセットアップ
 
-1. In a browser, navigate to your Azure portal (<https://portal.azure.com>).
+1. ブラウザで、Azureポータルに移動します。 (<https://portal.azure.com>).
 
-2. Select **Security Center,** then under **ADVANCED CLOUD DEFENSE** select **Just in time VM access**.
+2. **セキュリティ センター** を選択、 **クラウド セキュリティ** の下の、**Just in time VM アクセス** を選択。
 
     ![Security Center is highlighted on the left side of the Azure portal, and Just in time VM access is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image9.jpg "Security Center VM Access")
     ![Security Center is highlighted on the left side of the Azure portal, and Just in time VM access is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image9-2.jpg "Security Center VM Access")
 
     ![Security Center is highlighted on the left side of the Azure portal, and Just in time VM access is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image9-3.jpg "Security Center VM Access")
 
-    > **Note**: Your subscription may not be set up with the **Standard** tier; if that is the case then do the following:
+    > **Note**: お客様のサブスクリプションが**標準**レベルに設定されていない可能性があります。その場合、以下のようにしてください。:
 
-   - In the **Security Center** blade, select **Pricing & settings**.
-   - Select your subscription.
-   - Select **Pricing Tier**.
-   - Select **Standard**.
-   - Select **Save**.
-   - Navigate back to Security Center, select **Just in time VM access**.
+   - **セキュリティ センター**ブレードで、**価格と設定**を選択します。
+   - ご利用のサブスクリプションを選択します。
+   - **Azure Defender オン**を選択します。
+   - 有効にするプランを**オン**にします。
+   - セキュリティセンターに戻り、**Just in time VM アクセス**を選択します。
 
-3. Select the **Configured** tab, and verify the lab VMs (db-1, paw-1 and web-1) are displayed.  If not, select the **Recommended** tab, and then check the checkbox to select the lab VMs (db-1, paw-1 and web-1), and then select the **Enable JIT on 3 VMs** link.
+3. **構成済み**タブを選択し、Lab VMs（db-1、paw-1、web-1）が表示されていることを確認します。 表示されていない場合は、**構成されていません**タブを選択し、ラボVM（db-1、paw-1、web-1）を選択するチェックボックスをオンにして、**Enable JIT on 3 VMs**リンクを選択します。
 
     ![In the Virtual machines list, the Recommended tab is selected and the db-1, paw-1 and web-1 virtual machines are selected for Just-in-time access.](media/2019-12-18-16-08-30.png "Virtual Machines Selected")
 
-    > **Note**: It could take up to 10 minutes for new VMs to show up if you upgraded to standard tier security.  Also note that it is possible new VMs display in the **No recommendation** tab until a backend process moves them to the **Recommended** tab.  In you find the VMs do not show up after 10 minutes, you can manually enable JIT by choosing the **Configuration** tab in the VMs configuration blade and then **Enable JIT Access**.
+    > **Note**: Azure Defenderにアップグレードした場合、新しいVMが表示されるまでに最大で10分かかることがあります。 また、バックエンドプロセスによって新しいVMが**サポートなし**タブに移動するまで、新しいVMが**構成されていません**タブに表示される可能性があることに注意してください。 10分経ってもVMが表示されない場合は、VMブレードの**構成**タブを選択し、**Just-in-Timeを有効にする**ことで、手動でJITを有効にすることができます。
 
     ![Configuration and Enable JIT Access is highlighted in the Azure portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image119.jpg "Enable JIT")
 
@@ -1579,3 +1566,14 @@ In this exercise, attendees will un-provision any Azure resources that were crea
 1. If you are using a hosted platform, make sure you shut it down or delete it.
 
 You should follow all steps provided *after* attending the Hands-on lab.
+
+---
+Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
+
+Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
+
+The names of manufacturers, products, or URLs are provided for informational purposes only, and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third-party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
+© 2020 Microsoft Corporation. All rights reserved.
+
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are the property of their respective owners.
