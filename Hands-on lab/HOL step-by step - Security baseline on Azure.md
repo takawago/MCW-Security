@@ -44,12 +44,12 @@ July 2021
     - [Task 1: Linux VMとMicrosoft Monitoring Agent（MMA）のインストール](#task-1-linux-vmとmicrosoft-monitoring-agentmmaのインストール)
     - [Task 2: ブルートフォースアタックの実行](#task-2-ブルートフォースアタックの実行)
     - [Task 3: 変更追跡と更新管理を有効にする](#task-3-変更追跡と更新管理を有効にする)
-    - [Task 4: Review MMA configuration](#task-4-review-mma-configuration)
-    - [Task 5: Adaptive Application Controls](#task-5-adaptive-application-controls)
-    - [Task 6: File Integrity Monitoring](#task-6-file-integrity-monitoring)
-    - [Task 7: Disk encryption](#task-7-disk-encryption)
-  - [Exercise 6: Azure Sentinel logging and reporting](#exercise-6-azure-sentinel-logging-and-reporting)
-    - [Task 1: Create a dashboard](#task-1-create-a-dashboard)
+    - [Task 4：MMA構成の見直し](#task-4mma構成の見直し)
+    - [Task 5: 適応型アプリケーション制御](#task-5-適応型アプリケーション制御)
+    - [Task 6: ファイル整合性の監視](#task-6-ファイル整合性の監視)
+    - [Task 7: ディスクの暗号化](#task-7-ディスクの暗号化)
+  - [Exercise 6: Azure Sentinelのログとレポート](#exercise-6-azure-sentinelのログとレポート)
+    - [Task 1: ダッシュボードの作成](#task-1-ダッシュボードの作成)
     - [Task 2: 分析アラートの作成](#task-2-分析アラートの作成)
     - [Task 3: カスタムアラートのインシデントを調査する](#task-3-カスタムアラートのインシデントを調査する)
     - [Task 4: プレイブックの作成と実行](#task-4-プレイブックの作成と実行)
@@ -1017,84 +1017,84 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
 23. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
 
-### Task 4: Review MMA configuration
+### Task 4：MMA構成の見直し
 
-1. Switch to the Remote Desktop Connection to the **paw-1**.
+1. リモートデスクトップ接続で、**paw-1**に切り替えます。
 
-2. Open **Event Viewer**.
+2. **Event Viewer** を開きます。
 
-3. Expand the **Applications and Services Logs**, then select **Operations Manager**.
+3. **Applications and Services Logs**を展開して、**Operations Manager**を選択します。
 
-4. Right-click **Operations Manager**, select **Filter Current Logs**.
+4. **Operation Manager** を右クリックし、**Filter Current Logs** を選択します。
 
     ![The event viewer is displayed with the click path highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/eventviewer-operations-mgr.png "Filter the Operations Manager event logs")
 
-5. For the event id, type **5001**, select the latest entry, you should see similar names to all the solutions that are deployed in your Log Analytics workspace including the ones you just added:
+5. イベントIDに「**5001**」と入力し、最新のエントリを選択すると、先ほど追加したものを含め、Log Analyticsワークスペースに展開されているすべてのソリューションに似た名前が表示されます。
 
     ![The event viewer is displayed with the click path highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/eventviewer-operations-mgr-5000.png "Filter the Operations Manager event logs")
 
-6. Open **Windows Explorer**, browse to **C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs** folder.
+6. **Windows Explorer**を開き、**C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs** フォルダを参照します。
 
-7. Notice the management packs that have been downloaded that correspond to the features you deployed from Azure Portal.
+7. Azure Portalからデプロイした機能に対応するマネジメントパックがダウンロードされていることを確認してください。
 
     ![The management packs for the solutions are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-mgmtpacks.png "Notice the solution management packs were downloaded")
 
-### Task 5: Adaptive Application Controls
+### Task 5: 適応型アプリケーション制御
 
 1. Azureポータルに切り替えます。
 
-2. Select **Azure Security Center**.
+2. **Azure セキュリティ センター** を選択します。
 
-3. In the blade menu, scroll to the **クラウド セキュリティ** section and select **適応型アプリケーション制御**.
+3. ブレードメニューで「**クラウド セキュリティ**」の項目にスクロールし、「**適応型アプリケーション制御**」を選択します。
 
-4. You will likely have several groups displayed, find the one that has your newly created lab VMs.
+4. いくつかのグループが表示されていると思いますが、新しく作成したラボVMがあるグループを探します。
 
    ![Machine groupings is displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/securitycenter-grouping.png "Azure automatically created a group for your VMs")
 
-5. Expand the **Publisher whitelisting rules** section, you should see that Google Chrome and Notepad++ were picked up and have Microsoft Certificated tied to them.
+5. **Publisher whitelisting rules**の項目を展開すると、Google ChromeとNotepad++がピックアップされ、Microsoft Certificatedが関連付けられていることがわかります。
 
    ![The discovered applications are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/securitycenter-whitelistingrules.png "Notice the applications that were executed on the machine are displayed")
 
-6. In the top menu, select **Group settings**.
+6. トップメニューで「**グループ設定**」を選択します。
 
-7. Review the available settings.
+7. 設定内容を確認します。
 
-> **Note**: As of June 2020, the **Enforce** option is temporarily disabled.
+> **Note**: 2020年6月現在、**Enforce**オプションは一時的に無効になっています。
 
-### Task 6: File Integrity Monitoring
+### Task 6: ファイル整合性の監視
 
 1. Azureポータルに切り替えます。
 
-2. Select Azure Security Center.
+2. Azure セキュリティ センター を選択します。
 
-3. In the blade menu, scroll to the **クラウド セキュリティ** section and select **ファイルの整合性の監視**.
+3. ブレードメニューで、「**クラウド セキュリティ**」セクションにスクロールし、「**ファイルの整合性の監視**」を選択します。
 
-4. For the log workspace tied to your lab environment virtual machines, if displayed, select **Upgrade Plan**, then select **ファイルの整合性の監視を試す**.
+4. ラボ環境の仮想マシンに関連付けられたログワークスペースが表示されている場合は、「**Upgrade Plan**」を選択し、「**ファイルの整合性の監視を試す**」を選択します。
 
-5. Select the workspace only, then select **アップグレード**.
+5. ワークスペースのみを選択し、「**アップグレード**」を選択します。
 
 6. **エージェントをインストールせずに続行します** リンクを選択します。
 
    ![The continue without installing agents link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-enable.png "Select the continue without installing agents link")
 
-7. If displayed, select **有効化**, otherwise simply select the workspace.
+7. 表示されている場合は「**有効化**」を、表示されていない場合は単に「ワークスペース」を選択します。
 
-8. In the menu, select **設定**.
+8. メニューで「**設定**」を選択します。
 
     ![The Settings link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-settings.jpg "Select the settings link")
 
-9. Select the **Windows Files** tab.
+9. **Windows Files "タブを選択します。
 
-10. Select **+Add**.
+10. **+ 追加** を選択します。
 
-11. For the item name, type **HOSTS**.
+11. アイテム名には「**HOSTS**」と入力します。
 
-12. For the path, type **c:\windows\system32\drivers\etc\\\***.
-    パスの種類を**フォルダー**。
-    再帰を**オン**。
+12. パスに **c:\windows\system32\drivers\etc\\\*** を入力します。
+    パスの種類を**フォルダー** に設定します。
+    再帰を**オン** に設定します。
 
 
-13. Select **保存**.
+13. **保存** を選択します。
 
     ![The settings page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-addentry.jpg "Add a new file integrity monitoring item")
 
@@ -1106,107 +1106,107 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
     ![The file content page is displayed with the links highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-filecontent.jpg "Link a storage account for file changes")
 
-16. Switch to the Remote Desktop Connection to the **paw-1**.
+16. リモートデスクトップ接続で**paw-1**に切り替えます。
 
-17. Open the **c:\windows\system32\drivers\etc\hosts** file.
+17. **c:\windows\system32\drivers\etc\hosts** ファイルを開きます。
 
-18. Add the following entry:
+18. 次のエントリを追加します。
 
     ```cmd
     10.0.0.6    linux-1
     ```
 
-19. Save the file.
+19. ファイルを保存します。
 
-20. After about 30-60 minutes, the Log Analytics workspace will start to pick up changes to your files, registry settings and windows services:
+20. 約30～60分後、Log Analyticsワークスペースは、ファイル、レジストリ設定、Windowsサービスへの変更を拾い始めます。
 
     ![The file changes are saved to the logs of the workspace.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-logchanges.png "Review the file change logs for the paw-1 machine in the log analytics workspace")
 
-21. You will also start to see the file snapshots show up in the storage account:
+21. また、ファイルスナップショットがストレージアカウントに表示されるようになります。
 
     ![The file changes are displayed in the storage account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-snapshots.png "The file changes are displayed in the storage account")
 
-### Task 7: Disk encryption
+### Task 7: ディスクの暗号化
 
 1. Azureポータルに切り替えます。
 
-2. Browse to your resource group.
+2. リソースグループを表示します。
 
-3. Browse to your key vault.
+3. key vaultを参照します。
 
-4. In the blade menu under **Settings**, select **Access Policies**.
+4. ブレードメニューの「**設定**」で「**アクセスポリシー**」を選択します。
 
-5. Select the **Azure Disk Encryption for volume encryption** checkbox.
+5. ボリューム暗号化のための **Azure Disk Encryption** チェックボックスを選択します。
 
    ![The click path above is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/keyvault-diskencrypt.jpg "Enable the key vault for disk encryption activities")
 
-6. Select **Save**.
+6. **保存** を選択します。
 
-7. Browse to your resource group.
+7. リソースグループを表示します。
 
-8. Select the **linux-1** virtual machine.
+8. 仮想マシン「**linux-1**」を選択します。
 
-9. In the blade menu, select **Disks**.
+9. ブレードメニューで「**ディスク**」を選択します。
 
-10. In the top menu, select **Encryption**.
+10. トップメニューで「**暗号化**」を選択します。
 
     ![The click path above is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/diskencryption.jpg "Browse to configure disk encryption for the linux-1 os disk")
 
-11. For **Disks to encrypt**, select **OS Disk**.
+11. **Disks to encrypt** で **OS Disk** を選択します。
 
-12. Select the **Select a key vault and key for encryption** link.
+12. **Select a key vault and key for encryption**」リンクを選択します。
 
-13. Select the lab key vault.
+13. ラボの key vault を選択します。
 
-14. For the key, select **Create new**.
+14. キーは「**Create new**」を選択します。
 
-15. For the name, type **vm-disk-key**.
+15. 名前には「**vm-disk-key**」と入力します。
 
-16. Select **Create**.
+16. **Create** を選択します。
 
     ![Select the lab key vault.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/diskencryption-selectkeyvault.png "Select the lab key vault")
 
-17. For the **Version**, select the new version.
+17. **バージョン**では、新しいバージョンを選択してください。
 
-18. Select **Select**.
+18. **Select** を選択します。
 
-19. Select **Save**, then select **Yes** when prompted.
+19. **Save**を選択し、プロンプトが表示されたら**Yes**を選択します。
 
-> **Note**: Disk encryption can take some time, move on to the next exercises.
+> **Note**: ディスクの暗号化には時間がかかりますので、次の練習に移ってください。
 
-## Exercise 6: Azure Sentinel logging and reporting
+## Exercise 6: Azure Sentinelのログとレポート
 
 Duration: 20 minutes
 
-In this exercise, you will setup Azure Sentinel to point to a logging workspace and then create custom alerts that execute Azure Runbooks.
+この演習では、Azure Sentinelを設定して、ロギングワークスペースを指すようにし、Azure Runbookを実行するカスタムアラートを作成します。
 
-### Task 1: Create a dashboard
+### Task 1: ダッシュボードの作成
 
-1. Open the Azure Portal.
+1. Azureポータルを開きます。
 
-2. Select **All services**, then type **Sentinel**, select **Azure Sentinel**.
+2. **すべてのサービス** を選択し、「Sentinel」と入力し、「Azure Sentinel」を選択します。
 
     ![All Services is selected in the left menu, and a search for Sentinel is displayed along with its search results.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image94.jpg "Searching for Sentinel")
 
-3. In the blade, select **+Add**, select the **Log Analytics** resource for your resource group, then choose **Add Azure Sentinel**.
+3. ブレードで、**+ 追加** を選択し、リソースグループの **Log Analytics** リソースを選択し、**Azure Sentinelの追加** を選択します。
 
    ![The screenshot displays the Azure workspace found in the resource group.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-12-54-25.jpg "Azure Workspace")
 
-4. In the blade, under **驚異管理**, select **ブック**.
+4. ブレード内の「**驚異の管理**」で「**ブック**」を選択します。
 
-5. In the list of workbooks, select **Azure AD 監査ログ**, select **保存**.
+5. ワークブックの一覧で、「**Azure AD 監査ログ**」を選択し、「**保存**」を選択します。
 
-6. Select the region and select **OK**.
+6. リージョンを選択し、「**OK**」を選択します。
 
     ![In the left menu beneath Threat Management the Workbooks item is selected and the Azure AD Audit Logs item is selected beneath the Templates tab on the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image95.jpg "Adding a workbook")
 
-7. In the list of workbooks, select **Azure Network Watcher**, choose **保存**.
+7. ワークブックのリストで、**Azure Network Watcher**を選択し、**保存**を選択します。
 
-8. Select the リージョン and choose **OK**.
+8. リージョンを選択し、「**OK**」を選択します。
 
-9. Select **View saved workbook**, take a moment to review your new workbook.
+9. **保存されたワークブックを見る** を選択し、新しいワークブックを確認します。
 
-    > **Note**: You may not have data in the log analytics workspace for the targeted workbook queries.
+    > **Note**: 対象となるワークブックのクエリのログ分析ワークスペースにデータがない場合があります。
 
 ### Task 2: 分析アラートの作成
 
