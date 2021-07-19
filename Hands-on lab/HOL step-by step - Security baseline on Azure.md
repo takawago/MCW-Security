@@ -201,7 +201,7 @@ Duration: 45 minutes
 
     ![The Server parameter is listed under ADO.NET (SQL authentication) on the ADO.NET tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image21.png "Note the Server parameter")
 
-6. Lab VM で **SQL Server Management Studio** を開きます。
+6. Lab VM (dsvm-vm) で **SQL Server Management Studio** を開きます。
 
 7. 上記のデータベースサーバー名を入力します。
 
@@ -221,6 +221,9 @@ Duration: 45 minutes
     - ダイアログで、**OK**を選択すると、受信するパブリックIPアドレスが接続用に追加されます。
 
     ![The New Firewall Rule Dialog is displayed identifying your Internet IP Address.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image23.png "Firewall Rule")
+
+    ※ Firewall Ruleの追加で、エラーが発生する場合は、以下のようにAzureポータルからファイアウォールの設定をしてください。
+
     ![The New Firewall Rule Dialog is displayed identifying your Internet IP Address.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image23.jpg "Firewall Rule")
 
 10. **Databases**を右クリックし、**Import Data-tier Application**を選択します。
@@ -442,7 +445,7 @@ Duration: 45 minutes
 
 Duration: 30 minutes
 
-In this exercise, attendees will learn how to migrate web application to utilize Azure Key Vault rather than storing valuable credentials (such as connection strings) in application configuration files.
+この演習では、アプリケーションの構成ファイルに貴重な認証情報（接続文字列など）を保存するのではなく、Azure Key Vaultを利用するようにWebアプリケーションを移行する方法を学びます。
 
 ### Task 1: Azure Key Vaultのシークレットの作成
 
