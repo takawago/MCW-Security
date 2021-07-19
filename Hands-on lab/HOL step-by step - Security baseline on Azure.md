@@ -464,7 +464,7 @@ Duration: 30 minutes
 
 5. **名前**には、**InsuranceAPI**と入力します。
 
-6. **値**には、演習2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。
+6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。
 
 7. **作成**を選択します。
 
