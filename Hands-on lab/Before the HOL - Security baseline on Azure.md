@@ -24,18 +24,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->
-
-- [Security baseline on Azure before the hands-on lab setup guide](#security-baseline-on-azure-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Configure Azure Security Center](#task-1-configure-azure-security-center)
-    - [Task 2: Deploy resources to Azure](#task-2-deploy-resources-to-azure)
-    - [Task 3: Download Google Chrome](#task-3-download-google-chrome)
-    - [Task 4: Download SQL Server Management Studio](#task-4-download-sql-server-management-studio)
-    - [Task 5: Download GitHub resources](#task-5-download-github-resources)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Security baseline on Azure before the hands-on lab setup guide](#security-baseline-on-azure-before-the-hands-on-lab-setup-guide)auto    - [Requirements](#requirements)auto    - [Before the hands-on lab](#before-the-hands-on-lab)auto        - [Task 1: Configure Azure Security Center](#task-1-configure-azure-security-center)auto        - [Task 2: Deploy resources to Azure](#task-2-deploy-resources-to-azure)auto        - [Task 3: Download Google Chrome](#task-3-download-google-chrome)auto        - [Task 4: Download SQL Server Management Studio](#task-4-download-sql-server-management-studio)auto        - [Task 5: Download GitHub resources](#task-5-download-github-resources)autoauto<!-- /TOC -->
 
 # Security baseline on Azure before the hands-on lab setup guide
 
@@ -71,17 +60,17 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
     ![In the blade select Pricing & Settings.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/bhol_securitycenter_pricesettings.png "Select Pricing and Settings")
 
-4. If not already set, update the pricing tier to be **Standard**, then select **Save**.
+4. If not already set, update the pricing tier to be **Azure Defender オン**, then select **すべて有効にする**.
 
-    ![Standard pricing tier is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/bhol_securitycenter_standardtier.png "Select the standard tier")
+    ![Standard pricing tier is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/bhol_securitycenter_standardtier.jpg "Select the standard tier")
 
-5. In the blade menu, select **Data Collection**.
+5. In the blade menu, select **自動プロビジョニング**.
 
-    ![Auto provisioning is toggled off.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/bhol_securitycenter_datacollection.png "Set Auto Provisioning to Off")
+    ![Auto provisioning is toggled off.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/bhol_securitycenter_datacollection.jpg "Set Auto Provisioning to Off")
 
-6. Toggle the **Auto Provisioning** to **Off**.
+6. Toggle the **Auto Provisioning** to **オフ**.
 
-> **Note**: Auto-provisioning is turned off for purposes of this lab, it is highly recommended that auto-provisioning is set to "on" in a production environment to ensure they security controls are applied.
+> **Note**: このラボでは自動プロビジョニングをオフにしていますが、本番環境では、セキュリティコントロールを確実に適用するために、自動プロビジョニングを「オン」にすることを強くお勧めします。
 
 ### Task 2: Deploy resources to Azure
 
@@ -171,7 +160,7 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
 ### Task 5: Download GitHub resources
 
-1. Open a browser window to the cloud workshop GitHub repository (<https://github.com/microsoft/MCW-Security-baseline-on-Azure>).
+1. Open a browser window to the cloud workshop GitHub repository (<https://github.com/takawago/MCW-Security>).
 
 2. Select **Clone or download**, then select **Download Zip**.
 

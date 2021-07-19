@@ -118,7 +118,7 @@ Duration: 15 minutes
 
     ![Security Center is highlighted on the left side of the Azure portal, and Just in time VM access is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image9-3.jpg "Security Center VM Access")
 
-    > **Note**: お客様のサブスクリプションが**標準**レベルに設定されていない可能性があります。その場合、以下のようにしてください。:
+    > **Note**: お客様のサブスクリプションが**Azure Defender オン** に設定されていない可能性があります。その場合、以下のようにしてください。:
 
    - **セキュリティ センター**ブレードで、**価格と設定**を選択します。
    - ご利用のサブスクリプションを選択します。

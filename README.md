@@ -1,46 +1,38 @@
-## This workshop is archived and is no longer being maintained. Content is read-only.
+# Azure のセキュリティ ベースライン
 
-# Security baseline on Azure
+Contoso Ltd.は、米国に本社を置く多国籍企業で、世界中に保険ソリューションを提供しています。Contoso Ltd.は、米国に本社を置く多国籍企業で、世界各地で保険ソリューションを提供しています。Contoso社は、被保険者からの請求に対するデータ収集プロセスの一環として、被保険者に直接モバイルエージェントを派遣して情報収集サービスを行っています。これらのモバイルエージェントは、世界中に拠点があり、活動する地域の住民です。モバイルエージェントは、各地域のコーポレートオフィスを通じて遠隔地で管理されています。
 
-Contoso Ltd is a multinational corporation, headquartered in the United States that provides insurance solutions worldwide. Its products include accident and health insurance, life insurance, travel, home, and auto coverage. Contoso manages data collection services by sending mobile agents directly to the insured to gather information as part of the data collection process for claims from an insured individual. These mobile agents are based all over the world and are residents of the region in which they work. Mobile agents are managed remotely through regional corporate offices.
+彼らは、Azureへのリフト＆シフト戦略を模索しているが、Azureのセキュリティとプライバシー機能に大きな焦点を当てています。
 
-They are exploring a lift and shift strategy to Azure, but have a large focus on Azure Security and Privacy features.
-
-July 2020
+2020年7月
 
 ## Target audience
 
-- Cloud Administrators
-- Cloud Architects
-- Security Analysts
-- Security Architects
+- クラウド 管理者
+- クラウド アーキテクト
+- セキュリティ アナリスト
+- セキュリティ アーキテクト
 
-## Abstracts
+## 概要
 
-### Workshop
+### ワークショップ
 
-In this workshop, you will learn how to design an implementation of Azure Security Center and Microsoft Compliance Manager tools to ensure a secure and privacy-focused Azure cloud-based architecture.
+このワークショップでは、Azure Security CenterとMicrosoft Compliance Managerツールの実装を設計して、安全でプライバシーを重視したAzureクラウドベースのアーキテクチャを確保する方法を学びます。
 
-At the end of this workshop, you will be better able to secure your cloud-based applications and services, while ensuring privacy standards are followed and your architecture is compliant. 
+このワークショップの終了時には、クラウドベースのアプリケーションやサービスのセキュリティを確保しつつ、プライバシー基準を遵守し、アーキテクチャのコンプライアンスを確保することができるようになります。
 
-### Whiteboard design session
+### ハンズオンラボ (実習)
 
-In this whiteboard design session, you will work with a group to design an end-to-end solution that leverages many of Microsoft Azure’s security features.
+この実習では、Azure Security Center の機能の多くを実装して、クラウドベースの Azure インフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護します。具体的には、インターネットに公開されているリソースが適切に保護され、必要のないインターネットアクセスが無効になっていることを確認します。さらに、アプリケーション・セキュリティを有効にした管理者用の「ジャンプ・マシン」を導入し、管理者が承認されていないソフトウェアをインストールしてクラウド・リソースを公開してしまうことを防ぎます。さらに、カスタムアラートを利用してTCP/IPポートスキャンを監視し、その攻撃に基づいてアラートを出したり、ブックを実行したりします。
 
-At the end of this session, you will be better able to design and recommend solutions that help organizations properly secure their cloud-based applications while protecting their sensitive data.
+この実習では、安全なクラウドベースのアーキテクチャを設計・構築したり、Azureでホストされている既存のアプリケーションのセキュリティを向上させたりすることができるようになります。
 
-### Hands-on lab
-
-In this hands-on lab, you will implement many of the Azure Security Center features to secure their cloud-based Azure infrastructure (IaaS) and applications (PaaS). Specifically, you will ensure that any internet exposed resources have been properly secured and any non-required internet access disabled. Additionally, you will implement a “jump machine” for admins with Application Security enabled to prevent admins from installing non-approved software and potentially exposing cloud resources. You will then utilize custom alerts to monitor for TCP/IP Port Scans and then fire alerts and run books based on those attacks.
-
-At the end of this hands-on lab, you will be better able to design and build secure cloud-based architectures, and to improve the security of existing applications hosted within Azure.
-
-## Azure services and related products
+## Azure サービス と 関連製品
 
 - Azure Virtual Machines and Networks with Network Security Groups
 - Virtual Private Networks (Point to Point, Site to Site)
 - Azure Web Apps
-- Azure SQL DB and corresponding security features (Threat Detection, TDE, Column Level Encryption, etc.)
+- Azure SQL DBと対応するセキュリティ機能 (Threat Detection、TDE、Column Level Encryptionなど)
 - Azure Storage Encryption
 - SQL Server Virtual Machines
 - Azure IAM
@@ -57,8 +49,5 @@ At the end of this hands-on lab, you will be better able to design and build sec
 
 ## Azure solutions
 
-Security and Management
+セキュリティ と 管理
 
-## Related References 
-- [MCW](https://microsoftcloudworkshop.com)
-# MCW-Security
