@@ -82,7 +82,7 @@ Contosoは、米国に本社を置く多国籍企業で、世界中に保険ソ�
 
 ## ソリューション アーキテクチャー
 
-Contoso社の管理者は、最近Azure Security Centerを知り、クラウドベースのAzureインフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護するために、その機能の多くを導入することにしました。具体的には、インターネットに接続されているすべてのリソースのセキュリティを確保し、必要のないインターネットアクセスを無効にすることを目的としています。また、管理者が自分のマシンに承認されていないソフトウェアをインストールして、クラウドのリソースにアクセスしてしまうケースがあったため、アプリケーション・セキュリティを備えた管理者用の「ジャンプ・マシン」の導入も重要だと考えました。さらに、TCP/IPポートスキャンが検出されたときにアラートを出し、その攻撃に基づいて警告を発する機能も必要だという。
+Contoso社の管理者は、最近Azure Security Centerを知り、クラウドベースのAzureインフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護するために、その機能の多くを導入することにしました。具体的には、インターネットに接続されているすべてのリソースのセキュリティを確保し、必要のないインターネットアクセスを無効にすることを目的としています。また、管理者が自分のマシンに承認されていないソフトウェアをインストールして、クラウドのリソースにアクセスしてしまうケースがあったため、アプリケーション・セキュリティを備えた管理者用の「ジャンプ・マシン」の導入も重要だと考えました。さらに、TCP/IPポートスキャンが検出されたときにアラートを出し、その攻撃に基づいて警告を発する機能も必要です。
 
 ![This diagram shows external access to Azure resources where Just In Time is utilize to lock down the Jump Machine. Azure Log Analytics with Azure Sentinel is then used to monitor the deny events on the network security groups.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image2.png)
 
@@ -126,11 +126,11 @@ Duration: 15 minutes
    - 有効にするプランを**オン**にします。
    - セキュリティセンターに戻り、**Just in time VM アクセス**を選択します。
 
-3. **構成済み**タブを選択し、Lab VMs（db-1、paw-1、web-1）が表示されていることを確認します。 表示されていない場合は、**構成されていません**タブを選択し、ラボVM（db-1、paw-1、web-1）を選択するチェックボックスをオンにして、**Enable JIT on 3 VMs**リンクを選択します。
+3. **構成済み** (Configured) タブを選択し、Lab VMs（db-1、paw-1、web-1）が表示されていることを確認します。 表示されていない場合は、**構成されていません** (Recommended) タブを選択し、ラボVM（db-1、paw-1、web-1）を選択するチェックボックスをオンにして、**Enable JIT on 3 VMs**リンクを選択します。
 
-    ![In the Virtual machines list, the Recommended tab is selected and the db-1, paw-1 and web-1 virtual machines are selected for Just-in-time access.](media/2019-12-18-16-08-30.png "Virtual Machines Selected")
+    ![In the Virtual machines list, the Recommended tab is selected and the db-1, paw-1 and web-1 virtual machines are selected for Just-in-time access.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image9-4.jpg "Virtual Machines Selected")
 
-    > **Note**: Azure Defenderにアップグレードした場合、新しいVMが表示されるまでに最大で10分かかることがあります。 また、バックエンドプロセスによって新しいVMが**サポートなし**タブに移動するまで、新しいVMが**構成されていません**タブに表示される可能性があることに注意してください。 10分経ってもVMが表示されない場合は、VMブレードの**構成**タブを選択し、**Just-in-Timeを有効にする**ことで、手動でJITを有効にすることができます。
+    > **Note**: Azure Defenderにアップグレードした場合、新しいVMが表示されるまでに最大で10分かかることがあります。 また、バックエンドプロセスによって新しいVMが**サポートなし** (No recommendation) タブに移動するまで、新しいVMが**構成されていません** (Recommended) タブに表示される可能性があることに注意してください。 10分経ってもVMが表示されない場合は、VMブレードの**構成**タブを選択し、**Just-in-Timeを有効にする**ことで、手動でJITを有効にすることができます。
 
     ![Configuration and Enable JIT Access is highlighted in the Azure portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image119.jpg "Enable JIT")
 
