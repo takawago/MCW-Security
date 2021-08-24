@@ -136,7 +136,7 @@ Duration: 15 minutes
 
 4. 開いた設定画面で、設定内容を確認し、「**保存**」を選択します。
 
-    ![In the configuration window, port settings are listed, and Save is highlighted above them.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image10.png "Select Save")
+    ![In the configuration window, port settings are listed, and Save is highlighted above them.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image10.jpg "Select Save")
 
 5. 数分後、仮想マシンが**構成済み**タブに移動しているのが確認できるはずです。
 
@@ -187,7 +187,7 @@ Duration: 45 minutes
 
     ![All services is highlighted on the left side of the Azure portal, and SQL servers is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image18.jpg "Select SQL Servers")
 
-2. Azure Managerテンプレートを使って作成した**Azure SQL**データベースサーバーを選択します（例：AzureSecurity-INIT）。
+2. Azure Managerテンプレートを使って作成した**Azure SQL**データベースサーバーを選択します（例：azsecurity-INIT）。
 
 3. 設定 セクションの **SQL データベース** を選択し、**SampleDB** データベースを選択します。
 
@@ -278,13 +278,15 @@ Duration: 45 minutes
 
     ![Web.config is highlighted under the InsuranceAPI project in Solution Explorer.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image28.jpg "Open Web.config")
 
-3. Task 2 で作成した **Insurance** データベースを指すように web.config を更新します（77 行目）。サーバー名を更新して、Azure SQL Serverを指すようにするだけでよいでしょう。
+3. Task 2 で作成した **Insurance** データベースを指すように web.config を更新します（77 行目）。サーバー名を更新して、Azure SQL Serverを指すようにするだけでよいでしょう。(サーバー名の例: xxxxx.database.windows.net)
 
     ![Line 72 of the Insurance database is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image29.png "Update the server name in Web.config")
 
 4. **F5**を押して、**InsuranceAPI**ソリューションを実行します。
 
     > **Note**: CSCエラーが発生した場合は、プロジェクトを右クリックして **CLEAN**を選択します。 次に、プロジェクトを右クリックして**再構築**を選択します。
+
+    > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、フォルダ名をRoslyn 変更してください。
 
 5. `http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
@@ -368,7 +370,7 @@ Duration: 45 minutes
 
     ![The check box next to the SSN column is selected and highlighted, and Deterministic is highlighted under Encryption Type.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image37.png "Select Deterministic")
 
-    > **Deterministic** 暗号化は、与えられた平文の値に対して常に同じ暗号化された値を生成します。決定論的な暗号化を使用すると、暗号化されたカラムに対するポイントルックアップ、等号結合、グループ化、インデックス化が可能になります。しかし、特にTrue/FalseやNorth/South/East/Westのように暗号化された値のセットが少ない場合には、暗号化されたカラムのパターンを調べることで、権限のないユーザーが暗号化された値の情報を推測することができてしまいます。決定論的暗号化では、文字列の照合順序を binary2 にする必要があります。
+    > **Deterministic** 暗号化は、与えられた平文の値に対して常に同じ暗号化された値を生成します。Deterministic暗号化を使用すると、暗号化されたカラムに対するポイントルックアップ、等号結合、グループ化、インデックス化が可能になります。しかし、特にTrue/FalseやNorth/South/East/Westのように暗号化された値のセットが少ない場合には、暗号化されたカラムのパターンを調べることで、権限のないユーザーが暗号化された値の情報を推測することができてしまいます。Deterministic暗号化では、文字列の照合順序を binary2 にする必要があります。
 
     > **Randomized** 暗号化は、予測不可能な方法でデータを暗号化する方法を採用しています。ランダムな暗号化はより安全ですが、暗号化されたカラムでの検索、グループ化、インデックス化、結合ができなくなります。
 
@@ -421,7 +423,7 @@ Duration: 45 minutes
     > **Note**: それでもエラー（Access Deniedなど）が発生する場合は、正しいサブスクリプションとKey Vaultを選択しているか確認してください。
 
 
-    ![Results is highlighted on the left side of the Always Encrypted dialog box, and at right, Performing encryption operations is selected under Summary: Task. Performing encryption operations has a green check mark and is listed as Passed under Details.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image41.png "View the task results")
+    ![Results is highlighted on the left side of the Always Encrypted dialog box, and at right, Performing encryption operations is selected under Summary: Task. Performing encryption operations has a green check mark and is listed as Passed under Details.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image41.jpg "View the task results")
 
 25. **Close**を選択します。
 
@@ -429,7 +431,7 @@ Duration: 45 minutes
 
     ![The User table is selected, and Select Top 1000 Rows is selected in the shortcut menu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image42.png "Select the top 1000 rows")
 
-    You will notice the SSN column is encrypted based on the new Azure Key Vault key.
+    SSNの列が、新しいAzure Key Vaultのキーに基づいて暗号化されていることがわかります。
 
     ![The value under UserId is selected on the Results tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image43.png "Notice the SSN column")
 
@@ -491,9 +493,9 @@ Duration: 30 minutes
 
 3. For the user-facing display name, type **AzureKeyVaultTest**.
 
-4. 対応しているアカウントについては、**この組織ディレクトリ内のみに含まれるアカウント...**を選択します。
+4. 対応しているアカウントについては、**この組織ディレクトリ内のみに含まれるアカウント (既定のディレクトリ のみ - シングル テナント)** を選択します。
 
-5. For the Redirect URL, type <http://localhost:12345>.
+5. For the Redirect URL, type <http://localhost:12345> .
 
     ![AzureKeyVaultTest is entered in the Name box, and http://localhost:12345 is entered in the Sign-on URL box under Create.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image49.jpg "Create a new application registration")
 
@@ -553,7 +555,7 @@ Duration: 30 minutes
 
 2. **Visual Studio**に切り替えます。
 
-3. メニューの中の、**表示-\>その他のウインドウ-\>パッケージ マネージャー コンソール**を選択します。
+3. メニューの中の、**View-\>Other Windows-\>Package Manager Console**を選択します。
 
 4. 開いた新しいウィンドウで、以下のコマンドを実行します。
 
@@ -593,21 +595,19 @@ Duration: 30 minutes
 
 ### Task 5: ソリューションのテスト
 
-1. **Web.config**を開き、78行目の**connectionString**をコメントアウトまたは削除します。
-
-2. **Global.asax.cs** ファイルを開き、28行目にブレークポイントを置きます。
+1. **Global.asax.cs** ファイルを開き、28行目にブレークポイントを置きます。
 
     > **Note**: このコードでは、上記で設定したアプリケーションのアクセストークンを取得するための呼び出しを行い、そのアクセストークンを使ってAzure Key Vaultを呼び出しています。
 
-3. **F5**を押して、ソリューションを実行します。
+2. **F5**を押して、ソリューションを実行します。
 
     Azure Key Vaultへの呼び出しが実行され、シークレット（ここではAzure Databaseへの接続文字列）が返されているのがわかるはずです。
 
     ![The connection string to the Azure Database is visible through the Visual Studio debugger.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54.png "View the connection string")
 
-4. **F5**を押して、プログラムを続行します。
+3. **F5**を押して、プログラムを続行します。
 
-5. [http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートすると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。
+4. [http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートすると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。(本ワークショップでは実施する必要はありません。時間があるときにお試しください。)
     - まだ実行していない場合は、**\\Hands-on lab\\Database\\02\_PermissionSetup.sql**スクリプトを実行してください。
 
     - プロジェクトに[AzureKeyVaultProvider for Entity Framework](https://blogs.msdn.microsoft.com/sqlsecurity/2015/11/10/using-the-azure-key-vault-key-store-provider-for-always-encrypted/)の参照を追加します。
