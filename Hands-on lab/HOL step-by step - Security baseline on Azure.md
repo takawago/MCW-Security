@@ -964,53 +964,45 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
 1. Azureポータルに戻ります。
 
-2. 検索メニューで **Virtual Machine** と入力し、選択します。
+2. Automation アカウントを選択します。
 
-3. デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンをハイライト表示します。
+3. **インベントリ**を選択し、Log Analyticsの**サブスクリプション**、**ワークスペース**を選択し、**有効化**を選択します。
 
-4. トップメニューで「**サービス**」を選択し、「**Change Tracking**」を選択します。
+   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/inventory.jpg "Enable change tracking for the virtual machines")
 
-   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking.jpg "Enable change tracking for the virtual machines")
+4. **更新プログラムの管理**を選択し、Log Analyticsの**サブスクリプション**、**ワークスペース**、**Azutomation アカウント**を確認し、**有効化**を選択します。
 
-5. **自動** のラジオボタンを選択します。
+   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/updatemanagement.jpg "Enable change tracking for the virtual machines")
 
-6. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。すべての仮想マシンを選択し、「**有効化**」を選択します。
+5. **インベントリ**を選択し、**+ Azure VM の追加** を選択します。
 
-    ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config.jpg "Select CUSTOM and then select change links")
+   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/add-inventory-vm.jpg "Enable change tracking for the virtual machines")
 
-7. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンを再度ハイライトします。
+6. **paw-1**, **db-1**, **linux-1**, **web-1** をチェックし、**有効化** を選択します。
 
-8.  トップメニューで「**サービス**」を選択し、「**インベントリ**」を選択します。
+   ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/activate-inventory-vm.jpg "Enable change tracking for the virtual machines")
 
-9.  **カスタム** ラジオボタンを選択します。
+7. Automation アカウントに戻り、**更新プログラムの管理**を選択し、**+ Azure VM の追加** を選択します。
 
-10. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
+    ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/add-updatemanagement-vm.jpg "S")
 
-11. 最後のタスクに基づいて、すべてのVMがすでにワークスペースに対して有効になっていることに注目してください。
+8. サブスクリプション、リージョン、リソースグループを確認、適切なLog Analytics ワークスペースとAzutomation アカウントが表示されていることを確認、**paw-1**, **db-1**, **linux-1**, **web-1** をチェックし、**有効化** を選択します。
 
-12. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンをハイライト表示します。
+    ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/activate-updatemanagement-vm.jpg "S")
 
-13. トップメニューから「**サービス**」を選択し、「**Update Management**」を選択します。
+9. リソースグループを参照して、Log Analyticsワークスペースを選択します。
 
-14. **Customer**のラジオボタンを選択します。
-
-15. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
-
-16. すべての仮想マシンを選択して、**有効化**を選択します。
-
-17. リソースグループを参照して、Log Analyticsワークスペースを選択します。
-
-18. **概要**セクションで、**ソリューション**ブレードを選択すると、**ChangeTracking**と**Updates**ソリューションがワークスペースに追加されていることがわかります。**ChangeTracking**ソリューションを選択します。
+10. **全般**セクションで、**ソリューション**ブレードを選択すると、**ChangeTracking**と**Updates**ソリューションがワークスペースに追加されていることがわかります。**ChangeTracking**ソリューションを選択します。
 
     ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions.jpg "Select the ChangeTracking solution item")
 
-19. **Workspace Data Sources** セクションで **ソリューションのターゲット設定(プレビュー)** を選択します。
+14. **Workspace Data Sources** セクションで **ソリューションのターゲット設定(プレビュー)** を選択します。
 
-20. 項目の右側の楕円からスコープを削除します。
+15. 項目の右側の楕円からスコープを削除します。
 
     ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions2.jpg "Select the ChangeTracking solution item")
 
-21. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
+16. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
 
 ### Task 4: MMA構成の見直し
 
@@ -1070,7 +1062,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
 6. **エージェントをインストールせずに続行します** リンクを選択します。
 
-   ![The continue without installing agents link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-enable.png "Select the continue without installing agents link")
+   ![The continue without installing agents link is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/fileintegrity-enable.png "inventory")
 
 7. 表示されている場合は「**有効化**」を、表示されていない場合は単に「ワークスペース」を選択します。
 
