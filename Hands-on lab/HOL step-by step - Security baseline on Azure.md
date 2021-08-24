@@ -815,7 +815,7 @@ Duration: 45 minutes
 
 2. **F5** を押して、**PortScan**スクリプトを実行します。以下のように表示されるはずです。
 
-    - **paw-1**マシンから**db-1**および**web-1**への3389番ポート（RDP）のポートスキャンに成功しました。
+    - **paw-1**マシンから**web-1**および**db-1**への3389番ポート（RDP）のポートスキャンに成功しました。
 
     ![The information above for port 3389 (RDP) is visible after running the script and pressing F5.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image61.png "View the information")
 
@@ -841,7 +841,7 @@ Duration: 45 minutes
 
     ![Extensions is selected on the left under Settings, and + Add is highlighted at the top right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image64.jpg "Select + Add")
 
-5. **Network Watcher Agent for Windows** を参照し、選択します。
+5. **Network Watcher Agent for Windows** を参照し、選択します。(見つからない場合、スクロールして **さらに読み込む** を選択します。)
 
 6. **次へ** を選択します。 **確認と作成** を選択します。 **作成** を選択します。
 
@@ -861,7 +861,7 @@ Duration: 45 minutes
 
 3. **+ 追加** ボタンを選択します。 ラボを実行しているサブスクリプション地域の項目を展開します。
 
-4. **東日本** リージョン（またはVMをデプロイしたリージョン）では、省略記号を選択し、「**Enable network watcher**」を選択します。
+4. **東日本** リージョン（またはVMをデプロイしたリージョン）では、省略記号を選択し、「**Enable network watcher**」を選択します。(すでにVMをデプロしたリージョンのリソースが存在する場合は、ステップ5へ進みます。)
 
     ![The East US row is highlighted under Region, and Enable network watcher is selected in the submenu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image66-3.jpg "Enable Network Watcher")
 
@@ -893,9 +893,9 @@ Duration: 45 minutes
 
 ### Task 6: ポートスキャンの実行
 
-1. リモートデスクトップの接続先を、**paw-1**仮想マシンに切り替えます。
+1. リモートデスクトップの接続先を、**paw-1** 仮想マシンに切り替えます。
 
-2. スクリプトの次の行をアンコメントして、**F5**を押します。
+2. スクリプトの次の行をアンコメントして、**F5**を押します。(この行が存在しない場合、追加してアンコメントします。)
 
     ```PowerShell
     #TestPortRange $computers 80 443;
@@ -913,7 +913,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
 ### Task 1: Linux VMとMicrosoft Monitoring Agent（MMA）のインストール
 
-1. Azure Portalで、**azsecurity-INIT** リソースグループを参照して、*azseclog...* **Log Analytics Workspace**を選択します。
+1. Azure Portalで、**azsecurity-xxxx** リソースグループを参照して、*azseclog...* **Log Analytics Workspace**を選択します。
 
     ![The log analytics workspace is highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/LogAnalyticsWorkspace.jpg "Select the log analytics workspace")
 
@@ -926,11 +926,11 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 4. リモートデスクトップ接続で**paw-1**に切り替えます。
 
 5. **Putty**ツールを開き、ユーザー名とパスワードを使って **linux-1** マシンにログインします。
-(###名前解決できているか確認)
+(paw-1 のhostsファイルを確認し、VMのIPアドレスが間違っている場合は、修正してください。)
 
    ![Putty window with linux-1 as the host.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/putty-linux-1.png "Use Putty to login to linux-1")
 
-6. Run the following commands, be sure to replace the workspace tokens with the values you records above:
+1. ワークスペースID・主キーを上記で記録した値で置き換え以下のコマンドを実行します。:
 
     ```bash
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR_WORKSPACE_ID> -s <YOUR_WORKSPACE_KEY>
@@ -939,9 +939,9 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
     ```
 
-7. Switch back to the Azure Portal.
+2. Azureポータルから Log Analytics ワークスペースに戻ります。
 
-8. In the blade menu, select **エージェント管理** and then select **Linux  サーバー** タブ, you should see **1 台の Linux コンピューターが接続されています**.
+3. ブレードメニューで **エージェント管理** を選択し、**Linux  サーバー** タブを選択、 **1 台の Linux コンピューターが接続されています** と表示されていることを確認します。
 
    ![The displayed of connected linux computers for the workspace.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-linux-computers.jpg "Review the linux computers connected to workspace")
 
@@ -962,7 +962,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
 ### Task 3: 変更追跡と更新管理を有効にする
 
-1. Azureポータルに戻します。
+1. Azureポータルに戻ります。
 
 2. 検索メニューで **Virtual Machine** と入力し、選択します。
 
@@ -972,55 +972,45 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
    ![The virtual machines are selected and the change tracking menu item is selected.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking.jpg "Enable change tracking for the virtual machines")
 
-5. **カスタム** のラジオボタンを選択します。
+5. **自動** のラジオボタンを選択します。
 
-6. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
+6. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。すべての仮想マシンを選択し、「**有効化**」を選択します。
 
     ![The change tracking blade is displayed with custom and change link highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config.jpg "Select CUSTOM and then select change links")
 
-7. リソースグループのログアナリティクスワークスペースを選択し、一致するオートメーションアカウントを選択して、「**OK**」を選択します。
+7. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンを再度ハイライトします。
 
-    ![The custom configuration dialog is displayed with the log analytics workspace select along with the matching automation account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config2.png "Select the resource group log analytics workspace and matching automation account")
+8.  トップメニューで「**サービス**」を選択し、「**インベントリ**」を選択します。
 
-8. すべての仮想マシンを選択し、「**有効化**」を選択します。
+9.  **カスタム** ラジオボタンを選択します。
 
-    ※サブスクリプションが出てこない場合、各仮想マシンで変更履歴を有効化する。
-    ![The custom configuration dialog is displayed with the log analytics workspace select along with the matching automation account.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/virtual-machines-svcs-changetracking-config2.jpg "Select the resource group log analytics workspace and matching automation account")
+10. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
 
+11. 最後のタスクに基づいて、すべてのVMがすでにワークスペースに対して有効になっていることに注目してください。
 
-9. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンを再度ハイライトします。
+12. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンをハイライト表示します。
 
-10. トップメニューで「**サービス**」を選択し、「**インベントリ**」を選択します。
+13. トップメニューから「**サービス**」を選択し、「**Update Management**」を選択します。
 
-11. **カスタム** ラジオボタンを選択します。
+14. **Customer**のラジオボタンを選択します。
 
-12. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
+15. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
 
-13. 最後のタスクに基づいて、すべてのVMがすでにワークスペースに対して有効になっていることに注目してください。
+16. すべての仮想マシンを選択して、**有効化**を選択します。
 
-14. **Virtual Machines**ブレードに戻り、デプロイされた**paw-1**、**web-1**、**db-1**、**linux-1**の仮想マシンをハイライト表示します。
+17. リソースグループを参照して、Log Analyticsワークスペースを選択します。
 
-15. トップメニューから「**サービス**」を選択し、「**Update Management**」を選択します。
-
-16. **Customer**のラジオボタンを選択します。
-
-17. **変更**を選択し、ラボのARMテンプレートで展開された**Log Analytics ワークスペース**を選択します。
-
-18. すべての仮想マシンを選択して、**有効化**を選択します。
-
-19. リソースグループを参照して、Log Analyticsワークスペースを選択します。
-
-20. **概要**セクションで、**ソリューション**ブレードを選択すると、**ChangeTracking**と**Updates**ソリューションがワークスペースに追加されていることがわかります。**ChangeTracking**ソリューションを選択します。
+18. **概要**セクションで、**ソリューション**ブレードを選択すると、**ChangeTracking**と**Updates**ソリューションがワークスペースに追加されていることがわかります。**ChangeTracking**ソリューションを選択します。
 
     ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions.jpg "Select the ChangeTracking solution item")
 
-21. **Workspace Data Sources** セクションで **ソリューションのターゲット設定(プレビュー)** を選択します。
+19. **Workspace Data Sources** セクションで **ソリューションのターゲット設定(プレビュー)** を選択します。
 
-22. 項目の右側の楕円からスコープを削除します。
+20. 項目の右側の楕円からスコープを削除します。
 
     ![The solutions configured for the workspace are displayed.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-solutions2.jpg "Select the ChangeTracking solution item")
 
-23. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
+21. この手順を繰り返して、「**Updates**」ソリューションの対象となるソリューションを削除します。
 
 ### Task 4: MMA構成の見直し
 
