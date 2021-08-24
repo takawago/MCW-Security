@@ -108,11 +108,8 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
     ![The Object Id for your Azure user account is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image0.png "Your Azure Object Id")
 
-    - Check the **I agree to the terms and conditions stated above** checkbox.
+    - Select **作成**.
 
-    - Select **Purchase**.
-
-    ![The above information is entered in the form, and I agree to the terms and conditions stated above and Purchase are selected and highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image6.png "Fill out the form")
 
 10. The deployment will take 20-40 minutes to complete. To view the progress, select your resource group, then select the **Deployments** blade link, then select the **Microsoft.Template** deployment.
 
@@ -122,11 +119,11 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
        - Storage account
 
-       - Three virtual networks (dbVNet, webVNet, mainVNet).
+       - Four virtual networks (dbVNet, webVNet, mainVNet, dsvm-vnet).
 
-       - Three network security groups.
+       - Four network security groups.
 
-       - Four lab supporting virtual machines with associated network resources (db-1, web-1, paw-1, linux-1).
+       - Five lab supporting virtual machines with associated network resources (db-1, web-1, paw-1, linux-1, dsvm-vm).
 
             - IIS is installed on web-1 via a DSC script from the GitHub repository.
 
