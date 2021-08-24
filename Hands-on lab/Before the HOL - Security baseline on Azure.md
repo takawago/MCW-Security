@@ -88,7 +88,7 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
 7. Select **Build your own template in the editor**.
 
-8. Copy the contents of the [ARM template](https://raw.githubusercontent.com/microsoft/MCW-Security-baseline-on-Azure/master/Hands-on%20lab/Scripts/template.json) from the repo and then paste the ARM template into the window.
+8. Copy the contents of the [ARM template](https://raw.githubusercontent.com/takawago/MCW-Security/master/Hands-on%20lab/Scripts/template.json) from the repo and then paste the ARM template into the window.
 
 9. Select **Save**, you will see the dialog with the input parameters. Fill out the form:
 
