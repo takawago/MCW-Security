@@ -54,6 +54,7 @@ July 2021
     - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)
     - [Task 2: Azure ブループリントの確認と作成](#task-2-azure-ブループリントの確認と作成)
     - [Task 3: セキュア スコア](#task-3-セキュア-スコア)
+  - [以上で本日のハンズオンの内容はすべて終了です。お疲れさまでした。](#以上で本日のハンズオンの内容はすべて終了ですお疲れさまでした)
   - [ハンズオンラボの終了後](#ハンズオンラボの終了後)
     - [Task 1: リソースグループの削除](#task-1-リソースグループの削除)
     - [Task 2: Azure Defender Pricingの削除](#task-2-azure-defender-pricingの削除)
@@ -1147,12 +1148,22 @@ Duration: 20 minutes
 
 5. **開く** を選択すると、Power Query M Languageを使用したテキストドキュメントが表示されます。
 
-6. テキストドキュメントの指示に従って、Power BIでクエリを実行します。
+6. テキストドキュメントの指示に従って、Power BIでクエリを実行します。(Power BIがローカルのPCにインストールされていない場合は、ラボ環境の **dsvm-vm** にインストールされているものを利用できます。 )
 
     ![The instructions at the top of the PowerBIQuery.txt file are highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image88.jpg "Follow the query instructions")
 
-7. **Power BI** を閉じます。
+    > **Note**: クエリー実行時の資格情報には**組織アカウント** を使用してください。講師にAzure Passの管理者ID、Passを聞いてください。
 
+7. **データを取得** -> **空のクエリ** -> **詳細エディター** を選択し、テキストドキュメントのクエリ部分をコピー&ペーストし、**完了** を選択します。
+
+    ![Query.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/advanced-query.jpg "Follow the query instructions")
+
+8. **閉じて適用** を選択します。
+
+    ![Query.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/apply-query.jpg "Follow the query instructions")
+
+9.  クエリーで取得されたフィールド、データを確認し、**Power BI** を閉じます。
+    
 ## Exercise 7: コンプライアンスツール（Azure Policy、Secure Score）の使用について
 
 Duration: 15 minutes
@@ -1267,6 +1278,9 @@ Duration: 15 minutes
     ![Screen shot with the Provision an Azure AD Administrator for SQL Server highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image116.png "Review a security recommendation")
 
 
+## 以上で本日のハンズオンの内容はすべて終了です。お疲れさまでした。
+
+---
 ## ハンズオンラボの終了後
 
 Duration: 10 minutes
