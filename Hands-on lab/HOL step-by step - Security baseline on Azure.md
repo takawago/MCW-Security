@@ -54,7 +54,6 @@ July 2021
     - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)
     - [Task 2: Azure ブループリントの確認と作成](#task-2-azure-ブループリントの確認と作成)
     - [Task 3: セキュア スコア](#task-3-セキュア-スコア)
-  - [以上で本日のハンズオンの内容はすべて終了です。お疲れさまでした。](#以上で本日のハンズオンの内容はすべて終了ですお疲れさまでした)
   - [ハンズオンラボの終了後](#ハンズオンラボの終了後)
     - [Task 1: リソースグループの削除](#task-1-リソースグループの削除)
     - [Task 2: Azure Defender Pricingの削除](#task-2-azure-defender-pricingの削除)
@@ -1172,15 +1171,15 @@ Duration: 15 minutes
 
 ### Task 1: Review a basic Azure Policy
 
-[Azure Portal](https://portal.azure.com)を開きます。 **すべてのサービス** を選択し、「**ポリシー**」と入力します。 項目の一覧から「**ポリシー**」を選択します。
+1. [Azure Portal](https://portal.azure.com) を開きます。 **すべてのサービス** を選択し、「**ポリシー**」と入力します。 項目の一覧から「**ポリシー**」を選択します。
 
-    ![All services are selected in the left menu. In the search box policy is entered. Policy is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image104.jpg "Open the Azure Policy blade")
+   ![All services are selected in the left menu. In the search box policy is entered. Policy is selected from the filtered list of services.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image104.jpg "Open the Azure Policy blade")
 
 2. ブレードメニューの**コンプライアンス** を選択し、**リソースの全体的なコンプライアンス** のパーセンテージを確認します。
 
-    ![The Compliance item is selected from the left menu. The Policy compliance screen is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image105.jpg "Open the Azure Policy blade")
+   ![The Compliance item is selected from the left menu. The Policy compliance screen is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image105.jpg "Open the Azure Policy blade")
 
-3. スコープについては、適切なサブスクリプションが選択されていることを確認し、「**ASC DataProtection (subscription:**)」を選択します。
+3. スコープについては、適切なサブスクリプションが選択されていることを確認し、「**ASC Default (subscription:**)」を選択します。
 
 4. **イニシアティブ コンプライアンス** ブレードでは、コンプライアンスの指標を確認します。
 
@@ -1193,7 +1192,7 @@ Duration: 15 minutes
 
     > **Note**: すぐにリソースが表示されない場合があります。 その場合は、他の非準拠のリソースをスクロールしてください。
 
-7. **Policies**タブを選択して、リソースが準拠していないポリシーを確認します。
+7. **ポリシー** タブを選択して、リソースが準拠していないポリシーを確認します。
 
     >**Note**: 新しいポリシーが作成されるため、あなたの番号は下の画像とは異なる可能性があります。
 
@@ -1207,7 +1206,7 @@ Duration: 15 minutes
 
 ### Task 2: Azure ブループリントの確認と作成
 
-1. ポリシーブレードの「**Authoring**」の下にある「**Definitions**」を選択します。 これは、サブスクリプションリソースに割り当てるために選択できる、すべての定義済みポリシーのリストです。
+1. ポリシーブレードの「**作成**」の下にある「**定義**」を選択します。 これは、サブスクリプションリソースに割り当てるために選択できる、すべての定義済みポリシーのリストです。
 
     ![A listing of policy definitions on the Policy Blade Definitions screen.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image109.jpg "Review available policy definitions")
 
@@ -1219,7 +1218,7 @@ Duration: 15 minutes
 
     ![The Blueprint definitions screen is displayed with the Blueprint definitions item selected from the left menu. The + Create blueprint menu item is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image110.jpg "Create a new blueprint")
 
-5. サンプルの設計図を見て、**Start with blank blueprint** を選択します。
+5. サンプルの設計図を見て、**空白のプループリントで始める** を選択します。
 
     ![The Create blueprint screen is displayed with the Blank blueprint item selected from the list of available samples.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image111.jpg "Create a blank blueprint")
 
@@ -1235,7 +1234,7 @@ Duration: 15 minutes
 
 10. **+ 成果物の追加** を選択します。
 
-11. Artifact Type（成果物の種類）では、**ポリシーの割り当て**を選択し、利用可能なすべてのポリシーを確認します（この記事の執筆時点では、37の定義と311のポリシーが表示されています）。
+11. 成果物の種類 では、**ポリシーの割り当て**を選択し、利用可能なすべてのポリシーを確認します（この記事の執筆時点では、34の定義と755のポリシーが表示されています）。
 
 12. 検索ボックスで **制限** を入力、 **ストレージ アカウントではネットワークアクセスを制限する必要があります** を選択します。
 
@@ -1251,7 +1250,7 @@ Duration: 15 minutes
 
     ![The ellipses menu is expanded for the gdprblueprint blueprint item with the Publish blueprint menu item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114.jpg "Publish blueprint dialog")
 
-16. バージョンは、*1.0.0**と入力してください。
+16. バージョンは、**1.0.0** と入力してください。
 
 17. **公開** を選択します。
 
@@ -1259,7 +1258,9 @@ Duration: 15 minutes
 
     ![Screen shot showing the Assign blueprint dialog.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114-2.jpg "Assign blueprint dialog")
 
-19. ページを確認して、**割り当て**を選択します。 このポリシーは、特定のサブスクリプションのすべてのストレージアカウントに対して監査されるようになります。
+19. リソースグループを選択して、**割り当て** を選択します。 このポリシーは、特定のサブスクリプションのすべてのストレージアカウントに対して監査されるようになります。
+
+    ![Screen shot showing the Assign blueprint dialog.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114-3.jpg "Assign blueprint dialog")
 
 ### Task 3: セキュア スコア
 
@@ -1267,25 +1268,28 @@ Duration: 15 minutes
 
 2. セキュリティ センター ブレードで、**クラウド セキュリティ** の下の **セキュア スコア** を選択します。
 
-3. 総合的なセキュアスコアの値を確認してから、カテゴリーの値に気づく。
+3. 総合的なセキュアスコアの値を確認してください。
 
-    ![Screen shot showing Secure score blade and the score and categories highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image115.png "Review Secure Score score and categories")
+    ![Screen shot showing Secure score blade and the score and categories highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image115.jpg "Review Secure Score score and categories")
 
 4. ウィンドウの下半分でサブスクリプションを選択すると、リソース検証に失敗したアイテムが、その特定のレコメンデーションアイテムに割り当てられているスコア値でソートされて表示されます。
 
-5. 推奨ブレードの**An Azure Active Directory administrator should be provisioned for SQL Servers**を選択すると、スコアに影響を与えるための推奨事項の修正方法に関する情報が表示されます。
+    ![Screen shot showing Secure score blade and the score and categories highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image115-2.jpg "Review Secure Score score and categories")
 
-    ![Screen shot with the Provision an Azure AD Administrator for SQL Server highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image116.png "Review a security recommendation")
+5. **すべての推奨事項** タブを選択し、 **SQL Server に対して Azure Active Directory の管理者をプロビジョニングする必要があります** を選択すると、スコアに影響を与えるための推奨事項の修正方法に関する情報が表示されます。
+
+    ![Screen shot with the Provision an Azure AD Administrator for SQL Server highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image116.jpg "Review a security recommendation")
 
 
-## 以上で本日のハンズオンの内容はすべて終了です。お疲れさまでした。
+---
+以上でハンズオンの内容はすべて終了です。お疲れさまでした。
 
 ---
 ## ハンズオンラボの終了後
 
 Duration: 10 minutes
 
-この演習では、ラボのサポートのために作成されたAzureリソースのプロビジョニングを解除します。
+このセクションでは、ラボのサポートのために作成されたAzureリソースのプロビジョニングを解除します。
 
 ### Task 1: リソースグループの削除
 
