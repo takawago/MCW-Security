@@ -49,14 +49,11 @@ July 2021
     - [Task 1: ダッシュボードの作成](#task-1-ダッシュボードの作成)
     - [Task 2: 分析アラートの作成](#task-2-分析アラートの作成)
     - [Task 3: カスタムアラートのインシデントを調査する](#task-3-カスタムアラートのインシデントを調査する)
-    - [Task 4: プレイブックの作成と実行](#task-4-プレイブックの作成と実行)
-    - [Task 5: Jupyter Notebooksの実行](#task-5-jupyter-notebooksの実行)
-    - [Task 6: Power BIでのレポート作成](#task-6-power-biでのレポート作成)
-  - [Exercise 7: コンプライアンスツール（Azure Policy、Secure Score、Compliance Manager）の使用について](#exercise-7-コンプライアンスツールazure-policysecure-scorecompliance-managerの使用について)
+    - [Task 4: Power BIでのレポート作成](#task-4-power-biでのレポート作成)
+  - [Exercise 7: コンプライアンスツール（Azure Policy、Secure Score）の使用について](#exercise-7-コンプライアンスツールazure-policysecure-scoreの使用について)
     - [Task 1: Review a basic Azure Policy](#task-1-review-a-basic-azure-policy)
     - [Task 2: Azure ブループリントの確認と作成](#task-2-azure-ブループリントの確認と作成)
     - [Task 3: セキュア スコア](#task-3-セキュア-スコア)
-    - [Task 4: Compliance Manager for Azureの使用](#task-4-compliance-manager-for-azureの使用)
   - [ハンズオンラボの終了後](#ハンズオンラボの終了後)
     - [Task 1: リソースグループの削除](#task-1-リソースグループの削除)
     - [Task 2: Azure Defender Pricingの削除](#task-2-azure-defender-pricingの削除)
@@ -1060,7 +1057,7 @@ Duration: 20 minutes
 
 2. **全体**タブで、名前に「**PortScans**」と入力します。
 
-3. F説明には、**A custom rule to detect port scans**と入力し、**次: ルールのロジックを設定** を選択します。
+3. 説明には、**A custom rule to detect port scans**と入力し、**次: ルールのロジックを設定** を選択します。
 
 4. **ルールのクエリ** のテキストボックスに、次のように入力します。
 
@@ -1089,13 +1086,13 @@ Duration: 20 minutes
 
 8. **アラートのしきい値** 、 **クエリ結果件数でアラートを生成する**に、**0** を入力します。
 
-    > **Note:** 実験のために、すぐに閾値を超えるようにしたい。このクエリと値は本番環境では適切ではない可能性があり、学習目的にのみ使用されます。
+    > **Note:** 実験のために、すぐに閾値を超えるように設定しています。このクエリと値は本番環境では適切ではない可能性があり、学習目的にのみ使用されます。
 
-    現在のデータを確認し、何がアラートのトリガーになるかを判断します。 赤いしきい値の線が青いイベントデータの線と交差していることに注目してください。
+    **現在のデータでテストする**を選択し、現在のデータを確認します。何がアラートのトリガーになるかを判断します。 赤いしきい値の線が青いイベントデータの線と交差していることに注目してください。
 
-    ![A chart is displayed showing the current log data and the alert threshold. The red and blue line intersect in the chart.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-13-26-17.jpg "Results Preview")
+    ![A chart is displayed showing the current log data and the alert threshold. The red and blue line intersect in the chart.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/rule-simulation.jpg "Results Preview")
 
-9. **次: インシデントの設定 (プレビュー)** インシデントの可能性のある設定を確認します。
+9. **次: インシデントの設定 (プレビュー)** を選択し、インシデントのある設定を確認します。
 
 10. **次: 自動応答** を選択します。まだ選択できるプレイブックがないことをご注意ください。
 
@@ -1111,7 +1108,7 @@ Duration: 20 minutes
 
 1. メインメニューで「**Azure Sentinel**」を選択します。
 
-2. **Incidents** を選択します。
+2. **インシデント** を選択します。
 
 3. 新しい**PortScans**インシデントを選択します。
 
@@ -1124,93 +1121,25 @@ Duration: 20 minutes
     ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76.jpg "Investigate an incident")
     ![The incident dialog is displayed with the Investigate button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image76-2.jpg "Investigate an incident")
 
-5. 今後のバージョンでは、アラートに関する洞察や、発砲の原因に関連するリソースを見ることができます。
+5. 今後のバージョンでは、アラートに関する洞察や、発報の原因に関連するリソースを見ることができます。
 
     ![The Azure Security Insights screen is displayed detailing the lifetime of an alert instance.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image77.jpg)
 
-### Task 4: プレイブックの作成と実行
 
-1. **Azure Sentinel**のブレードで、**オートメーション**を選択します。
 
-2. 新しいウィンドウで、「**+ 新しいプレイブックの追加**」を選択します。
-
-    ![The playbooks blade is displayed with the Playbooks item selected in the left hand menu and the + Add Playbook button selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image79.jpg)
-
-3. **ロジックアプリの作成** ブレードが表示されます。
-
-    - 名前には「**Email**」と入力します。
-
-    - 既存のリソースグループを選択します。
-
-    - **ログ分析の有効化**を**オン**に切り替えて、**azuresecurity**のLog Analyticsワークスペースを選択します。
-
-   ![The information above is entered in the Create logic app blade.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image80.jpg "Enter Create logic app information")
-
-4. 4. **確認および作成**を選択し、**作成**を選択します。 **リソースに移動**、**Logic Apps Designer**がロードされます。デザイナーがロードされない場合は、数分待ってからプレイブックリストを更新します。Email**プレイブックを選択します。
-
-    ![The playbooks list is displayed and the Email playbook is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-40-13.jpg "Playbook List")
-
-5. **Get a notification email when Security Center detects a threat** テンプレートを選択します。
-
-    ![The Logic Apps Designer screen is displayed with a list of templates. The Get a notification email when Security Center detects a threat template is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-44-52.jpg "Select Use this template")
-
-6. **このテンプレートを使用する** を選択します。
-
-    ![The Use this template button is selected under Send notification email with alert details from Azure Security Center.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image82.jpg "Select Use this template")
-
-7. **Office 365 Outlook**接続の場合、**+** リンクを選択し、Azure/O365の認証情報を入力します。
-
-    ![The Sign in button is highlighted next to Office 365 Outlook under This logic app will connect to.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-48-03.jpg "Sign in to Office 365 Outlook")
-
-    > **Note**: 有効なOffice 365アカウントをお持ちでない場合は、Outlook.comの基本的なメールテンプレートをご利用ください。
-
-8. **Security Center Alert**の接続では、**+** のリンクを選択します。
-
-9. **続行** を選択します。
-
-    ![The Logic app connection blade is displayed.  Outlook and Azure Security Center validation are displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-51-29.jpg "Logic App Connection Information")
-
-10. メールアドレスには、あなたの電子メールを入力してください。
-
-11. **保存** を選択します。これで、カスタムセキュリティアラートが使用するLogicAppsベースのメールアラートアクションができました。
-
-    ![Save is highlighted in Logic Apps Designer, and information about the custom security alert appears below.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2020-01-12-14-54-20.jpg "Save the email alert action")
-
-12. 最後に、新しいPlaybookを作成した後、ステータスが**有効**になっていることを確認します。 そうなっていない場合は、メニューから「**有効**」 を選択します。
-
-### Task 5: Jupyter Notebooksの実行
-
-1. **Azure Sentinel**ブレードで、**ノートブック** を選択します。
-
-2. **Azure Sentinel ML ノートブックのファースト ステップ ガイド** の項目を検索します。
-
-    ![The notebook search results are displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/sentinel-getting-started-notebook.jpg "Search for the getting started notebook")
-
-3. 右側のダイアログで「**ノートブックを保存**」を選択します。
-
-4. まだログインしていない場合は、Azure の認証情報を選択すると、GitHub のリポジトリがワークスペースにクローンされます。GitHub のプログレス・メーターが表示されます。
-
-    ![The GitHub progress meter is displayed.](media/2020-01-12-18-06-26.png "GitHub Progress Meter")
-
-5. Jupyter notebooksアプリケーションでノートブックが開くはずです。また、ノートブック・セルを実行するためのコンテナ・カーネルが起動します。
-
-6. ノートブックの指示に従って、各セルを実行します。ノートブックでは、既知の不良行為者やその他の地理的情報など、外部のセキュリティデータをマージするために、サポートされているAPIアカウントをいくつか設定する必要があります。
-
-    ![The getting started Sentinel notebook is displayed.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/jupyter-sentinel.png "Run the notebook steps")
-
-### Task 6: Power BIでのレポート作成
+### Task 4: Power BIでのレポート作成
 
 1. **Azure Sentinel**のブラウザウィンドウに戻ります。 **ログ** を選択します。
 
-    >**Note**: You may see a **Welcome to Log Analytics** splash page in the blade.  Select **Get Started**.
+    >**Note**: ブレードに**Log Analytics へようこそ**のスプラッシュページが表示される場合があります。 **X** を選択し閉じます。
 
-    ![The screenshot displays the Welcome to Log Analytics blade.](media/2020-01-12-19-14-49.png "Welcome to Log Analytics")
+    ![The screenshot displays the Welcome to Log Analytics blade.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/welcome-loganalytics.jpg "Welcome to Log Analytics")
 
-2. **Active** の下にある**Schema** タブで、**LogManagement** ノードを展開すると、さまざまなオプションが表示されます。
+2. **テーブル** タブ の下にある **LogManagement** ノードを展開します。
 
-3. スキーマ・ウィンドウで、**AzureDiagnostics** をダブルクリック 、次に **実行** をクリックします。
+3. **AzureDiagnostics** をダブルクリック 、次に **実行** をクリックします。
 
-4. 右上の「**Export**」を選択し、「**Export to Power BI (M Query)**」のリンクを選択します。
+4. 右上の「**エクスポート**」を選択し、「**Power BI へエクスポート (M Query)**」のリンクを選択します。
 
     ![The Azure Sentinel Logs screen is displayed. The logs item is selected in the left menu. LogManagement and AzureDiagnostics are selected from the active schema list. The Azure Diagnostics item has an eye icon. A new query tab is shown with the Export item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image103.jpg "Export a Power BI report query")
 
@@ -1218,13 +1147,13 @@ Duration: 20 minutes
 
 5. **開く** を選択すると、Power Query M Languageを使用したテキストドキュメントが表示されます。
 
-6. ドキュメントの指示に従って、Power BIでクエリを実行します。
+6. テキストドキュメントの指示に従って、Power BIでクエリを実行します。
 
     ![The instructions at the top of the PowerBIQuery.txt file are highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image88.jpg "Follow the query instructions")
 
 7. **Power BI** を閉じます。
 
-## Exercise 7: コンプライアンスツール（Azure Policy、Secure Score、Compliance Manager）の使用について
+## Exercise 7: コンプライアンスツール（Azure Policy、Secure Score）の使用について
 
 Duration: 15 minutes
 
@@ -1337,54 +1266,6 @@ Duration: 15 minutes
 
     ![Screen shot with the Provision an Azure AD Administrator for SQL Server highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image116.png "Review a security recommendation")
 
-### Task 4: Compliance Manager for Azureの使用
-
->**Note**: ラボのこの部分を実行するには、追加の権限が必要な場合があります。グローバル管理者にお問い合わせください。
-
-1. ブラウザでService Trust/Compliance Managerのポータル(<https://servicetrust.microsoft.com>)にアクセスします。
-
-2. 上部にある「**Sign in**」を選択すると、Azure ADのログインページにリダイレクトされます。
-
-    ![Sign in is highlighted at the top of the Service Trust/Compliance Manager portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.jpg "Sign in to Compliance Manager")
-
-3. プロンプトが表示されたら、Azure AD\Office 365 の認証情報を選択するか、サインインしてください。
-
-4. メニューから**コンプライアンス マネージャー** -> **コンプライアンス マネージャー (クラシック)** を選択します。
-
-    ![Compliance Manager Classic is highlight in the menu navigation.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.1.jpg "Open Compliance Manager Classic")
-
-5. **標準評価を追加** リンクをクリックします。
-
-6. **新しいグループを作成する** を選択します。名前に **AzureSecurity** を入力、  **次へ** を選択します。**既存のグループからデータをコピーしますか？** トグルを **いいえ** に設定します。**次へ** を選択します。
-
-    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image89.2.jpg)
-
-7. 製品のドロップダウンで、**Azure**を選択します。
-
-    
-8. 認証のドロップダウンで、**GDPR**を選択します。
-
-    ![Add a Standard Assessment dialog with Azure and GDPR selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image90.jpg)
-
-9. **ダッシュボードに追加** を選択します。 これで、AzureとGDPRの新しい評価が進行中であることがわかります。
-
-    ![Azure GDPR assessment status that shows in progress.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.jpg)
-
-10. **Azure GDPR** を選択します。
-
-11. 実装可能な様々なコントロールを確認する。
-
-    ![Several categories of controls are listed on the page.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image91.1.jpg)
-
-12. トップメニューで **トラスト ドキュメント** を選択、  **監査レポート** を選択します。
-
-    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image92.jpg)
-
-13. 様々なタブが表示されますが、「FedRAMP Reports」を選択してください。
-
-14. これらは、Azureのお客様が確認できるように実行され、公開された日付順のFedRAMPレポートのすべてです。表示された項目を選択して、ドキュメントを簡単に確認します。
-
-    ![The FedRAMP Reports report type is highlighted on the Data Protection Standards and Regulatory Compliance Reports page, and Azure - FedRAMP Moderate System Security Plan v3.02 is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image94.jpg "Select the displayed FedRAMP report")
 
 ## ハンズオンラボの終了後
 
