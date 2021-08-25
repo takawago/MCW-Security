@@ -1148,13 +1148,13 @@ Duration: 20 minutes
 
 5. **開く** を選択すると、Power Query M Languageを使用したテキストドキュメントが表示されます。
 
-6. テキストドキュメントの指示に従って、Power BIでクエリを実行します。(Power BIがローカルのPCにインストールされていない場合は、ラボ環境の **dsvm-vm** にインストールされているものを利用できます。 )
-
     ![The instructions at the top of the PowerBIQuery.txt file are highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image88.jpg "Follow the query instructions")
+
+6. テキストドキュメントの指示に従って、Power BI Desktopでクエリを実行します。(Power BIがローカルのPCにインストールされていない場合は、ラボ環境の **dsvm-vm** にインストールされているものを利用できます。 )
 
     > **Note**: クエリー実行時の資格情報には**組織アカウント** を使用してください。講師にAzure Passの管理者ID、Passを聞いてください。
 
-7. **データを取得** -> **空のクエリ** -> **詳細エディター** を選択し、テキストドキュメントのクエリ部分をコピー&ペーストし、**完了** を選択します。
+7. Power BI Desktopで、**データを取得** -> **空のクエリ** -> **詳細エディター** を選択し、テキストドキュメントのクエリ部分をコピー&ペーストし、**完了** を選択します。
 
     ![Query.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/advanced-query.jpg "Follow the query instructions")
 
