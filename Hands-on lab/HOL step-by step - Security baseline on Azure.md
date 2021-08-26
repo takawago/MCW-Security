@@ -64,7 +64,7 @@ July 2021
 
 ## 学習目標
 
-この実習では、Azure Security Center の機能の多くを実装して、クラウドベースの Azure インフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護します。具体的には、インターネットに公開されているリソースが適切に保護されていること、必要のないインターネットアクセスが無効になっていることを確認します。さらに、アプリケーション・セキュリティを有効にしている管理者のために「ジャンプ・マシン」を導入し、管理者が承認されていないソフトウェアをインストールして、クラウド・リソースを公開することを防ぎます。さらに、カスタムアラートを利用してTCP/IPポートスキャンを監視し、アラートを発するようにします。
+この実習では、Azure Security Center の機能の多くを実装して、クラウドベースの Azure インフラストラクチャ（IaaS）とアプリケーション（PaaS）を保護します。具体的には、インターネットに公開されているリソースが適切に保護されていること、必要のないインターネットアクセスが無効になっていることを確認します。さらに、アプリケーション・セキュリティを有効にしている管理者のために「ジャンプ・マシン」を導入し、クラウド・リソースを外部に公開することを防ぎます。さらに、カスタムアラートを利用してTCP/IPポートスキャンを監視し、アラートを発するようにします。
 
 この実習では、安全なクラウドベースのアーキテクチャを設計・構築したり、Azureでホストされている既存のアプリケーションのセキュリティを向上させたりすることができるようになります。
 
@@ -195,7 +195,7 @@ Duration: 45 minutes
 
     ![The Server parameter is listed under ADO.NET (SQL authentication) on the ADO.NET tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image21.png "Note the Server parameter")
 
-6. Lab VM (dsvm-vm) で **SQL Server Management Studio** を開きます。
+6. Lab VM (paw-1) で **SQL Server Management Studio** を開きます。
 
 7. 上記のデータベースサーバー名を入力します。
 
@@ -601,7 +601,10 @@ Duration: 30 minutes
 
 3. **F5**を押して、プログラムを続行します。
 
-4. [http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートすると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。(本ワークショップでは実施する必要はありません。時間があるときにお試しください。)
+4. [http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートすると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。
+
+    > **Note**: 以下本ワークショップでは実施する必要はありません。時間があるときにお試しください。
+
     - まだ実行していない場合は、**\\Hands-on lab\\Database\\02\_PermissionSetup.sql**スクリプトを実行してください。
 
     - プロジェクトに[AzureKeyVaultProvider for Entity Framework](https://blogs.msdn.microsoft.com/sqlsecurity/2015/11/10/using-the-azure-key-vault-key-store-provider-for-always-encrypted/)の参照を追加します。

@@ -163,7 +163,7 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
     ![Clone or download and Download ZIP are highlighted in this screenshot of the cloud workshop GitHub repository.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image3.png "Clone or Download Zip")
 
-3. Extract the zip file to your local machine, be sure to keep note of where you have extracted the files (such as `c:\temp`). You should now see a set of folders:
+3. Extract the zip file to your local machine (**paw-1** vm), be sure to keep note of where you have extracted the files (such as `c:\temp`). You should now see a set of folders:
 
     ![A set of extracted folders and files are visible in File Explorer: Hands-on lab, Whiteboard design session, HTMLLINKS.md, LICENSE, and README.md.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image4.png "Extract the zip file")
 
