@@ -280,7 +280,7 @@ Duration: 45 minutes
 
     > **Note**: CSCエラーが発生した場合は、プロジェクトを右クリックして **CLEAN**を選択します。 次に、プロジェクトを右クリックして**再構築**を選択します。
 
-    > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、フォルダ名をRoslyn 変更してください。
+    > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn 変更してください。
 
 5. `http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
