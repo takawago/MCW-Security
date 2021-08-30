@@ -256,11 +256,13 @@ Duration: 45 minutes
 
 21. スクリプトを実行して、**agent**という名前のログインを作成します。
 
-22. 解凍したフォルダを参照し、**\Hands-on lab\Database\01_CreateUser.sql** ファイルを選択してください。
+22. 再度、SQL Management Studioで、「File」-「Open」-「File」を選択します。
 
-23. **Insurance**データベースが選択されていることを確認します。
+23. 解凍したフォルダを参照し、**\Hands-on lab\Database\01_CreateUser.sql** ファイルを選択してください。
 
-24. スクリプトを実行して、**agent**という非管理者ユーザーを作成します。
+24. **Insurance**データベースが選択されていることを確認します。
+
+25. スクリプトを実行して、**agent**という非管理者ユーザーを作成します。
 
 ### Task 2: Webアプリケーションソリューションのテスト
 
