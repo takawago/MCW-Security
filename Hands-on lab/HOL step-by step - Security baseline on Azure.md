@@ -207,7 +207,6 @@ Duration: 45 minutes
 
 9. Azure SQL 環境への接続方法（VNet 内または外）によっては、ファイアウォールルールを追加するよう促される場合があります。このような場合は、以下の操作を行ってください。
 
-    - Select **Connect**, in the **New Firewall Rule** dialog, select **Sign In**.
     - **Connect**を選択し、**New Firewall Rule**ダイアログで、**Sign in**を選択します。
 
     - リソースグループオーナーの認証情報を使ってサインインします。
