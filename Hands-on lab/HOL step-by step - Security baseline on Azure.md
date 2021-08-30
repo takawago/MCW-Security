@@ -284,13 +284,13 @@ Duration: 45 minutes
 
     > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn 変更してください。
 
-5. `http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
+5. Chromeで、`http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
     ![The sample JSON response is returned.](media/2019-12-18-16-59-47.png "Sample JSON Response")
 
 6. 開いたブラウザウィンドウで、`http://localhost:24448/api/Users/e91019da-26c8-b201-1385-0011f6c365e9`をブラウズすると、マスクされていないSSNカラムを示すjsonレスポンスが表示されます。
 
-    > **Note**: お使いのブラウザによっては、json形式のレスポンスを表示するためにダウンロードが必要な場合があります。
+    > **Note**: お使いのブラウザによっては、json形式のレスポンスを表示するためにダウンロードが必要な場合があります。Chromeでアクセスすることを推奨します。
 
    ![The json response is displayed in a browser window.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image30.png "View the json response")
 
