@@ -279,6 +279,10 @@ Duration: 45 minutes
 
 4. **F5**を押して、**InsuranceAPI**ソリューションを実行します。
 
+    > **Note**: Visual Studio の デフォルトブラウザを Chrome に変更するには以下の画像を参照してください。
+
+    > ![Default Browser.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/change-to-chrome.jpg "Default Browser")
+
     > **Note**: CSCエラーが発生した場合は、プロジェクトを右クリックして **CLEAN**を選択します。 次に、プロジェクトを右クリックして**再構築**を選択します。
 
     > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn 変更してください。
@@ -486,11 +490,11 @@ Duration: 30 minutes
 
 2. **+ 新規登録** を選択します。
 
-3. For the user-facing display name, type **AzureKeyVaultTest**.
+3. ユーザー向け表示名には、**AzureKeyVaultTest** と入力します。
 
 4. 対応しているアカウントについては、**この組織ディレクトリ内のみに含まれるアカウント (既定のディレクトリ のみ - シングル テナント)** を選択します。
 
-5. For the Redirect URL, type <http://localhost:12345> .
+5. リダイレクトURLには、 <http://localhost:12345> を入力します。
 
     ![AzureKeyVaultTest is entered in the Name box, and http://localhost:12345 is entered in the Sign-on URL box under Create.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image49.jpg "Create a new application registration")
 
@@ -502,7 +506,7 @@ Duration: 30 minutes
 
 8. 左側のメニューペインの**管理**の見出しの下で、**証明書とシークレット**リンクを選択します。
 
-9. **クライアントシークレット**の下の **新しいクライアントシークレット**を選択します。
+9.  **クライアントシークレット**の下の **新しいクライアントシークレット**を選択します。
 
     ![In the Certificates and secrets window, the New client secret button is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image50-2.jpg "New Client Secret")
 
@@ -590,7 +594,7 @@ Duration: 30 minutes
 
 ### Task 5: ソリューションのテスト
 
-1. **Global.asax.cs** ファイルを開き、28行目にブレークポイントを置きます。
+1. **Global.asax.cs** ファイルを開き、28行目にブレークポイントを置きます。(F9 キー)
 
     > **Note**: このコードでは、上記で設定したアプリケーションのアクセストークンを取得するための呼び出しを行い、そのアクセストークンを使ってAzure Key Vaultを呼び出しています。
 
@@ -924,7 +928,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 4. リモートデスクトップ接続で**paw-1**に切り替えます。
 
 5. **Putty**ツールを開き、ユーザー名とパスワードを使って **linux-1** マシンにログインします。
-(paw-1 のhostsファイルを確認し、VMのIPアドレスが間違っている場合は、修正してください。)
+(事前に paw-1 のhostsファイル (C:\Windows\System32\drivers\etc\hosts) を確認し、VMのIPアドレスが間違っている場合は、修正してください。)
 
    ![Putty window with linux-1 as the host.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/putty-linux-1.png "Use Putty to login to linux-1")
 
