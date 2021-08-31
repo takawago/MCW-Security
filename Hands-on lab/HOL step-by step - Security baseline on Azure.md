@@ -426,7 +426,7 @@ Duration: 45 minutes
 
 25. **Close**を選択します。
 
-26. **Users**テーブルを右クリックし、**Select top 1000 rows** を選択します。
+26. **User**テーブルを右クリックし、**Select top 1000 rows** を選択します。
 
     ![The User table is selected, and Select Top 1000 Rows is selected in the shortcut menu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image42.png "Select the top 1000 rows")
 
@@ -465,13 +465,13 @@ Duration: 30 minutes
 
 5. **名前**には、**InsuranceAPI**と入力します。
 
-6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。
+6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。(connectionString="" のダブルクォーテーションの間の文字列)
 
 7. **作成**を選択します。
 
 8. **シークレット**を選択します。
 
-9. **InsuranceAPI**を選択します。
+9.  **InsuranceAPI**を選択します。
 
 10. 現在のバージョンを選択します。
 
@@ -512,7 +512,7 @@ Duration: 30 minutes
 
 10. 説明には **InsuranceAPI** と入力します。
 
-11. Expiresは**12ヶ月**を選択。
+11. 有効期限は**12ヶ月**を選択。
 
 12. **追加**を選択します。
 
@@ -602,7 +602,7 @@ Duration: 30 minutes
 
     Azure Key Vaultへの呼び出しが実行され、シークレット（ここではAzure Databaseへの接続文字列）が返されているのがわかるはずです。
 
-    ![The connection string to the Azure Database is visible through the Visual Studio debugger.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54.png "View the connection string")
+    ![The connection string to the Azure Database is visible through the Visual Studio debugger.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54.jpg "View the connection string")
 
 3. **F5**を押して、プログラムを続行します。
 
