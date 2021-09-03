@@ -152,7 +152,7 @@ Duration: 15 minutes
 
     > **Note**:  ARMテンプレートでVMと仮想ネットワークが完全にプロビジョニングされるのを待たなかった場合、エラーが発生する可能性があります。
 
-4. 楕円形を選択し、**アクティビティ ログ**を選択すると、仮想マシンへのアクセスを要求した人の履歴が表示されます。
+4. 三点メニューを選択し、**アクティビティ ログ**を選択すると、仮想マシンへのアクセスを要求した人の履歴が表示されます。
 
     ![Activity Log is highlighted in the shortcut menu for the last user.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image15.jpg "View the Activity Log")
 
@@ -285,7 +285,7 @@ Duration: 45 minutes
 
     > **Note**: CSCエラーが発生した場合は、プロジェクトを右クリックして **CLEAN**を選択します。 次に、プロジェクトを右クリックして**再構築**を選択します。
 
-    > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn 変更してください。
+    > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn へ変更してください。
 
 5. Chromeで、`http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
@@ -1011,7 +1011,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
     ![The event viewer is displayed with the click path highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/eventviewer-operations-mgr.png "Filter the Operations Manager event logs")
 
-5. イベントIDに「**5001**」と入力し、最新のエントリを選択すると、先ほど追加したものを含め、Log Analyticsワークスペースに展開されているすべてのソリューションに似た名前が表示されます。
+5. イベントIDに「**5002**」と入力し、最新のエントリを選択すると、先ほど追加したものを含め、Log Analyticsワークスペースに展開されているすべてのソリューションに似た名前が表示されます。
 
     ![The event viewer is displayed with the click path highlighted.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/eventviewer-operations-mgr-5000.png "Filter the Operations Manager event logs")
 
@@ -1232,7 +1232,7 @@ Duration: 15 minutes
 
 6. 名前には「**GDPRBluePrint**」と入力します。
 
-7. 場所については、楕円形を選択し、ドロップダウンでサブスクリプションを選択します。
+7. 場所については、三点メニューを選択し、ドロップダウンでサブスクリプションを選択します。
 
 8. **選択** を選びます。
 
@@ -1254,7 +1254,7 @@ Duration: 15 minutes
 
 14. **下書きの保存** を選択します。 数分かかる場合があります。 保存操作が終了すると、自動的にブレードが変更されます。
 
-15. 新しいブループリントでは、楕円形を選択してから **ブループリントを発行する** を選択します。
+15. 新しいブループリントでは、三点メニューを選択してから **ブループリントを発行する** を選択します。
 
     ![The ellipses menu is expanded for the gdprblueprint blueprint item with the Publish blueprint menu item highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114.jpg "Publish blueprint dialog")
 
@@ -1262,7 +1262,7 @@ Duration: 15 minutes
 
 17. **公開** を選択します。
 
-18. 新しいブループリントでは、楕円形を選択してから **ブループリントの割り当て** を選択します。
+18. 新しいブループリントでは、三点メニューを選択してから **ブループリントの割り当て** を選択します。
 
     ![Screen shot showing the Assign blueprint dialog.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image114-2.jpg "Assign blueprint dialog")
 
