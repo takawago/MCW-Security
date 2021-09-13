@@ -9,10 +9,14 @@ namespace InsuranceAPI
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            // Web API の設定およびサービス
 
-            // Web API routes
+            // Web API ルート
             config.MapHttpAttributeRoutes();
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
+
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
