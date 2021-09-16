@@ -216,7 +216,7 @@ Duration: 45 minutes
 
     ![Introduction is highlighted on the left side of the Import Data-tier Application dialog box, and Next is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image24.png "Select Import Data-tier Application")
 
-12. **Browse**を選択し、解凍した **/Hands-on lab/Database** ディレクトリに移動し、**Insurance.bacpac**ファイルを選択します。
+12. **Browse**を選択し、**paw-1** vm の `c:\temp` 配下の  **/Hands-on lab/Database** ディレクトリに移動し、**Insurance.bacpac**ファイルを選択します。
 
     ![Insurance.bacpac is selected in the Browse dialog box.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image25.png "Select Insurance.bacpac")
 
@@ -238,7 +238,7 @@ Duration: 45 minutes
 
     ![In SQL Management Studio, Open is selected in the File menu, and File is selected in the shortcut menu.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image27.png "Open a file")
 
-19. 解凍した GitHub フォルダを参照し、**\Hands-on lab\Database\00_CreateLogin.sql**ファイルを選択します。
+19. **paw-1** vm の `c:\temp` 配下の  GitHub フォルダを参照し、**\Hands-on lab\Database\00_CreateLogin.sql**ファイルを選択します。
 
 20. **master**データベースが選択されていることを確認します。
 
@@ -246,7 +246,7 @@ Duration: 45 minutes
 
 22. 再度、SQL Management Studioで、「File」-「Open」-「File」を選択します。
 
-23. 解凍したフォルダを参照し、**\Hands-on lab\Database\01_CreateUser.sql** ファイルを選択してください。
+23. **paw-1** vm の `c:\temp` 配下の フォルダを参照し、**\Hands-on lab\Database\01_CreateUser.sql** ファイルを選択してください。
 
 24. **Insurance**データベースが選択されていることを確認します。
 
@@ -254,7 +254,7 @@ Duration: 45 minutes
 
 ### Task 2: Webアプリケーションソリューションのテスト
 
-1. 解凍したディレクトリの中にある**Hands-on lab\WebApp\InsuranceAPI**というソリューションファイルをダブルクリックすると、Visual Studioが立ち上がります。
+1. **paw-1** vm の `c:\temp` 配下の ディレクトリの中にある**Hands-on lab\WebApp\InsuranceAPI**というソリューションファイルをダブルクリックすると、Visual Studioが立ち上がります。
 
     > **Note**: プロンプトが表示されたら、Azure / MSDNアカウントでログインしてください。
 
@@ -535,7 +535,7 @@ Duration: 30 minutes
 
 ### Task 4: NuGetパッケージのインストールまたは検証
 
-1. 先ほどの Visual Studio ソリューションを終了し、解凍した GitHub ディレクトリから、 **\Hands-on lab\WebApp\InsuranceAPI\_KeyVault\InsuranceAPI.sln** ソリューションを開きます。
+1. 先ほどの Visual Studio ソリューションを終了し、**paw-1** vm の `c:\temp` 配下の  GitHub ディレクトリから、 **\Hands-on lab\WebApp\InsuranceAPI\_KeyVault\InsuranceAPI.sln** ソリューションを開きます。
 
     >**Note**:  必ず正しいソリューションを開き直してください。
 
@@ -654,7 +654,7 @@ Duration: 45 minutes
 
 6. ダイアログでは、**Yes**を選択します。
 
-7. **File->Open**を選択し、解凍したGitHubのディレクトリを参照して、**\Hands-on lab\Scripts\PortScanner.ps1**を開きます。
+7. **File->Open**を選択し、**paw-1** vm の `c:\temp` 配下の GitHubのディレクトリを参照して、**\Hands-on lab\Scripts\PortScanner.ps1**を開きます。
 
     > **Note**: 事前準備で、[GitHub repo](https://github.com/Microsoft/MCW-Azure-Security-Privacy-and-Compliance)をダウンロードして、セットアップの手順でこれを展開したと思います。 これらの手順を実行していない場合は、今すぐ実行してください。また、デスクトップからVMにファイルをコピーすることもできます。
 
