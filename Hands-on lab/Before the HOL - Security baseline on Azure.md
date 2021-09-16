@@ -155,6 +155,9 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
 2. After the installer has completed downloading, run it and follow the prompts to install SQL Server Management Studio.
 
+3. Exercise 2 の Task 1: データベースの設定 を実施してください。
+    > **Note**: このステップ3の手順は、データベースの設定をワークショップ実施前に準備する場合にのみ実施してください。
+
 ### Task 5: Download GitHub resources
 
 1. Open a browser window to the cloud workshop GitHub repository (<https://github.com/takawago/MCW-Security>).

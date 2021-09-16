@@ -164,6 +164,8 @@ Duration: 45 minutes
 
 ### Task 1: データベースの設定
 
+> **Note**: 講師に確認し、Task 1 の環境が事前に準備されている場合、スキップして [ [Task 2: Webアプリケーションソリューションのテスト](#task-2-webアプリケーションソリューションのテスト) ] に進んでください。
+
 1. Azureポータルに切り替えて、「**すべてのサービス**」を選択し、「**SQL**」を検索します。 **SQL Servers**を選択します。
 
     ![All services is highlighted on the left side of the Azure portal, and SQL servers is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image18.jpg "Select SQL Servers")
