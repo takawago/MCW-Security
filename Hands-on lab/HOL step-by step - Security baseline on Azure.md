@@ -285,7 +285,7 @@ Duration: 45 minutes
 
 8. **Insurance** データベースを指すように web.config を更新します（13 行目）。接続文字列を更新するため、**value=** の後の **""** の間にコピーした接続文字列を貼り付けます。
     
-    > **Note**: 接続文字列の Password はデータベースのパスワードに置き換えてください。
+    > **Note**: 接続文字列の User IDは **agent**、Password は **p@ssword1rocks** に置き換えてください。
 
     ![Line 72 of the Insurance database is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image29.jpg "Update the server name in Web.config")
 
@@ -295,19 +295,16 @@ Duration: 45 minutes
 
     > ![Default Browser.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/change-to-chrome.jpg "Default Browser")
 
-    > **Note**: CSCエラーが発生した場合は、プロジェクトを右クリックして **CLEAN**を選択します。 次に、プロジェクトを右クリックして**再構築**を選択します。
-
-    > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn へ変更してください。
 
 10. Chromeで、`http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
-    ![The sample JSON response is returned.](media/2019-12-18-16-59-47.png "Sample JSON Response")
+    ![The sample JSON response is returned.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/apiusers.jpg "Sample JSON Response")
 
 11. 開いたブラウザウィンドウで、`http://localhost:24448/api/Users/e91019da-26c8-b201-1385-0011f6c365e9`をブラウズすると、マスクされていないSSNカラムを示すjsonレスポンスが表示されます。
 
     > **Note**: お使いのブラウザによっては、json形式のレスポンスを表示するためにダウンロードが必要な場合があります。Chromeでアクセスすることを推奨します。
 
-   ![The json response is displayed in a browser window.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image30.png "View the json response")
+    ![The json response is displayed in a browser window.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image30.jpg "View the json response")
 
 ### Task 3: データマスキングの活用
 
@@ -333,7 +330,7 @@ Duration: 45 minutes
 
 9. InsuranceAPIソリューションに戻り、**F5**を押してページを更新します。SSNカラムが**xxxx**でマスクされていることが確認できます。
 
-    ![The masked SSN column is highlighted in the InsuranceAPI response.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image33.png "View the masked SSN column")
+    ![The masked SSN column is highlighted in the InsuranceAPI response.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image33.jpg "View the masked SSN column")
 
 10.  **Visual Studio** を閉じます。
 
@@ -458,7 +455,7 @@ Duration: 45 minutes
 
 Duration: 30 minutes
 
-この演習では、アプリケーションの構成ファイルに貴重な認証情報（接続文字列など）を保存するのではなく、Azure Key Vaultを利用するようにWebアプリケーションを移行する方法を学びます。
+この演習では、アプリケーションの構成ファイルに重要な認証情報（接続文字列など）を保存するのではなく、Azure Key Vaultを利用するようにWebアプリケーションを移行する方法を学びます。
 
 ### Task 1: Azure Key Vaultのシークレットの作成
 
@@ -475,9 +472,9 @@ Duration: 30 minutes
 
 4. **アップロードオプション**で、 **手動**.を選択します。
 
-5. **名前**には、**InsuranceAPI**と入力します。
+5. **名前**には、**InsuranceAPI** と入力します。
 
-6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。(connectionString="" のダブルクォーテーションの間の文字列)
+6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。(value="" のダブルクォーテーションの間の文字列)
 
 7. **作成**を選択します。
 
@@ -506,7 +503,7 @@ Duration: 30 minutes
 
 4. 対応しているアカウントについては、**この組織ディレクトリ内のみに含まれるアカウント (既定のディレクトリ のみ - シングル テナント)** を選択します。
 
-5. リダイレクトURLには、 <http://localhost:12345> を入力します。
+5. リダイレクトURLには、 **http://localhost:12345** を入力します。
 
     ![AzureKeyVaultTest is entered in the Name box, and http://localhost:12345 is entered in the Sign-on URL box under Create.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image49.jpg "Create a new application registration")
 
@@ -558,11 +555,11 @@ Duration: 30 minutes
 
 ### Task 4: NuGetパッケージのインストールまたは検証
 
-1. 先ほどの Visual Studio ソリューションを終了し、**paw-1** vm の `c:\temp` 配下の  GitHub ディレクトリから、 **\Hands-on lab\WebApp\InsuranceAPI\_KeyVault\InsuranceAPI.sln** ソリューションを開きます。
+1. **paw-1** vmで、先ほどの Visual Studio ソリューションを終了し、`c:\temp` 配下の  GitHub ディレクトリから、 **\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI.sln** ソリューションを開きます。
 
     >**Note**:  必ず正しいソリューションを開き直してください。
 
-    ![The screenshot displays the folder structure for both Visual Studio solutions.](media/2019-12-19-13-13-07.png "Both InsuranceAPI Solutions")
+    ![The screenshot displays the folder structure for both Visual Studio solutions.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/2019-12-19-13-13-07.jpg "Both InsuranceAPI Solutions")
 
 2. **Visual Studio**に切り替えます。
 
@@ -592,33 +589,38 @@ Duration: 30 minutes
 
     **appSettings**セクションには、いくつかのトークン値があることに注目してください。
 
-    ![Some token values are highlighted in the appSettings section of the Web.config file.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image53.png "Note the token values")
+    ![Some token values are highlighted in the appSettings section of the Web.config file.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image53.jpg "Note the token values")
 
-6. **ApplicationID**(**ClientID**)と**ClientSecret**をTask 2の値に置き換えてください。
+6. **アプリケーション**(**クライアント**)**ID** と **シークレット値** をTask 2でコピーした値に置き換えてください。
 
     ![The pane is displaying the Application Registration information. ApplicationId is circled.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54-0.jpg "Applicaiton Registration")
 
-7. **SecretUri**をTask 1のAzure Key VaultのシークレットキーUriに置き換えます。
+7. **シークレット識別子** をTask 1でコピーした Azure Key Vault のシークレット識別子に置き換えます。
 
-8. Visual StudioでWeb.configファイルを保存します。
+8. UsersController.cs を開き、 16 行目をコメント、17 行目をコメント解除します。(接続文字列をKey Vaultのシークレットから取得するように変更)
 
-    > **Note**:  このラボを一歩進めて、Web App を Azure App Service に公開し、[システム割り当て マネージドID](https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet)を有効にすることができます。  これにより、設定から認証を完全に取り除き、[Key Vault 参照](https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references)を利用することができます。
+9. Global.asax.cs を開き、34-41 行目のコメントを解除します。
+
+10. Visual StudioでWeb.configファイルを保存します。
+
+    > **Note**:  このラボを一歩進めて、Web App を Azure App Service に公開し、[システム割り当て マネージドID](https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet)を有効にすることができます。  これにより、設定から認証情報を完全に取り除き、[Key Vault 参照](https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references)を利用することができます。
 
 ### Task 5: ソリューションのテスト
 
-1. **Global.asax.cs** ファイルを開き、28行目にブレークポイントを置きます。(F9 キー)
+1. **UserControllers.cs** ファイルを開き、17行目にブレークポイントを置きます。(F9 キー)
 
     > **Note**: このコードでは、上記で設定したアプリケーションのアクセストークンを取得するための呼び出しを行い、そのアクセストークンを使ってAzure Key Vaultを呼び出しています。
 
 2. **F5**を押して、ソリューションを実行します。
 
+3. アプリケーションが表示されたら、[http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートします。
+
     Azure Key Vaultへの呼び出しが実行され、シークレット（ここではAzure Databaseへの接続文字列）が返されているのがわかるはずです。
 
     ![The connection string to the Azure Database is visible through the Visual Studio debugger.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54.jpg "View the connection string")
 
-3. **F5**を押して、プログラムを続行します。
 
-4. [http://localhost:portno/api/Users](http://localhost:portno/api/Users) にナビゲートすると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。
+4. ###要修正 **F5**を押して、プログラムを続行すると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。
 
     > **Note**: 以下本ワークショップでは実施する必要はありません。時間があるときにお試しください。
 
