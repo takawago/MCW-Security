@@ -174,7 +174,8 @@ Duration: 45 minutes
 
 3. 設定 セクションの **SQL データベース** を選択し、**SampleDB** データベースを選択します。
 
-    ![SQL databases is selected under Settings on the left, and at right, SampleDB is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image19.jpg "Select the SampleDB database")
+    ![SQL databases is selected under Settings on the left, and at right, SampleDB is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image19.png
+     "Select the SampleDB database")
 
 4. Summaryセクションで、**データベース接続文字列の表示**を選択します。
 

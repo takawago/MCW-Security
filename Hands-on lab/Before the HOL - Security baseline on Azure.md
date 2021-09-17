@@ -22,23 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-**Contents**
-
 # Security baseline on Azure before the hands-on lab setup guide
-
-## Requirements
-
-1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
-
-    - Trial subscriptions will not work.
-
-2. A machine with the following software installed (a Virtual Machine is created via the ARM template with most of this):
-
-    - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-    - [SQL Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)
-    - [Power BI Desktop](https://powerbi.microsoft.com/en-us/downloads/)
-
-3. An Office 365 email account or other email-based account.
 
 ## Before the hands-on lab
 
