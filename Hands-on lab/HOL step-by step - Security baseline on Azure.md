@@ -282,7 +282,7 @@ Duration: 45 minutes
 
     ![Web.config is highlighted under the InsuranceAPI project in Solution Explorer.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image28.jpg "Open Web.config")
 
-8. **Insurance** データベースを指すように web.config を更新します（13 行目）。接続文字列を更新して、**value=** の後の **""** の間にコピーした接続文字列を貼り付けます。
+8. **Insurance** データベースを指すように web.config を更新します（13 行目）。接続文字列を更新するため、**value=** の後の **""** の間にコピーした接続文字列を貼り付けます。
     
     > **Note**: 接続文字列の Password はデータベースのパスワードに置き換えてください。
 
