@@ -599,11 +599,20 @@ Duration: 30 minutes
 
 8. UsersController.cs を開き、 16 行目をコメント、17 行目をコメント解除します。(接続文字列をKey Vaultのシークレットから取得するように変更)
 
+    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/UsersControllers.jpg "")
+
 9. Global.asax.cs を開き、34-41 行目のコメントを解除します。
 
-10. Visual StudioでWeb.configファイルを保存します。
+    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/Global.asax.jpg "")
+
+10. Web.config を開き、接続文字列に `Column Encryption Setting=Enabled` を追加します。
+    
+    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/ColumnEncryption.jpg "")
+
+11. Visual StudioでUsersController.cs、Global.asax.cs、Web.configファイルを保存します。
 
     > **Note**:  このラボを一歩進めて、Web App を Azure App Service に公開し、[システム割り当て マネージドID](https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet)を有効にすることができます。  これにより、設定から認証情報を完全に取り除き、[Key Vault 参照](https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references)を利用することができます。
+
 
 ### Task 5: ソリューションのテスト
 
