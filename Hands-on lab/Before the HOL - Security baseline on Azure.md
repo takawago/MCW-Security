@@ -24,8 +24,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->autoauto- [Security baseline on Azure before the hands-on lab setup guide](#security-baseline-on-azure-before-the-hands-on-lab-setup-guide)auto    - [Requirements](#requirements)auto    - [Before the hands-on lab](#before-the-hands-on-lab)auto        - [Task 1: Configure Azure Security Center](#task-1-configure-azure-security-center)auto        - [Task 2: Deploy resources to Azure](#task-2-deploy-resources-to-azure)auto        - [Task 3: Download Google Chrome](#task-3-download-google-chrome)auto        - [Task 4: Download SQL Server Management Studio](#task-4-download-sql-server-management-studio)auto        - [Task 5: Download GitHub resources](#task-5-download-github-resources)autoauto<!-- /TOC -->
-
 # Security baseline on Azure before the hands-on lab setup guide
 
 ## Requirements
@@ -98,7 +96,9 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
     - Location: Select a **location** for the Resource group.
 
-        >**Note**: You may receive an error if you pick a region that does not support this lab. We recommend using East US, East US 2, West Central US, or West US 2.
+        >**Note**: You may receive an error if you pick a region that does not support this lab. We recommend using 東日本, East US, East US 2, West Central US, or West US 2.
+
+    - Admin Password: **p@ssword1rocks** for default
 
     - Modify the **sqlservername** to be something unique such as **azsecurity-\[your initials or first name\]**.
 
@@ -169,5 +169,9 @@ In this exercise, you will set up your environment for use in the rest of the ha
 3. Extract the zip file to `c:\temp` on **paw-1** vm. You should now see a set of folders:
 
     ![A set of extracted folders and files are visible in File Explorer: Hands-on lab, Whiteboard design session, HTMLLINKS.md, LICENSE, and README.md.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image4.png "Extract the zip file")
+
+### Task 6: Visual Studio 2019 へのサインイン
+
+1. **paw-1** 仮想マシンで Visual Studio 2019 を起動し、ワークショップ用のID/Passでサインインしてください。(次回起動時の手順を省略するため)
 
 You should follow all steps provided *before* attending the hands-on lab.

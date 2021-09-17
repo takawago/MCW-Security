@@ -107,11 +107,11 @@ Duration: 15 minutes
    - 有効にするプランを**オン**にします。
    - セキュリティセンターに戻り、**Just in time VM アクセス**を選択します。
 
-3. **構成済み** (Configured) タブを選択し、Lab VMs（db-1、paw-1、web-1）が表示されていることを確認します。 表示されていない場合は、**構成されていません** (Recommended) タブを選択し、ラボVM（db-1、paw-1、web-1）を選択するチェックボックスをオンにして、**Enable JIT on 3 VMs**リンクを選択します。
+3. **構成済み** (Configured) タブを選択し、Lab VMs（db-1、paw-1、web-1）が表示されていないことを確認します。 次に、**構成されていません** (Recommended) タブを選択し、ラボVM（db-1、paw-1、web-1）を選択するチェックボックスをオンにして、**Enable JIT on 3 VMs**リンクを選択します。
 
     ![In the Virtual machines list, the Recommended tab is selected and the db-1, paw-1 and web-1 virtual machines are selected for Just-in-time access.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image9-4.jpg "Virtual Machines Selected")
 
-    > **Note**: Azure Defenderにアップグレードした場合、新しいVMが表示されるまでに最大で10分かかることがあります。 また、バックエンドプロセスによって新しいVMが**サポートなし** (No recommendation) タブに移動するまで、新しいVMが**構成されていません** (Recommended) タブに表示される可能性があることに注意してください。 10分経ってもVMが表示されない場合は、VMブレードの**構成**タブを選択し、**Just-in-Timeを有効にする**ことで、手動でJITを有効にすることができます。
+    > **Note**: Azure Defenderにアップグレードした場合、新しいVMが表示されるまでに最大で10分かかることがあります。 また、バックエンドプロセスによって新しいVMが**サポートなし** (No recommendation) タブに移動するまで、新しいVMが**構成されていません** (Recommended) タブに表示される可能性があることに注意してください。 10分経ってもVMが表示されない場合は、下記画面のように各VM（db-1、paw-1、web-1）で、VMブレードの **構成** を選択し、**Just-in-Timeを有効にする**ことで、手動でJITを有効にしてください。
 
     ![Configuration and Enable JIT Access is highlighted in the Azure portal.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image119.jpg "Enable JIT")
 
@@ -170,7 +170,7 @@ Duration: 45 minutes
 
     ![All services is highlighted on the left side of the Azure portal, and SQL servers is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image18.jpg "Select SQL Servers")
 
-2. Azure Managerテンプレートを使って作成した**Azure SQL**データベースサーバーを選択します（例：azsecurity-INIT）。
+2. Azure Managerテンプレートを使って作成した**Azure SQL**データベースサーバーを選択します（例：azsecurity-xxxx）。
 
 3. 設定 セクションの **SQL データベース** を選択し、**SampleDB** データベースを選択します。
 
@@ -180,7 +180,7 @@ Duration: 45 minutes
 
     ![In the summary section beneath Connection strings the Show database connection strings link is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image20.jpg "Select the Show database connection strings")
 
-5. このラボで後述する接続文字列、特に**Server**パラメータに注意してください。
+5. このラボで後述する接続文字列の設定で必要となりますのでNotepadなどにコピーしておいてください。特に**Server**パラメータに注意してください。
 
     ![The Server parameter is listed under ADO.NET (SQL authentication) on the ADO.NET tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image21.png "Note the Server parameter")
 
@@ -191,6 +191,8 @@ Duration: 45 minutes
 8. Azure テンプレートのデプロイ時に使用したユーザー名とパスワード（**wsadmin** - **p\@ssword1rocks**）を入力します。
 
     > **Note**: ARMテンプレートのデプロイ時にユーザー名とパスワードを変更した場合は、その値を代わりに使用してください。
+
+    > **Note**: 英語キー配列の場合の入力文字に気をつけてください。
 
     ![The information above is entered in the Connect to Server dialog box, and Connect is highlighted at the bottom.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image22.jpg "Sign in to the SQL Server Database Engine")
 
@@ -254,19 +256,39 @@ Duration: 45 minutes
 
 ### Task 2: Webアプリケーションソリューションのテスト
 
-1. **paw-1** vm の `c:\temp` 配下の ディレクトリの中にある**Hands-on lab\WebApp\InsuranceAPI**というソリューションファイルをダブルクリックすると、Visual Studioが立ち上がります。
+1. Azureポータルで、「**すべてのサービス**」を選択し、「**SQL**」を検索します。 **SQL Servers**を選択します。
+
+    ![All services is highlighted on the left side of the Azure portal, and SQL servers is highlighted to the right.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image18.jpg "Select SQL Servers")
+
+2. Azure Managerテンプレートを使って作成した**Azure SQL**データベースサーバーを選択します（例：azsecurity-xxxx）。
+
+3. 設定 セクションの **SQL データベース** を選択し、**SampleDB** データベースを選択します。
+
+    ![SQL databases is selected under Settings on the left, and at right, SampleDB is selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image19.jpg "Select the SampleDB database")
+
+4. Summaryセクションで、**データベース接続文字列の表示**を選択します。
+
+    ![In the summary section beneath Connection strings the Show database connection strings link is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image20.jpg "Select the Show database connection strings")
+
+5. このラボで後述する接続文字列の設定で必要となりますのでNotepadなどにコピーしておいてください。
+
+    ![The Server parameter is listed under ADO.NET (SQL authentication) on the ADO.NET tab.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image21.png "Note the Server parameter")
+
+6. **paw-1** vm の `c:\temp` 配下の ディレクトリの中にある**Hands-on lab\WebApp\InsuranceAPI**というソリューションファイルをダブルクリックすると、Visual Studioが立ち上がります。
 
     > **Note**: プロンプトが表示されたら、Azure / MSDNアカウントでログインしてください。
 
-2. **ソリューション エクスプローラー**で、**Web.config**ファイルをダブルクリックして開きます。
+7. **ソリューション エクスプローラー**で、**Web.config**ファイルをダブルクリックして開きます。
 
     ![Web.config is highlighted under the InsuranceAPI project in Solution Explorer.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image28.jpg "Open Web.config")
 
-3. Task 2 で作成した **Insurance** データベースを指すように web.config を更新します（77 行目）。サーバー名を更新して、Azure SQL Serverを指すようにするだけでよいでしょう。(サーバー名の例: xxxxx.database.windows.net)
+8. **Insurance** データベースを指すように web.config を更新します（13 行目）。接続文字列を更新して、**value=** の後の **""** の間にコピーした接続文字列を貼り付けます。
+    
+    > **Note**: 接続文字列の Password はデータベースのパスワードに置き換えてください。
 
-    ![Line 72 of the Insurance database is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image29.png "Update the server name in Web.config")
+    ![Line 72 of the Insurance database is highlighted.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image29.jpg "Update the server name in Web.config")
 
-4. **F5**を押して、**InsuranceAPI**ソリューションを実行します。
+9. **F5**を押して、**InsuranceAPI**ソリューションを実行します。
 
     > **Note**: Visual Studio の デフォルトブラウザを Chrome に変更するには以下の画像を参照してください。
 
@@ -276,11 +298,11 @@ Duration: 45 minutes
 
     > **Note**: Roslyn フォルダ配下のファイルが見つからないエラーが発生した場合は、\Hands-on lab\WebApp\InsuranceAPI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45 フォルダをコピーし、\Hands-on lab\WebApp\InsuranceAPI\InsuranceAPI\bin フォルダ配下にペーストし、フォルダ名をRoslyn へ変更してください。
 
-5. Chromeで、`http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
+10. Chromeで、`http://localhost:24448/api/Users` にアクセスして、APIの応答をテストします。ポート番号は_24448_と異なるかもしれません。ブラウザにいくつかのレコードが返されるのが見えるはずです。次の命令のために `UserId` の値をコピーしてください。
 
     ![The sample JSON response is returned.](media/2019-12-18-16-59-47.png "Sample JSON Response")
 
-6. 開いたブラウザウィンドウで、`http://localhost:24448/api/Users/e91019da-26c8-b201-1385-0011f6c365e9`をブラウズすると、マスクされていないSSNカラムを示すjsonレスポンスが表示されます。
+11. 開いたブラウザウィンドウで、`http://localhost:24448/api/Users/e91019da-26c8-b201-1385-0011f6c365e9`をブラウズすると、マスクされていないSSNカラムを示すjsonレスポンスが表示されます。
 
     > **Note**: お使いのブラウザによっては、json形式のレスポンスを表示するためにダウンロードが必要な場合があります。Chromeでアクセスすることを推奨します。
 
