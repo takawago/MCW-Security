@@ -474,7 +474,8 @@ Duration: 30 minutes
 
 5. **名前**には、**InsuranceAPI** と入力します。
 
-6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルから接続文字列情報をコピーします。(value="" のダブルクォーテーションの間の文字列)
+6. **値**には、Exercise 2の**InsuranceAPI**ソリューションのWeb.configファイルの接続文字列情報(value="" のダブルクォーテーションの間の文字列)に、 `Column Encryption Setting=Enabled;` を追加し設定します。
+    > **例**: Server=tcp:sql-azsecurity-210916.database.windows.net,1433;Initial Catalog=Insurance;Persist Security Info=False;User ID=agent;Password=p@ssword1rocks;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Column Encryption Setting=Enabled;
 
 7. **作成**を選択します。
 
@@ -613,8 +614,23 @@ Duration: 30 minutes
 
     > **Note**:  このラボを一歩進めて、Web App を Azure App Service に公開し、[システム割り当て マネージドID](https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet)を有効にすることができます。  これにより、設定から認証情報を完全に取り除き、[Key Vault 参照](https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references)を利用することができます。
 
+12. Azure Portal に戻って、Azure Key Vault を選択します。
+
+13. **AzureKeyVaultTest** の **キーのアクセス許可**のドロップダウンを選択し、**取得** と **キーの折返しを解除** と **確認** のパーミッションをチェックします。
+
+    ![In the secret permissions drop down options, the Get and List operations are selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image52-1.jpg "Configure Select principal settings")
+
+    選択肢は以下のようになります。
+
+    ![The AzureKeyVaultTest principal is selected and the secret permissions drop down list states there are two selected values.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image52-2.jpg "Configure Select principal settings")
+
+14. 上部の**保存**ボタンを選択します。
+
 
 ### Task 5: ソリューションのテスト
+
+> **Note**: まだ実行していない場合は、**\\Hands-on lab\\Database\\02\_PermissionSetup.sql**スクリプトを実行してください。(通常は
+> Task 2 で実施済み)
 
 1. **UserControllers.cs** ファイルを開き、17行目にブレークポイントを置きます。(F9 キー)
 
@@ -628,33 +644,11 @@ Duration: 30 minutes
 
     ![The connection string to the Azure Database is visible through the Visual Studio debugger.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image54.jpg "View the connection string")
 
+4. 再度、**F5**を押して、ソリューションを実行します。
 
-4. ###要修正 **F5**を押して、プログラムを続行すると、エラーが表示されるはずです。前の演習で列を暗号化したため、EntityFrameworkはデフォルトの設定を使用して値（複数可）を取得することができません。シームレスな復号化を行うためには、以下のことが必要です。
-
-    > **Note**: 以下本ワークショップでは実施する必要はありません。時間があるときにお試しください。
-
-    - まだ実行していない場合は、**\\Hands-on lab\\Database\\02\_PermissionSetup.sql**スクリプトを実行してください。
-
-    - プロジェクトに[AzureKeyVaultProvider for Entity Framework](https://blogs.msdn.microsoft.com/sqlsecurity/2015/11/10/using-the-azure-key-vault-key-store-provider-for-always-encrypted/)の参照を追加します。
-
-    - .NETで暗号化されたカラムを処理するために、プロバイダコードを登録します。
-  
-    - Azure Key Vault に、Azure AD アプリケーションにキーのパーミッション（`decrypt`、`sign`、`get`、`unwrapkey`、`verify`）を与えるアクセスポリシーを追加します。
-
-    - 接続文字列に`Column Encryption Setting=Enabled`を追加します。
-
-    - 詳しい手順はこちらの[ブログ記事](https://docs.microsoft.com/en-us/archive/blogs/sqlsecurity/using-the-azure-key-vault-key-store-provider-for-always-encrypted)をご覧ください。
-
-    - 3つ目のソリューション（**\\Hands-on lab\\WebApp\\InsuranceAPI\_KeyVault\_Encrypted\\InsuranceAPI.sln**）は、GitHub repoに必要なリファレンスとコードが追加されています。 
-
-  
-      - 上記の Key Vault パーミッションを追加した後、クライアント ID とシークレットで web.config ファイルを更新してください。
-  
-      - Key Vaultの接続文字列を更新して、`Column Encryption Setting=Enabled`とします。
-
-      - global.asax.csファイルに追加されたコードを確認します。
-
-      - プロジェクトを実行し、上記のページに移動します。
+5. 開いたブラウザウィンドウで、暗号化されたSSNカラムが復号化された状態で、jsonレスポンスが表示されます。
+    
+    ![The json response is displayed in a browser window.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image30.jpg "View the json response")
 
 ## Exercise 4: ネットワークの保護
 
