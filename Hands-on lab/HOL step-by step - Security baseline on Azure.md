@@ -606,17 +606,14 @@ Duration: 30 minutes
 
     ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/Global.asax.jpg "")
 
-10. Web.config を開き、接続文字列に `Column Encryption Setting=Enabled` を追加します。
-    
-    ![](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/ColumnEncryption.jpg "")
 
-11. Visual StudioでUsersController.cs、Global.asax.cs、Web.configファイルを保存します。
+10. Visual StudioでUsersController.cs、Global.asax.cs、Web.configファイルを保存します。
 
     > **Note**:  このラボを一歩進めて、Web App を Azure App Service に公開し、[システム割り当て マネージドID](https://docs.microsoft.com/ja-jp/azure/app-service/overview-managed-identity?tabs=dotnet)を有効にすることができます。  これにより、設定から認証情報を完全に取り除き、[Key Vault 参照](https://docs.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references)を利用することができます。
 
-12. Azure Portal に戻って、Azure Key Vault を選択します。
+11. Azure Portal に戻って、Azure Key Vault を選択します。
 
-13. **AzureKeyVaultTest** の **キーのアクセス許可**のドロップダウンを選択し、**取得** と **キーの折返しを解除** と **確認** のパーミッションをチェックします。
+12. **AzureKeyVaultTest** の **キーのアクセス許可**のドロップダウンを選択し、**取得** と **キーの折返しを解除** と **確認** のパーミッションをチェックします。
 
     ![In the secret permissions drop down options, the Get and List operations are selected.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image52-1.jpg "Configure Select principal settings")
 
@@ -624,7 +621,7 @@ Duration: 30 minutes
 
     ![The AzureKeyVaultTest principal is selected and the secret permissions drop down list states there are two selected values.](images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/image52-2.jpg "Configure Select principal settings")
 
-14. 上部の**保存**ボタンを選択します。
+13. 上部の**保存**ボタンを選択します。
 
 
 ### Task 5: ソリューションのテスト
