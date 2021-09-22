@@ -681,7 +681,7 @@ Duration: 45 minutes
 
 7. **File->Open**を選択し、**paw-1** vm の `c:\temp` 配下の GitHubのディレクトリを参照して、**\Hands-on lab\Scripts\PortScanner.ps1**を開きます。
 
-    > **Note**: 事前準備で、[GitHub repo](https://github.com/Microsoft/MCW-Azure-Security-Privacy-and-Compliance)をダウンロードして、セットアップの手順でこれを展開したと思います。 これらの手順を実行していない場合は、今すぐ実行してください。また、デスクトップからVMにファイルをコピーすることもできます。
+    > **Note**: 事前準備で、[GitHub repo](https://github.com/takawago/MCW-Security)をダウンロードして、セットアップの手順でこれを展開したと思います。 これらの手順を実行していない場合は、今すぐ実行してください。また、デスクトップからVMにファイルをコピーすることもできます。
 
 8. スクリプトを確認します。このスクリプトでは、様々な練習問題に対して以下のことが行われていることに注目してください。
 
