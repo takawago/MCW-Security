@@ -41,8 +41,7 @@ July 2021
     - [Task 6: ポートスキャンの実行](#task-6-ポートスキャンの実行)
   - [Exercise 5: Azure Security Center](#exercise-5-azure-security-center)
     - [Task 1: Linux VMとMicrosoft Monitoring Agent（MMA）のインストール](#task-1-linux-vmとmicrosoft-monitoring-agentmmaのインストール)
-    - [Task 2: ブルートフォースアタックの実行](#task-2-ブルートフォースアタックの実行)
-    - [Task 3: 変更追跡と更新管理を有効にする](#task-3-変更追跡と更新管理を有効にする)
+    - [Task 2: 変更追跡と更新管理を有効にする](#task-2-変更追跡と更新管理を有効にする)
     - [Task 4: MMA構成の見直し](#task-4-mma構成の見直し)
   - [Exercise 6: Azure Sentinelのログとレポート](#exercise-6-azure-sentinelのログとレポート)
     - [Task 1: ダッシュボードの作成](#task-1-ダッシュボードの作成)
@@ -946,7 +945,7 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
    ![Putty window with linux-1 as the host.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/putty-linux-1.png "Use Putty to login to linux-1")
 
-1. ワークスペースID・主キーを上記で記録した値で置き換え以下のコマンドを実行します。:
+6. ワークスペースID・主キーを上記で記録した値で置き換え以下のコマンドを実行します。:
 
     ```bash
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR_WORKSPACE_ID> -s <YOUR_WORKSPACE_KEY>
@@ -955,28 +954,16 @@ Azure Security Centerは、デフォルトでは有効になっていないい�
 
     ```
 
-2. Azureポータルから Log Analytics ワークスペースに戻ります。
+7. Azureポータルから Log Analytics ワークスペースに戻ります。
 
-3. ブレードメニューで **エージェント管理** を選択し、**Linux  サーバー** タブを選択、 **1 台の Linux コンピューターが接続されています** と表示されていることを確認します。
+8. ブレードメニューで **エージェント管理** を選択し、**Linux  サーバー** タブを選択、 **1 台の Linux コンピューターが接続されています** と表示されていることを確認します。
 
    ![The displayed of connected linux computers for the workspace.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/loganalytics-linux-computers.jpg "Review the linux computers connected to workspace")
 
    > **Note**: ほとんどの場合、Azureはリソースグループのログ分析ワークスペースにリソースを自動的に割り当てます。
 
-### Task 2: ブルートフォースアタックの実行
 
-1. リモートデスクトップ接続で、**paw-1**に切り替えます。
-
-2. PowerShell ISEで、Exercise 4の行をコメントし、Exercise 5の行をアンコメントします。
-
-3. スクリプトを実行すると、puttyからplinkツールを使って**linux-1**マシンにSSHでログインしようとする試みが何度か実行されることに注目してください。
-
-4. しばらくすると（最大30分）、ブルートフォース攻撃が成功したことを示すSecurity Centerのアラートが表示されます。
-
-    ![The email warning about the Brute Force Attack.](/Hands-on%20lab/images/Hands-onlabstep-bystep-Azuresecurityprivacyandcomplianceimages/media/linux-brute-attack-warning.png "The Azure Security Center warning about brute force attack")
-
-
-### Task 3: 変更追跡と更新管理を有効にする
+### Task 2: 変更追跡と更新管理を有効にする
 
 1. Azureポータルに戻ります。
 
