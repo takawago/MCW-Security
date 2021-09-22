@@ -158,4 +158,9 @@ In this exercise, you will set up your environment for use in the rest of the ha
 
 1. **paw-1** 仮想マシンで Visual Studio 2019 を起動し、ワークショップ用のID/Passでサインインしてください。(次回起動時の手順を省略するため)
 
+### Task 7: paw-1、linux-1 仮想マシンへの静的IPアドレス割り当て
+
+1. Azureポータルで、paw-1 vm のプライベートIPを `10.0.0.5` に、linux-1 vm のプライベートIPを `10.0.0.4` に **静的** として設定してください。
+
+---
 You should follow all steps provided *before* attending the hands-on lab.
