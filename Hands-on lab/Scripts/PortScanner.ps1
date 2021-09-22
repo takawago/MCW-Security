@@ -692,7 +692,7 @@ function SetupHosts()
     
     if (!$content.contains("linux-1"))
 	{
-		add-content $path "10.0.0.5`tlinux-1";
+		add-content $path "10.0.0.4`tlinux-1";
 	}
 }
 
