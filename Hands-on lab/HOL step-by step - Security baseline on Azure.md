@@ -1176,7 +1176,7 @@ Duration: 20 minutes
 
 Duration: 15 minutes
 
-この演習では、Azureの「Azure Policy」と「Secure Score」の機能をナビゲートする方法を学びます。 また、特定のコンプライアンスポリシーを達成しようとする際に考慮すべき有用なタスクを提供する Compliance Manager ポータルを探索します。
+この演習では、Azureの「Azure Policy」と「Secure Score」の機能をナビゲートする方法を学びます。 
 
 ### Task 1: Review a basic Azure Policy
 
